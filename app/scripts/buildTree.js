@@ -1,5 +1,6 @@
 'use strict';
 
+/*global marked*/
 /*eslint no-use-before-define:0, no-unused-vars:0*/
 
 function buildNodeFromDefinition(swaggerDocumentation, definitionName){
@@ -7,9 +8,7 @@ function buildNodeFromDefinition(swaggerDocumentation, definitionName){
   var node = {};
   node.name = definition.name;
   if(definition.description !== undefined && definition.description !== null){
-    console.log(definitionName + ":" + definition.description);
     node.description = marked(definition.description);
-    //node.description = definition.description;
   }
   node.type = definitionName;
   if(definition.allowExtension !== undefined){
