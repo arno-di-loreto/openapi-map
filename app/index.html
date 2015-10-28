@@ -19,6 +19,7 @@
     <!-- build:css styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
+    <link rel="stylesheet" href="styles/tree.css">
 
   </head>
   <body>
@@ -26,38 +27,21 @@
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <div class="container">
+    <div class="container-fluid">
       <div class="header">
         <ul class="nav nav-pills pull-right">
-          <li class="active"><a href="#">Home</a></li>
+          <li class="active"><a href="#">Viewer</a></li>
           <li><a href="#">About</a></li>
-          <li><a href="#">Contact</a></li>
         </ul>
-        <h3 class="text-muted">swagger specification visual documentation</h3>
+        <h3 class="text-muted">Swagger Specification Viewer</h3>
       </div>
 
-      <div class="jumbotron">
-        <h1>'Allo, 'Allo!</h1>
-        <p class="lead">Always a pleasure scaffolding your apps.</p>
-        <p><a class="btn btn-lg btn-success" href="#">Splendid!</a></p>
-        <i class="fa fa-camera-retro fa-5x"></i> fa-5x
-      </div>
-
-      <div class="row marketing">
-        <div class="col-lg-6">
-          <h4>HTML5 Boilerplate</h4>
-          <p>HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.</p>
-
-          <h4>Bootstrap</h4>
-          <p>Sleek, intuitive, and powerful mobile first front-end framework for faster and easier web development.</p>
-        </div>
-      </div>
+      <div id="tree-container"></div>
 
       <div class="footer">
-        <p>♥ from the Yeoman team</p>
+        <p>API Handyman</p>
       </div>
     </div>
-
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
     <script>
       (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
@@ -72,6 +56,8 @@
     <!-- bower:js -->
     <script src="/bower_components/jquery/dist/jquery.js"></script>
     <script src="/bower_components/d3/d3.js"></script>
+    <script src="/bower_components/marked/lib/marked.js"></script>
+    <script src="/bower_components/handlebars/handlebars.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -90,7 +76,52 @@
     <script src="/bower_components/bootstrap/js/tab.js"></script>
     <!-- endbuild -->
 
+    <script id="documentationtemplate" type="text/x-handlebars-template">
+      <div class="entry">
+        {{#if fieldsGroup}}
+          <i class="fa fa-indent fa-2x fa-pull-left"></i><p>{{{description}}}</p>
+        {{else}}
+          <h1>{{name}}</h1>
+          <div class=".list-group">
+          {{#if required}}
+            <p class=".list-group-item"><i class="fa fa-asterisk fa-fw fa-2x"></i>&nbsp;Required</p>
+          {{/if}}
+          {{#if array}}
+            <p class=".list-group-item"><i class="fa fa-list-ul fa-fw fa-2x"></i>&nbsp;Array</p>
+          {{/if}}
+          {{#if closedChildren}}
+            <p class=".list-group-item"><i class="fa fa-cubes fa-fw fa-2x"></i>&nbsp;{{type}}</p>
+          {{else}}
+            {{#if children}}
+              <p class=".list-group-item"><i class="fa fa-cubes fa-fw fa-2x"></i>&nbsp;{{type}}</p>
+            {{else}}
+              <p class=".list-group-item"><i class="fa fa-cube fa-fw fa-2x"></i>&nbsp;{{type}}</p>
+            {{/if}}
+          {{/if}}
+          {{#if gfm}}
+            <p class=".list-group-item"><i class="fa fa-github-alt fa-fw fa-2x"></i>&nbsp;Allows GFM</p>
+          {{/if}}
+          {{#if allowExtension}}
+            <p class=".list-group-item"><i class="fa fa-code-fork fa-fw fa-2x"></i>&nbsp;Allows extension</p>
+          {{/if}}
+        </div>
+          <h2>Description</h2>
+          <p>{{{description}}}</p>
+          {{#if values}}
+          <h2>Values</h2>
+          <ul>
+          {{#each values}}
+          <li>{{this}}</li>
+          {{/each}}
+          </ul>
+          {{/if}}
+        {{/if}}
+      </div>
+    </script>
+
     <!-- build:js scripts/main.js -->
+    <script src="scripts/buildTree.js"></script>
+    <script src="scripts/drawTree.js"></script>
     <script src="scripts/main.js"></script>
     <!-- endbuild -->
   </body>

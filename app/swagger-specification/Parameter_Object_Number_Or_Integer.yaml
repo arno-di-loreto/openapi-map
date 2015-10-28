@@ -1,0 +1,24 @@
+Parameter Object Number:
+  description: A number or integer parameter
+  fieldsGroup: true
+  fields:
+    -
+      name: maximum
+      type: number
+      description: See http://json-schema.org/latest/json-schema-validation.html#anchor17.
+    -
+      name: exclusiveMaximum
+      type: boolean
+      description: See http://json-schema.org/latest/json-schema-validation.html#anchor17.
+    -
+      name: minimum
+      type: number
+      description: See http://json-schema.org/latest/json-schema-validation.html#anchor21.
+    -
+      name: exclusiveMinimum
+      type: boolean
+      description: See http://json-schema.org/latest/json-schema-validation.html#anchor21.
+    -
+      name: multipleOf
+      type: number
+      description: See http://json-schema.org/latest/json-schema-validation.html#anchor14.

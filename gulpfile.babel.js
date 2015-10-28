@@ -4,6 +4,11 @@ import gulpLoadPlugins from 'gulp-load-plugins';
 import browserSync from 'browser-sync';
 import del from 'del';
 import {stream as wiredep} from 'wiredep';
+//Added manually
+import concat from 'gulp-concat';
+import yaml from 'gulp-yaml';
+import prettify  from 'gulp-jsbeautifier';
+
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
@@ -16,6 +21,22 @@ gulp.task('styles', () => {
     .pipe(gulp.dest('.tmp/styles'))
     .pipe(reload({stream: true}));
 });
+
+gulp.task('concat-swagger-specification', () => {
+    return gulp.src('app/swagger-specification/*.yaml')
+    .pipe(concat('swagger-specification.yaml'))
+    .pipe(gulp.dest('.tmp/'))
+    .pipe(gulp.dest('dist/'));
+});
+
+gulp.task('json-swagger-specification', ['concat-swagger-specification'], () => {
+    return gulp.src('.tmp/swagger-specification.yaml')
+    .pipe(yaml('swagger-specification.json'))
+    .pipe(prettify('swagger-specification.json'))
+    .pipe(gulp.dest('.tmp/'))
+    .pipe(gulp.dest('dist/'));
+});
+
 
 function lint(files, options) {
   return () => {
@@ -83,7 +104,7 @@ gulp.task('extras', () => {
 
 gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
 
-gulp.task('serve', ['styles', 'fonts'], () => {
+gulp.task('serve', ['styles', 'fonts', 'json-swagger-specification'], () => {
   browserSync({
     notify: false,
     port: 9000,
@@ -105,6 +126,7 @@ gulp.task('serve', ['styles', 'fonts'], () => {
   gulp.watch('app/styles/**/*.css', ['styles']);
   gulp.watch('app/fonts/**/*', ['fonts']);
   gulp.watch('bower.json', ['wiredep', 'fonts']);
+  gulp.watch('app/swagger-specification/*.yaml', ['json-swagger-specification']);
 });
 
 gulp.task('serve:dist', () => {

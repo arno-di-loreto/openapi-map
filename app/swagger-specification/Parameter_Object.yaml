@@ -1,0 +1,38 @@
+Parameter Object:
+  description: |
+    Describes a single operation parameter.
+    A unique parameter is defined by a combination of a name and location (in).
+  allowExtension: true
+  fields:
+    -
+      name: in
+      type: string
+      description: The location of the parameter.
+      values:
+        - query
+        - header
+        - path
+        - formData
+        - body
+    -
+      name: <in is body>
+      type: Parameter Object Body
+      description: Fields if *in* value is *body*.
+    -
+      name: <in is not body>
+      type: Parameter Object Not Body
+      description: Fields if *in* value is *query*, *header*, *path* or *formData*.
+    -
+      name: description
+      type: string
+      gfm: true
+      description: |
+        A brief description of the parameter.
+        This could contain examples of use.
+    -
+      name: required
+      type: boolean
+      description: |
+        Determines whether this parameter is mandatory.
+        If the parameter is in *path*, this property is required and its value MUST be true.
+        Otherwise, the property MAY be included and its default value is false.

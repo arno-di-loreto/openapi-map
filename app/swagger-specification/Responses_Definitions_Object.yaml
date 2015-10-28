@@ -1,0 +1,11 @@
+Responses Definitions Object:
+  description: |
+    An object to hold responses to be reused across operations.
+    Response definitions can be referenced to the ones defined here.
+    This does not define global operation responses.
+  fields:
+    -
+      name: "{name}"
+      type: Response Object
+      patterned: true
+      description: A single response definition, mapping a "name" to the response it defines.

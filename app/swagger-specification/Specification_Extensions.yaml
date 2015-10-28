@@ -1,0 +1,10 @@
+Specification Extensions:
+  name: ^x-
+  type: Any
+  patterned: true
+  swaggerType: true
+  description: |
+    While the Swagger Specification tries to accommodate most use cases, additional data can be added to extend the specification at certain points.
+    The field name MUST begin with x-, for example, x-internal-id.
+    The value can be null, a primitive, an array or an object.
+    The extensions may or may not be supported by the available tooling, but those may be extended as well to add requested support (if tools are internal or open-sourced).

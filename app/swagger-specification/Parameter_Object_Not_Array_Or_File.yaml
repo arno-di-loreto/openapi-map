@@ -1,0 +1,25 @@
+Parameter Object Not Array Or File:
+  description: Fields if *type* value is *string*, *number*, *integer* or *boolean*.
+  fieldsGroup: true
+  fields:
+    -
+      name: format
+      type: string
+      description: |
+        The extending format for the previously mentioned type.
+        See Data Type Formats for further details.
+    -
+      name: allowEmptyValue
+      type: boolean
+      description: |
+        Sets the ability to pass empty-valued parameters.
+        This is valid only for either query or formData parameters and allows you to send a parameter with a name only or an empty value.  
+        Default value is false.
+    -
+      name: <type is string>
+      type: Parameter Object String
+      description: Fields if *type* is *string*.
+    -
+      name: <type is number or integer>
+      type: Parameter Object Number Or Integer
+      description: Fields if *type* is *number* or *integer*.

@@ -1,0 +1,27 @@
+Security Scheme Object:
+  description: |
+    Allows the definition of a security scheme that can be used by the operations.
+    Supported schemes are basic authentication, an API key (either as a header or as a query parameter) and OAuth2's common flows (implicit, password, application and access code).
+  allowExtension: true
+  fields:
+    -
+      name: type
+      type: string
+      description: The type of the security scheme.
+      required: true
+      values:
+        - basic
+        - apiKey
+        - oauth2
+    -
+      name: description
+      type: string
+      description: A short description for security scheme.
+    -
+      name: <type is apiKey>
+      type: Security Scheme Object ApiKey
+      description: Fields if *type* value is *apiKey*.
+    -
+      name: <type is oauth2>
+      type: Security Scheme Object ApiKey
+      description: Fields if *type* value is *oauth2*.

@@ -1,0 +1,8 @@
+Parameters Definitions Object:
+  description:
+  fields:
+    -
+      name: {name}
+      type: Parameter
+      description: A single parameter definition, mapping a \name\ to the parameter it defines.
+      patterned: true

@@ -1,0 +1,9 @@
+Headers Object:
+  description: The name of the property corresponds to the name of the header. The value describes the type of the header.
+  fields:
+    -
+      name: "{name}"
+      patterned: true
+      description: |
+        The name of the property corresponds to the name of the header.  
+        The value describes the type of the header.

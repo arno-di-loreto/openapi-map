@@ -1,0 +1,41 @@
+Parameter Object Not Body:
+  description: Fields if *in* value is *query*, *header*, *path* or *formData*.
+  fieldsGroup: true
+  fields:
+    -
+      name: type
+      type: string
+      description: |
+        The type of the parameter.
+        Since the parameter is not located at the request body, it is limited to simple types (that is, not an object).
+        If type is *file*, the consumes MUST be either *multipart/form-data* or *application/x-www-form-urlencoded* and the parameter MUST be in *formData*.
+      values:
+        - string
+        - number
+        - integer
+        - boolean
+        - array
+        - file
+    -
+      name: <type is array>
+      type: Parameter Object Array
+      description: Fields if *type* value is *array*.
+    -
+      name: <type is file>
+      type: Parameter Object File
+      description: Fields if *type* value is *file*.
+    -
+      name: <type is not array or file>
+      type: Parameter Object Not Array Or File
+      description: Fields if *type* value is *string*, *number*, *integer* or *boolean*.
+    -
+      name: default
+      description: |
+        Declares the value of the parameter that the server will use if none is provided.
+        For example a *count* to control the number of results per page might default to 100 if not supplied by the client in the request.
+        (Note: *default* has no meaning for required parameters.)
+        Unlike JSON Schema this value MUST conform to the defined type for this parameter.
+        See http://json-schema.org/latest/json-schema-validation.html#anchor101.
+    -
+      name: enum
+      description: See http://json-schema.org/latest/json-schema-validation.html#anchor76.

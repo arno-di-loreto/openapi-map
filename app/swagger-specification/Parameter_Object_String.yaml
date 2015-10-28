@@ -1,0 +1,16 @@
+Parameter Object String:
+  description: A string parameter
+  fieldsGroup: true
+  fields:
+    -
+      name: pattern
+      type: string
+      description: See http://json-schema.org/latest/json-schema-validation.html#anchor33.
+    -
+      name: maxLength
+      type: integer
+      description: See http://json-schema.org/latest/json-schema-validation.html#anchor26.
+    -
+      name: minLength
+      type: integer
+      description: See http://json-schema.org/latest/json-schema-validation.html#anchor29.

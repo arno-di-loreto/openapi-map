@@ -1,0 +1,18 @@
+Contact Object:
+  description: Contact information for the exposed API.
+  allowExtension: true
+  swaggerTypeURL: http://swagger.io/specification/#contactObject
+  fields:
+    - name: name
+      type: string
+      description: The identifying name of the contact person/organization.
+    - name: url
+      type: string
+      description: |
+        The URL pointing to the contact information.
+        MUST be in the format of a URL.
+    - name: email
+      type: string
+      description: |
+        The email address of the contact person/organization.  
+        MUST be in the format of an email address.

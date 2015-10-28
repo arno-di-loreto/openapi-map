@@ -1,0 +1,50 @@
+Parameter Object Array:
+  description:: Fields if parameter type is array.
+  fieldsGroup: true
+  fields:
+    -
+      name: items
+      type: Items Object
+      description: Describes the type of items in the array.
+    -
+      name: collectionFormat
+      type: string
+      description: |
+        Determines the format of the array if type array is used.
+      values:
+        - csv
+        - ssv
+        - tsv
+        - pipes
+        - multi
+      defaultValue: csv
+      explainedValues:
+        -
+          value: csv
+          description: Comma separated values *foo,bar*.
+        -
+          value: ssv
+          description: Space separated values *foo bar*.
+        -
+          value: tsv
+          description: Tab separated values *foo\\tbar*.
+        -
+          value: pipes
+          description: Pipe separated values *foo|bar*.
+        -
+          value: multi
+          description: |
+            Corresponds to multiple parameter instances instead of multiple values for a single instance *foo=bar&foo=baz*.
+            This is valid only for parameters in *query* or *formData*.
+    -
+      name: maxItems
+      type: number
+      description: Maximum count of items in array
+    -
+      name: minItems
+      type: number
+      description: Minimum count of items in array.
+    -
+      name: uniqueItems
+      type: boolean
+      description: Allow only unique items in array.

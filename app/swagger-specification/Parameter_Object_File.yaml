@@ -1,0 +1,12 @@
+Parameter Object File:
+  description: A File parameter
+  fieldsGroup: true
+  fields:
+    -
+      name: maxLength
+      type: integer
+      description: See http://json-schema.org/latest/json-schema-validation.html#anchor26.
+    -
+      name: minLength
+      type: integer
+      description: See http://json-schema.org/latest/json-schema-validation.html#anchor29.

@@ -1,0 +1,27 @@
+Info Object:
+  description: Provides metadata about the API. The metadata can be used by the clients if needed.
+  allowExtension: true
+  swaggerTypeURL: http://swagger.io/specification/#infoObject
+  swaggerType: true
+  fields:
+    - name: title
+      type: string
+      required: true
+      description: The title of the application.
+    - name: description
+      type: string
+      gfm: true
+      description: A short description of the application.
+    - name: termsOfService
+      type: string
+      description: The Terms of Service for the API.
+    - name: contact
+      type: Contact Object
+      description: The contact information for the exposed API.
+    - name: licence
+      type: Licence Object
+      description: The license information for the exposed API.
+    - name: version
+      type: string
+      required: true
+      description: Provides the version of the application API (not to be confused with the specification version).
