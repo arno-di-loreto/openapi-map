@@ -5,7 +5,7 @@ It is developed by [Arnaud Lauret, the API Handyman](https://github.com/arno-di-
 This is NOT a rendering of an API Swagger specification (that will come next).
 
 ## How to use it?
-You can see a live demo on [apihandyman.io](http://apihandyman.io/)
+You can see a live demo on [apihandyman.io](http://apihandyman.io/swagger/swagger-specification-visual-documentation/)
 
 - Zoom in: Mouse scroll up
 - Zoom out: Mouse scroll down
