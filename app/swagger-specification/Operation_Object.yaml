@@ -69,10 +69,12 @@ Operation Object:
         The transfer protocol for the operation.
         The value overrides the Swagger Object schemes definition.
       values:
-        - http
-        - https
-        - ws
-        - wss
+        - value: http
+        - value: https
+        - value: ws
+          description: Web socket scheme
+        - value: wss
+          description: Secured web socket scheme
     -
       name: deprecated
       type: boolean

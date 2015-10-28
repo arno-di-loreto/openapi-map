@@ -57,6 +57,13 @@ function buildNodeFromField(swaggerDocumentation, field){
   if(field.description !== undefined) {
     node.description = marked(field.description);
   }
+  if(field.values !== undefined) {
+    for(var ivalues = 0; ivalues < field.values.length; ivalues++){
+      if(field.values[ivalues].description !== undefined && field.values[ivalues].description !== null){
+        field.values[ivalues].description = marked(field.values[ivalues].description);
+      }
+    }
+  }
   node.required = field.required;
   node.gfm = field.gfm;
   node.patterned = field.patterned;

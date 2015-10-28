@@ -4,10 +4,16 @@ import gulpLoadPlugins from 'gulp-load-plugins';
 import browserSync from 'browser-sync';
 import del from 'del';
 import {stream as wiredep} from 'wiredep';
-//Added manually
+//For swagger-specification building
 import concat from 'gulp-concat';
 import yaml from 'gulp-yaml';
 import prettify  from 'gulp-jsbeautifier';
+//For handlebar templates precompiling
+import handlebars from 'gulp-handlebars';
+import wrap from 'gulp-wrap';
+import declare from 'gulp-declare';
+//import concat from 'gulp-concat';
+
 
 
 const $ = gulpLoadPlugins();
@@ -37,6 +43,21 @@ gulp.task('json-swagger-specification', ['concat-swagger-specification'], () => 
     .pipe(gulp.dest('dist/'));
 });
 
+gulp.task('templates', function(){
+  gulp.src('app/templates/*.hbs')
+    // Pass your local handlebars version
+    .pipe(handlebars({
+      handlebars: require('handlebars')
+    }))
+    .pipe(wrap('Handlebars.template(<%= contents %>)'))
+    .pipe(declare({
+      namespace: 'SwaggerSpecificationVisualDocumentation',
+      noRedeclare: true, // Avoid duplicate declarations
+    }))
+    .pipe(concat('templates.js'))
+    .pipe(gulp.dest('.tmp/scripts/'))
+    .pipe(gulp.dest('dist/scripts/'));
+});
 
 function lint(files, options) {
   return () => {
@@ -104,7 +125,7 @@ gulp.task('extras', () => {
 
 gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
 
-gulp.task('serve', ['styles', 'fonts', 'json-swagger-specification'], () => {
+gulp.task('serve', ['styles', 'fonts', 'json-swagger-specification', 'templates'], () => {
   browserSync({
     notify: false,
     port: 9000,
@@ -120,13 +141,16 @@ gulp.task('serve', ['styles', 'fonts', 'json-swagger-specification'], () => {
     'app/*.html',
     'app/scripts/**/*.js',
     'app/images/**/*',
-    '.tmp/fonts/**/*'
+    '.tmp/fonts/**/*',
+    '.tmp/*.json',
+    '.tmp/scripts/**/*.js'
   ]).on('change', reload);
 
   gulp.watch('app/styles/**/*.css', ['styles']);
   gulp.watch('app/fonts/**/*', ['fonts']);
   gulp.watch('bower.json', ['wiredep', 'fonts']);
   gulp.watch('app/swagger-specification/*.yaml', ['json-swagger-specification']);
+  gulp.watch('app/templates/**/*.hbs', ['templates']);
 });
 
 gulp.task('serve:dist', () => {
@@ -166,7 +190,7 @@ gulp.task('wiredep', () => {
     .pipe(gulp.dest('app'));
 });
 
-gulp.task('build', ['lint', 'html', 'images', 'fonts', 'extras'], () => {
+gulp.task('build', ['lint', 'html', 'images', 'fonts', 'extras', 'json-swagger-specification', 'templates'], () => {
   return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
 });
 

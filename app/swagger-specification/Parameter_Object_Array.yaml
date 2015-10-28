@@ -12,16 +12,10 @@ Parameter Object Array:
       description: |
         Determines the format of the array if type array is used.
       values:
-        - csv
-        - ssv
-        - tsv
-        - pipes
-        - multi
-      defaultValue: csv
-      explainedValues:
         -
           value: csv
           description: Comma separated values *foo,bar*.
+          default: true
         -
           value: ssv
           description: Space separated values *foo bar*.

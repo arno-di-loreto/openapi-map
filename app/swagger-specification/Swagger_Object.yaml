@@ -14,7 +14,8 @@ Swagger Object:
         Specifies the Swagger Specification version being used.
         It can be used by the Swagger UI and other clients to interpret the API listing.
       values:
-        - 2.0
+        - value: "2.0"
+          description: The value MUST be 2.0
     - name: info
       type: Info Object
       required: true
@@ -43,10 +44,12 @@ Swagger Object:
         The transfer protocol of the API.
         If the schemes is not included, the default scheme to be used is the one used to access the Swagger definition itself.
       values:
-        - http
-        - https
-        - ws
-        - wss
+        - value: http
+        - value: https
+        - value: ws
+          description: Web socket scheme
+        - value: wss
+          description: Secured web socket scheme
     - name: consumes
       type: [string]
       description": |

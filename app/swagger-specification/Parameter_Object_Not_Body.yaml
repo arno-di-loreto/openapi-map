@@ -8,14 +8,14 @@ Parameter Object Not Body:
       description: |
         The type of the parameter.
         Since the parameter is not located at the request body, it is limited to simple types (that is, not an object).
-        If type is *file*, the consumes MUST be either *multipart/form-data* or *application/x-www-form-urlencoded* and the parameter MUST be in *formData*.
       values:
-        - string
-        - number
-        - integer
-        - boolean
-        - array
-        - file
+        - value: string
+        - value: number
+        - value: integer
+        - value: boolean
+        - value: array
+        - value: file
+          description: If type is *file*, the consumes MUST be either *multipart/form-data* or *application/x-www-form-urlencoded* and the parameter MUST be in *formData*.
     -
       name: <type is array>
       type: Parameter Object Array
