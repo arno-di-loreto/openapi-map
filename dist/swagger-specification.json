@@ -2,7 +2,6 @@
     "Contact Object": {
         "description": "Contact information for the exposed API.",
         "allowExtension": true,
-        "swaggerTypeURL": "http://swagger.io/specification/#contactObject",
         "fields": [{
             "name": "name",
             "type": "string",
@@ -10,7 +9,7 @@
         }, {
             "name": "url",
             "type": "string",
-            "description": "The URL pointing to the contact information.\nMUST be in the format of a URL.\n"
+            "description": "The URL pointing to the contact information.  \nMUST be in the format of a URL.\n"
         }, {
             "name": "email",
             "type": "string",
@@ -24,6 +23,14 @@
             "type": "Schema Object",
             "description": "A single definition, mapping a *name* to the schema it defines.",
             "patterned": true
+        }]
+    },
+    "Example Object": {
+        "description": "Allows sharing examples for operation responses.",
+        "fields": [{
+            "name": "{mime type}",
+            "type": "Any",
+            "description": "The name of the property MUST be one of the Operation produces values (either implicit or inherited).  \nThe value SHOULD be an example of what such a response would look like.\n"
         }]
     },
     "External Documentation Object": {
@@ -41,19 +48,157 @@
             "required": true
         }]
     },
+    "Header Object": {
+        "fields": [{
+            "name": "description",
+            "type": "string",
+            "description": "A short description of the header."
+        }, {
+            "name": "type",
+            "type": "string",
+            "description": "The type of the object.",
+            "values": [{
+                "value": "string"
+            }, {
+                "value": "number"
+            }, {
+                "value": "integer"
+            }, {
+                "value": "boolean"
+            }, {
+                "value": "array"
+            }]
+        }, {
+            "name": "default",
+            "type": "*",
+            "description": "Declares the value of the header that the server will use if none is provided.  \n(Note: \"default\" has no meaning for required headers.)  \nSee http://json-schema.org/latest/json-schema-validation.html#anchor101.  \nUnlike JSON Schema this value MUST conform to the defined type for the header.\n"
+        }, {
+            "name": "<type is array>",
+            "type": "Header Object Array",
+            "description": "Fields if *type* is *array*."
+        }, {
+            "name": "<type is not array>",
+            "type": "Header Object Not Array",
+            "description": "Fields if *type* is *string*, *number*, *integer* or *boolean*."
+        }]
+    },
+    "Header Object Array": {
+        "description": "Fields if *type* is *array*.",
+        "fieldsGroup": true,
+        "fields": [{
+            "name": "items",
+            "type": "Items Object",
+            "description": "Describes the type of items in the array."
+        }, {
+            "name": "collectionFormat",
+            "type": "string",
+            "description": "Determines the format of the array if type array is used.\n",
+            "values": [{
+                "value": "csv",
+                "description": "Comma separated values *foo,bar*.",
+                "default": true
+            }, {
+                "value": "ssv",
+                "description": "Space separated values *foo bar*."
+            }, {
+                "value": "tsv",
+                "description": "Tab separated values *foo\\\\tbar*."
+            }, {
+                "value": "pipes",
+                "description": "Pipe separated values *foo|bar*."
+            }, {
+                "value": "multi",
+                "description": "Corresponds to multiple parameter instances instead of multiple values for a single instance *foo=bar&foo=baz*.\nThis is valid only for parameters in *query* or *formData*.\n"
+            }]
+        }, {
+            "name": "maxItems",
+            "type": "number",
+            "description": "Maximum count of items in array"
+        }, {
+            "name": "minItems",
+            "type": "number",
+            "description": "Minimum count of items in array."
+        }, {
+            "name": "uniqueItems",
+            "type": "boolean",
+            "description": "Allow only unique items in array."
+        }]
+    },
+    "Header Object Not Array": {
+        "description": "Fields if *type* is *string*, *number*, *integer* or *boolean*.",
+        "fieldsGroup": true,
+        "fields": [{
+            "name": "format",
+            "type": "string",
+            "description": "The extending format for the previously mentioned type.  \nSee Data Type Formats for further details.  \n\nCommon Name | type | format| Comments\n------------|------|-------|---------\ninteger\t    | integer | int32 | signed 32 bits\nlong\t      | integer\t| int64\t| signed 64 bits\nfloat\t      | number\t| float |\t\ndouble\t    | number\t| double|\t\nstring\t    | string\t|       |\t\nbyte\t      | string\t| byte\t| base64 encoded characters\nbinary\t    | string\t| binary|\tany sequence of octets\nboolean\t    | boolean |       |\t\t\ndate\t      | string\t| date\t| As defined by full-date - RFC3339\ndateTime\t  | string\t| date-time\t| As defined by date-time - RFC3339\npassword\t  | string  |\tpassword | Used to hint UIs the input needs to be obscured.\n"
+        }, {
+            "name": "<type is string>",
+            "type": "Header Object String",
+            "description": "Fields if *type* is *string*."
+        }, {
+            "name": "<type is number or integer>",
+            "type": "Header Object Number Or Integer",
+            "description": "Fields if *type* is *number* or *integer*."
+        }, {
+            "name": "enum",
+            "type": "[*]",
+            "description": "Authorized values.  \nSee http://json-schema.org/latest/json-schema-validation.html#anchor76.\n"
+        }]
+    },
+    "Header Object Number Or Integer": {
+        "description": "A number or integer header",
+        "fieldsGroup": true,
+        "fields": [{
+            "name": "maximum",
+            "type": "number",
+            "description": "Maximum value.  \nSee http://json-schema.org/latest/json-schema-validation.html#anchor17.\n"
+        }, {
+            "name": "exclusiveMaximum",
+            "type": "boolean",
+            "description": "Indicate if the value must be < maximum.  \nSee http://json-schema.org/latest/json-schema-validation.html#anchor17.\n"
+        }, {
+            "name": "minimum",
+            "type": "number",
+            "description": "Minimum value.  \nSee http://json-schema.org/latest/json-schema-validation.html#anchor21.\n"
+        }, {
+            "name": "exclusiveMinimum",
+            "type": "boolean",
+            "description": "Indicate if the value must value > minimum.  \nSee http://json-schema.org/latest/json-schema-validation.html#anchor21.\n"
+        }, {
+            "name": "multipleOf",
+            "type": "number",
+            "description": "The value must be a multiple of *multiplOf*.  \nSee http://json-schema.org/latest/json-schema-validation.html#anchor14.\n"
+        }]
+    },
+    "Header Object String": {
+        "description": "A string header",
+        "fieldsGroup": true,
+        "fields": [{
+            "name": "pattern",
+            "type": "string",
+            "description": "This string SHOULD be a valid regular expression, according to the ECMA 262 regular expression dialect.  \nSee http://json-schema.org/latest/json-schema-validation.html#anchor33.  \nSee https://regex101.com/\n"
+        }, {
+            "name": "maxLength",
+            "type": "integer",
+            "description": "Maximum string's length.  \nSee http://json-schema.org/latest/json-schema-validation.html#anchor26.\n"
+        }, {
+            "name": "minLength",
+            "type": "integer",
+            "description": "Minimum string's length.  \nSee http://json-schema.org/latest/json-schema-validation.html#anchor29.\n"
+        }]
+    },
     "Headers Object": {
         "description": "The name of the property corresponds to the name of the header. The value describes the type of the header.",
         "fields": [{
             "name": "{name}",
             "patterned": true,
+            "type": "Header Object",
             "description": "The name of the property corresponds to the name of the header.  \nThe value describes the type of the header.\n"
         }]
     },
     "Info Object": {
         "description": "Provides metadata about the API. The metadata can be used by the clients if needed.",
         "allowExtension": true,
-        "swaggerTypeURL": "http://swagger.io/specification/#infoObject",
-        "swaggerType": true,
         "fields": [{
             "name": "title",
             "type": "string",
@@ -131,12 +276,12 @@
             "description": "A list of MIME types the operation can produce.\nThis overrides the produces definition at the Swagger Object.\nAn empty value MAY be used to clear the global definition.\nValue MUST be as described under Mime Types.\n"
         }, {
             "name": "parameters",
-            "type": "[Parameter Object | Reference Object]",
+            "type": "[Parameter Object]",
             "description": "A list of parameters that are applicable for this operation.\nIf a parameter is already defined at the Path Item, the new definition will override it, but can never remove it.\nThe list MUST NOT include duplicated parameters.\nA unique parameter is defined by a combination of a name and location.\nThe list can use the Reference Object to link to parameters that are defined at the Swagger Object's parameters.\nThere can be one *body* parameter at most.\n",
             "allowReference": true
         }, {
             "name": "responses",
-            "type": "Responses",
+            "type": "Responses Object",
             "required": true,
             "description": "The list of possible responses as they are returned from executing this operation."
         }, {
@@ -277,7 +422,7 @@
         "fields": [{
             "name": "format",
             "type": "string",
-            "description": "The extending format for the previously mentioned type.\nSee Data Type Formats for further details.\n"
+            "description": "The extending format for the previously mentioned type.  \nSee Data Type Formats for further details.  \n\nCommon Name | type | format| Comments\n------------|------|-------|---------\ninteger\t    | integer | int32 | signed 32 bits\nlong\t      | integer\t| int64\t| signed 64 bits\nfloat\t      | number\t| float |\t\ndouble\t    | number\t| double|\t\nstring\t    | string\t|       |\t\nbyte\t      | string\t| byte\t| base64 encoded characters\nbinary\t    | string\t| binary|\tany sequence of octets\nboolean\t    | boolean |       |\t\t\ndate\t      | string\t| date\t| As defined by full-date - RFC3339\ndateTime\t  | string\t| date-time\t| As defined by date-time - RFC3339\npassword\t  | string  |\tpassword | Used to hint UIs the input needs to be obscured.\n"
         }, {
             "name": "allowEmptyValue",
             "type": "boolean",
@@ -290,6 +435,10 @@
             "name": "<type is number or integer>",
             "type": "Parameter Object Number Or Integer",
             "description": "Fields if *type* is *number* or *integer*."
+        }, {
+            "name": "enum",
+            "type": "[Any]",
+            "description": "Authorized values.  \nSee http://json-schema.org/latest/json-schema-validation.html#anchor76.\n"
         }]
     },
     "Parameter Object Not Body": {
@@ -328,34 +477,31 @@
         }, {
             "name": "default",
             "description": "Declares the value of the parameter that the server will use if none is provided.\nFor example a *count* to control the number of results per page might default to 100 if not supplied by the client in the request.\n(Note: *default* has no meaning for required parameters.)\nUnlike JSON Schema this value MUST conform to the defined type for this parameter.\nSee http://json-schema.org/latest/json-schema-validation.html#anchor101.\n"
-        }, {
-            "name": "enum",
-            "description": "See http://json-schema.org/latest/json-schema-validation.html#anchor76."
         }]
     },
-    "Parameter Object Number": {
+    "Parameter Object Number Or Integer": {
         "description": "A number or integer parameter",
         "fieldsGroup": true,
         "fields": [{
             "name": "maximum",
             "type": "number",
-            "description": "See http://json-schema.org/latest/json-schema-validation.html#anchor17."
+            "description": "Maximum value.  \nSee http://json-schema.org/latest/json-schema-validation.html#anchor17.\n"
         }, {
             "name": "exclusiveMaximum",
             "type": "boolean",
-            "description": "See http://json-schema.org/latest/json-schema-validation.html#anchor17."
+            "description": "Indicate if the value must be < maximum.  \nSee http://json-schema.org/latest/json-schema-validation.html#anchor17.\n"
         }, {
             "name": "minimum",
             "type": "number",
-            "description": "See http://json-schema.org/latest/json-schema-validation.html#anchor21."
+            "description": "Minimum value.  \nSee http://json-schema.org/latest/json-schema-validation.html#anchor21.\n"
         }, {
             "name": "exclusiveMinimum",
             "type": "boolean",
-            "description": "See http://json-schema.org/latest/json-schema-validation.html#anchor21."
+            "description": "Indicate if the value must value > minimum.  \nSee http://json-schema.org/latest/json-schema-validation.html#anchor21.\n"
         }, {
             "name": "multipleOf",
             "type": "number",
-            "description": "See http://json-schema.org/latest/json-schema-validation.html#anchor14."
+            "description": "The value must be a multiple of *multiplOf*.  \nSee http://json-schema.org/latest/json-schema-validation.html#anchor14.\n"
         }]
     },
     "Parameter Object String": {
@@ -364,15 +510,15 @@
         "fields": [{
             "name": "pattern",
             "type": "string",
-            "description": "See http://json-schema.org/latest/json-schema-validation.html#anchor33."
+            "description": "This string SHOULD be a valid regular expression, according to the ECMA 262 regular expression dialect.  \nSee http://json-schema.org/latest/json-schema-validation.html#anchor33.  \nSee https://regex101.com/\n"
         }, {
             "name": "maxLength",
             "type": "integer",
-            "description": "See http://json-schema.org/latest/json-schema-validation.html#anchor26."
+            "description": "Maximum string's length.  \nSee http://json-schema.org/latest/json-schema-validation.html#anchor26.\n"
         }, {
             "name": "minLength",
             "type": "integer",
-            "description": "See http://json-schema.org/latest/json-schema-validation.html#anchor29."
+            "description": "Minimum string's length.  \nSee http://json-schema.org/latest/json-schema-validation.html#anchor29.\n"
         }]
     },
     "Parameters Definitions Object": {
@@ -421,7 +567,8 @@
             "description": "A definition of a PATCH operation on this path."
         }, {
             "name": "parameters",
-            "type": "[Parameter Object | Reference Object]",
+            "type": "[Parameter Object]",
+            "allowReference": true,
             "description": "A list of parameters that are applicable for all the operations described under this path.\nThese parameters can be overridden at the operation level, but cannot be removed there.\nThe list MUST NOT include duplicated parameters.\nA unique parameter is defined by a combination of a name and location.\nThe list can use the Reference Object to link to parameters that are defined at the Swagger Object's parameters.\nThere can be one *body* parameter at most.\n"
         }]
     },
@@ -476,8 +623,215 @@
             "description": "A single response definition, mapping a \"name\" to the response it defines."
         }]
     },
+    "Responses Object": {
+        "description": "A container for the expected responses of an operation. The container maps a HTTP response code to the expected response. It is not expected from the documentation to necessarily cover all possible HTTP response codes, since they may not be known in advance. However, it is expected from the documentation to cover a successful operation response and any known errors.\n  \nThe default can be used a default response object for all HTTP codes that are not covered individually by the specification.\n  \nThe Responses Object MUST contain at least one response code, and it SHOULD be the response for a successful operation call.\n",
+        "allowExtension": true,
+        "fields": [{
+            "name": "default",
+            "allowReference": true,
+            "type": "Response Object",
+            "description": "The documentation of responses other than the ones declared for specific HTTP response codes. It can be used to cover undeclared responses. Reference Object can be used to link to a response that is defined at the Swagger Object's responses section."
+        }, {
+            "name": "{HTTP status code}",
+            "allowReferene": true,
+            "type": "Response Object",
+            "description": "Any HTTP status code can be used as the property name (one property per HTTP status code). Describes the expected response for that HTTP status code. Reference Object can be used to link to a response that is defined at the Swagger Object's responses section."
+        }]
+    },
     "Schema Object": {
-        "description": "The Schema Object allows the definition of input and output data types.\nThese types can be objects, but also primitives and arrays.\nThis object is based on the JSON Schema Specification Draft 4 and uses a predefined subset of it.\nOn top of this subset, there are extensions provided by this specification to allow for more complete documentation.\n"
+        "description": "The Schema Object allows the definition of input and output data types.\nThese types can be objects, but also primitives and arrays.\nThis object is based on the JSON Schema Specification Draft 4 and uses a predefined subset of it.\nOn top of this subset, there are extensions provided by this specification to allow for more complete documentation.\n",
+        "fields": [{
+            "name": "$ref",
+            "type": "string",
+            "description": "A JSON Reference"
+        }, {
+            "name": "title",
+            "type": "string",
+            "description": "The object's title"
+        }, {
+            "name": "description",
+            "type": "String",
+            "gfm": true,
+            "description": "The object's description"
+        }, {
+            "name": "default",
+            "type": "*",
+            "description": "The default value. Unlike JSON Schema, the value MUST conform to the defined type for the Schema Object."
+        }, {
+            "name": "enum",
+            "type": "[*]",
+            "description": "Object's authorized values"
+        }, {
+            "name": "allOf",
+            "type": "[Schema Object | Reference Object]",
+            "noFollow": true,
+            "description": "Swagger allows combining and extending model definitions using the allOf property of JSON Schema, in effect offering model composition. allOf takes in an array of object definitions that are validated independently but together compose a single object.  \nWhile composition offers model extensibility, it does not imply a hierarchy between the models. To support polymorphism, Swagger adds the support of the discriminator field. When used, the discriminator will be the name of the property used to decide which schema definition is used to validate the structure of the model. As such, the discriminator field MUST be a required field. The value of the chosen property has to be the friendly name given to the model under the definitions property. As such, inline schema definitions, which do not have a given id, cannot be used in polymorphism.\n"
+        }, {
+            "name": "type",
+            "description": "Object's type",
+            "values": [{
+                "value": "array",
+                "description": "A JSON array."
+            }, {
+                "value": "boolean",
+                "description": "A JSON boolean."
+            }, {
+                "value": "integer",
+                "description": "A JSON number without a fraction or exponent part."
+            }, {
+                "value": "number",
+                "description": "Any JSON number. Number includes integer."
+            }, {
+                "value": "null",
+                "description": "The JSON null value."
+            }, {
+                "value": "object",
+                "description": "A JSON object.",
+                "default": true
+            }, {
+                "value": "string",
+                "description": "A JSON string."
+            }]
+        }, {
+            "name": "<type is array>",
+            "type": "Schema Object Array",
+            "description": "Fields when *type* is *array*"
+        }, {
+            "name": "<type is string>",
+            "type": "Schema Object String",
+            "description": "Fields when *type* is *string*"
+        }, {
+            "name": "<type is number or integer>",
+            "type": "Schema Object Number Or Integer",
+            "description": "Fields when *type* is *number* or *integer*"
+        }, {
+            "name": "<type is object>",
+            "type": "Schema Object Object",
+            "description": "Fields when *type* is *object*"
+        }]
+    },
+    "Schema Object Array": {
+        "description:": "Fields if type is array.",
+        "fieldsGroup": true,
+        "fields": [{
+            "name": "items",
+            "type": "Items Object",
+            "description": "Describes the type of items in the array."
+        }, {
+            "name": "maxItems",
+            "type": "number",
+            "description": "Maximum count of items in array"
+        }, {
+            "name": "minItems",
+            "type": "number",
+            "description": "Minimum count of items in array."
+        }, {
+            "name": "uniqueItems",
+            "type": "boolean",
+            "description": "Allow only unique items in array."
+        }]
+    },
+    "Schema Object Number Or Integer": {
+        "description": "A number or integer value",
+        "fieldsGroup": true,
+        "fields": [{
+            "name": "format",
+            "type": "string",
+            "description": "The extending format for the previously mentioned type.  \nSee Data Type Formats for further details.  \n\nCommon Name | type | format| Comments\n------------|------|-------|---------\ninteger\t    | integer | int32 | signed 32 bits\nlong\t      | integer\t| int64\t| signed 64 bits\nfloat\t      | number\t| float |\t\ndouble\t    | number\t| double|\t\n"
+        }, {
+            "name": "maximum",
+            "type": "number",
+            "description": "Maximum value.  \nSee http://json-schema.org/latest/json-schema-validation.html#anchor17.\n"
+        }, {
+            "name": "exclusiveMaximum",
+            "type": "boolean",
+            "description": "Indicate if the value must be < maximum.  \nSee http://json-schema.org/latest/json-schema-validation.html#anchor17.\n"
+        }, {
+            "name": "minimum",
+            "type": "number",
+            "description": "Minimum value.  \nSee http://json-schema.org/latest/json-schema-validation.html#anchor21.\n"
+        }, {
+            "name": "exclusiveMinimum",
+            "type": "boolean",
+            "description": "Indicate if the value must value > minimum.  \nSee http://json-schema.org/latest/json-schema-validation.html#anchor21.\n"
+        }, {
+            "name": "multipleOf",
+            "type": "number",
+            "description": "The value must be a multiple of *multiplOf*.  \nSee http://json-schema.org/latest/json-schema-validation.html#anchor14.\n"
+        }]
+    },
+    "Schema Object Object": {
+        "fieldsGroup": true,
+        "description": "type value is object.",
+        "fields": [{
+            "name": "properties",
+            "description": "List of properties.",
+            "type": "[Schema Object | Reference Object]",
+            "noFollow": true
+        }, {
+            "name": "additionalProperties",
+            "description": "Additionnal properties to create a map.",
+            "type": "[Schema Object | Reference Object]",
+            "noFollow": true
+        }, {
+            "name": "required",
+            "type": ["string"],
+            "description": "The list of required properties."
+        }, {
+            "name": "maxProperties",
+            "type": "integer",
+            "description": "An object instance is valid against \"maxProperties\" if its number of properties is less than, or equal to, the value of this keyword."
+        }, {
+            "name": "minProperties",
+            "type": "integer",
+            "description": "An object instance is valid against \"minProperties\" if its number of properties is greater than, or equal to, the value of this keyword."
+        }]
+    },
+    "Schema Object String": {
+        "description": "type value is string",
+        "fieldsGroup": true,
+        "fields": [{
+            "name": "format",
+            "type": "String",
+            "description": "The extending format for the previously mentioned type.  \nSee Data Type Formats for further details.  \n\nCommon Name | format    | Comments\n------------|-----------|---------\nbyte\t      | byte\t    | base64 encoded characters\nbinary\t    | binary    |\tany sequence of octets\ndate\t      | date\t    | As defined by full-date - RFC3339\ndateTime\t  | date-time\t| As defined by date-time - RFC3339\npassword\t  | password  | Used to hint UIs the input needs to be obscured.\n"
+        }, {
+            "name": "pattern",
+            "type": "string",
+            "description": "This string SHOULD be a valid regular expression, according to the ECMA 262 regular expression dialect.  \nSee http://json-schema.org/latest/json-schema-validation.html#anchor33.  \nSee https://regex101.com/\n"
+        }, {
+            "name": "maxLength",
+            "type": "integer",
+            "description": "Maximum string's length.  \nSee http://json-schema.org/latest/json-schema-validation.html#anchor26.\n"
+        }, {
+            "name": "minLength",
+            "type": "integer",
+            "description": "Minimum string's length.  \nSee http://json-schema.org/latest/json-schema-validation.html#anchor29.\n"
+        }]
+    },
+    "Schema Object Swagger": {
+        "fieldsGroup": true,
+        "description": "The following properties are taken directly from the JSON Schema definition and follow the same specifications.",
+        "fields": [{
+            "name": "discriminator",
+            "type": "string",
+            "description": "Adds support for polymorphism.  \nThe discriminator is the schema property name that is used to differentiate between other schema that inherit this schema.  \nThe property name used MUST be defined at this schema and it MUST be in the required property list.  \nWhen used, the value MUST be the name of this schema or any schema that inherits it.\n"
+        }, {
+            "name": "readOnly",
+            "type": "boolean",
+            "description": "Relevant only for Schema \"properties\" definitions. Declares the property as \"read only\". This means that it MAY be sent as part of a response but MUST NOT be sent as part of the request. Properties marked as readOnly being true SHOULD NOT be in the required list of the defined schema. Default value is false.\n"
+        }, {
+            "name": "xml",
+            "type": "XML Object",
+            "description": "This MAY be used only on properties schemas. It has no effect on root schemas.  \nAdds Additional metadata to describe the XML representation format of this property.\n"
+        }, {
+            "name": "externalDocs",
+            "type": "External Documentation Object",
+            "description": "Additional external documentation for this schema."
+        }, {
+            "name": "example",
+            "type": "Any",
+            "description": "A free-form property to include an example of an instance for this schema."
+        }]
     },
     "Scopes Object": {
         "description": null,
@@ -490,7 +844,7 @@
         }]
     },
     "Security Definitions Object": {
-        "description": "A declaration of the security schemes available to be used in the specification. This does not enforce the security schemes on the operations and only serves to provide the relevant details for each scheme.",
+        "description": "A declaration of the security schemes available to be used in the specification.  \nThis does not enforce the security schemes on the operations and only serves to provide the relevant details for each scheme.\n",
         "allowExtension": true,
         "fields": [{
             "name": "{name}",
@@ -504,7 +858,7 @@
         "fields": [{
             "name": "{name}",
             "type": "[string]",
-            "description": "Each name must correspond to a security scheme which is declared in the Security Definitions. If the security scheme is of type \\oauth2\\, then the value is a list of scope names required for the execution. For other security scheme types, the array MUST be empty."
+            "description": "Each name must correspond to a security scheme which is declared in the Security Definitions.  \nIf the security scheme is of type *oauth2*, then the value is a list of scope names required for the execution.  \nFor other security scheme types, the array MUST be empty.\n"
         }]
     },
     "Security Scheme Object": {
@@ -515,7 +869,13 @@
             "type": "string",
             "description": "The type of the security scheme.",
             "required": true,
-            "values": ["basic", "apiKey", "oauth2"]
+            "values": [{
+                "value": "basic"
+            }, {
+                "value": "apiKey"
+            }, {
+                "value": "oauth2"
+            }]
         }, {
             "name": "description",
             "type": "string",
@@ -526,7 +886,7 @@
             "description": "Fields if *type* value is *apiKey*."
         }, {
             "name": "<type is oauth2>",
-            "type": "Security Scheme Object ApiKey",
+            "type": "Security Scheme Object Oauth",
             "description": "Fields if *type* value is *oauth2*."
         }]
     },
@@ -543,7 +903,11 @@
             "type": "string",
             "description": "The location of the API key.",
             "required": true,
-            "values": ["query", "header"]
+            "values": [{
+                "value": "query"
+            }, {
+                "value": "header"
+            }]
         }]
     },
     "Security Scheme Object Oauth": {
@@ -552,8 +916,16 @@
         "fields": [{
             "name": "flow",
             "type": "string",
-            "description": "The flow used by the OAuth2 security scheme. Valid values are \\implicit\\, \\password\\, \\application\\ or \\accessCode\\.",
-            "values": ["implicit", "password", "application", "accessCode"],
+            "description": "The flow used by the OAuth2 security scheme.",
+            "values": [{
+                "value": "implicit"
+            }, {
+                "value": "password"
+            }, {
+                "value": "application"
+            }, {
+                "value": "accessCode"
+            }],
             "required": true
         }, {
             "name": "authorizationUrl",
@@ -576,19 +948,17 @@
         "type": "Any",
         "patterned": true,
         "swaggerType": true,
-        "description": "While the Swagger Specification tries to accommodate most use cases, additional data can be added to extend the specification at certain points.\nThe field name MUST begin with x-, for example, x-internal-id.\nThe value can be null, a primitive, an array or an object.\nThe extensions may or may not be supported by the available tooling, but those may be extended as well to add requested support (if tools are internal or open-sourced).\n"
+        "description": "While the Swagger Specification tries to accommodate most use cases, additional data can be added to extend the specification at certain points.  \nThe field name MUST begin with *x-*, for example, *x-internal-id.*  \nThe value can be null, a primitive, an array or an object.  \nWhen the value is an object or an array of object, the object's fields names do not need to start with *x-*.  \nThe extensions may or may not be supported by the available tooling, but those may be extended as well to add requested support (if tools are internal or open-sourced).\n"
     },
     "Swagger Object": {
         "name": "Swagger definition",
-        "description": "This is the *root* document object for the API specification.\nIt combines what previously was the Resource Listing and API Declaration (version 1.2 and earlier) together into one document.\n",
+        "description": "This is the *root* document object for the API specification.  \nIt combines what previously was the Resource Listing and API Declaration (version 1.2 and earlier) together into one document.\n",
         "allowExtension": true,
-        "swaggerType": true,
-        "swaggerTypeURL": "http://swagger.io/specification/#swaggerObject",
         "fields": [{
             "name": "swagger",
             "type": "string",
             "required": true,
-            "description": "Specifies the Swagger Specification version being used.\nIt can be used by the Swagger UI and other clients to interpret the API listing.\n",
+            "description": "Specifies the Swagger Specification version being used.  \nIt can be used by the Swagger UI and other clients to interpret the API listing.\n",
             "values": [{
                 "value": "2.0",
                 "description": "The value MUST be 2.0"
@@ -597,39 +967,39 @@
             "name": "info",
             "type": "Info Object",
             "required": true,
-            "description": "Provides metadata about the API.\nThe metadata can be used by the clients if needed.\n"
+            "description": "Provides metadata about the API.  \nThe metadata can be used by the clients if needed.\n"
         }, {
             "name": "host",
             "type": "string",
-            "description": "The host (name or ip) serving the API.\nThis MUST be the host only and does not include the scheme nor sub-paths.\nIt MAY include a port.\nIf the host is not included, the host serving the documentation is to be used (including the port).\nThe host does not support path templating.\n"
+            "description": "The host (name or ip) serving the API.  \nThis MUST be the host only and does not include the scheme nor sub-paths.  \nIt MAY include a port.  \nIf the host is not included, the host serving the documentation is to be used (including the port).  \nThe host does not support path templating.\n"
         }, {
             "name": "basePath",
             "type": "string",
             "required": false,
-            "description": "The base path on which the API is served, which is relative to the host.\nIf it is not included, the API is served directly under the host.\nThe value MUST start with a leading slash (/).\nThe basePath does not support path templating.\n"
+            "description": "The base path on which the API is served, which is relative to the host.  \nIf it is not included, the API is served directly under the host.  \nThe value MUST start with a leading slash (/).  \nThe basePath does not support path templating.\n"
         }, {
             "name": "schemes",
             "type": ["string"],
-            "description": "The transfer protocol of the API.\nIf the schemes is not included, the default scheme to be used is the one used to access the Swagger definition itself.\n",
+            "description": "The transfer protocol of the API.  \nIf the schemes is not included, the default scheme to be used is the one used to access the Swagger definition itself.\n",
             "values": [{
                 "value": "http"
             }, {
                 "value": "https"
             }, {
                 "value": "ws",
-                "description": "Web socket scheme"
+                "description": "[Web socket](https://en.wikipedia.org/wiki/WebSocket) scheme"
             }, {
                 "value": "wss",
-                "description": "Secured web socket scheme"
+                "description": "Secured [web socket](https://en.wikipedia.org/wiki/WebSocket) scheme"
             }]
         }, {
             "name": "consumes",
             "type": ["string"],
-            "description\"": "A list of MIME types the APIs can consume.\nThis is global to all APIs but can be overridden on specific API calls.\nValue MUST be as described under Mime Types.\n"
+            "description": "A list of MIME types the APIs can consume.  \nThis is global to all APIs but can be overridden on specific API calls.  \nValue MUST be as described under Mime Types.\n"
         }, {
             "name": "produces",
             "type": ["string"],
-            "description": "A list of MIME types the APIs can produce.\nThis is global to all APIs but can be overridden on specific API calls.\nValue MUST be as described under Mime Types.\n"
+            "description": "A list of MIME types the APIs can produce.  \nThis is global to all APIs but can be overridden on specific API calls.  \nValue MUST be as described under Mime Types.\n"
         }, {
             "name": "paths",
             "type": "Paths Object",
@@ -642,31 +1012,31 @@
         }, {
             "name": "parameters",
             "type": "Parameters Definitions Object",
-            "description": "An object to hold parameters that can be used across operations.\nThis property does not define global parameters for all operations.\n"
+            "description": "An object to hold parameters that can be used across operations.  \nThis property does not define global parameters for all operations.\n"
         }, {
             "name": "responses",
             "type": "Responses Definitions Object",
-            "description": "An object to hold responses that can be used across operations.\nThis property does not define global responses for all operations.\n"
+            "description": "An object to hold responses that can be used across operations.  \nThis property does not define global responses for all operations.\n"
         }, {
             "name": "securityDefinitions",
             "type": "Security Definitions Object",
             "description": "Security scheme definitions that can be used across the specification."
         }, {
             "name": "security",
-            "type": ["Security Requirement Object"],
-            "description": "A declaration of which security schemes are applied for the API as a whole. The list of values describes alternative security schemes that can be used (that is, there is a logical OR between the security requirements). Individual operations can override this definition."
+            "type": "[Security Requirement Object]",
+            "description": "A declaration of which security schemes are applied for the API as a whole.  \nThe list of values describes alternative security schemes that can be used (that is, there is a logical OR between the security requirements).  \nIndividual operations can override this definition.\n"
         }, {
             "name": "tags",
-            "type": ["Tag Object"],
-            "description": "A list of tags used by the specification with additional metadata. The order of the tags can be used to reflect on their order by the parsing tools. Not all tags that are used by the Operation Object must be declared. The tags that are not declared may be organized randomly or based on the tools' logic. Each tag name in the list MUST be unique."
+            "type": "[Tag Object]",
+            "description": "A list of tags used by the specification with additional metadata.  \nThe order of the tags can be used to reflect on their order by the parsing tools.  \nNot all tags that are used by the *Operation Object* must be declared.  \nThe tags that are not declared may be organized randomly or based on the tools' logic.  \nEach tag name in the list MUST be unique.\n"
         }, {
             "name": "externalDocs",
             "type": "External Documentation Object",
             "description": "Additional external documentation."
         }]
     },
-    "Tag": {
-        "description": "Allows adding meta data to a single tag that is used by the Operation Object.\nIt is not mandatory to have a Tag Object per tag used there.\n",
+    "Tag Object": {
+        "description": "Allows adding meta data to a single tag that is used by the *Operation Object*.  \nIt is not mandatory to have a Tag Object per tag used there.\n",
         "allowExtension": true,
         "fields": [{
             "name": "name",
@@ -676,7 +1046,7 @@
         }, {
             "name": "description",
             "type": "string",
-            "description": "A short description for the tag.\nGFM syntax can be used for rich text representation.\n",
+            "description": "A short description for the tag.",
             "gfm": true
         }, {
             "name": "externalDocs",
