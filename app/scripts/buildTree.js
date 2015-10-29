@@ -23,6 +23,15 @@ function buildNodeFromDefinition(swaggerDocumentation, definitionName){
   else{
     node.fieldsGroup = false;
   }
+  if(!node.fieldsGroup && node.type !== undefined){
+    node.swaggerType = true;
+    var swaggerTypeName = node.type.replace(/ /g, '').replace('[', '').replace(']', '');
+    swaggerTypeName = swaggerTypeName.charAt(0).toLowerCase() + swaggerTypeName.slice(1);
+    node.swaggerTypeURL = 'http://swagger.io/specification/#' + swaggerTypeName;
+  }
+  else{
+    node.swaggerType = false;
+  }
   node.required = definition.required;
   node.closedChildren = [];
   for(var index in definition.fields){
@@ -38,6 +47,7 @@ function buildNodeFromField(swaggerDocumentation, field){
   var node = {};
   var nodeArray = false;
   if(field.type !== undefined){
+    node.swaggerType = false;
     var definitionName;
     if(field.type.indexOf('[') >= 0){
       definitionName = field.type.substring(1, field.type.length - 1);
