@@ -36,6 +36,3 @@ Parameter Object Not Body:
         (Note: *default* has no meaning for required parameters.)
         Unlike JSON Schema this value MUST conform to the defined type for this parameter.
         See http://json-schema.org/latest/json-schema-validation.html#anchor101.
-    -
-      name: enum
-      description: See http://json-schema.org/latest/json-schema-validation.html#anchor76.

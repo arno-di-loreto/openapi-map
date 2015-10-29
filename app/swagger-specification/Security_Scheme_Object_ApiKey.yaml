@@ -13,5 +13,5 @@ Security Scheme Object ApiKey:
       description: The location of the API key.
       required: true
       values:
-        - query
-        - header
+        - value: query
+        - value: header

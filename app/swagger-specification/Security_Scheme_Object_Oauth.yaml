@@ -5,12 +5,12 @@ Security Scheme Object Oauth:
     -
       name: flow
       type: string
-      description: The flow used by the OAuth2 security scheme. Valid values are \implicit\, \password\, \application\ or \accessCode\.
+      description: The flow used by the OAuth2 security scheme.
       values:
-        - implicit
-        - password
-        - application
-        - accessCode
+        - value: implicit
+        - value: password
+        - value: application
+        - value: accessCode
       required: true
     -
       name: authorizationUrl

@@ -1,5 +1,5 @@
-Parameter Object String:
-  description: A string parameter
+Header Object String:
+  description: A string header
   fieldsGroup: true
   fields:
     -

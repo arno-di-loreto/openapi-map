@@ -1,5 +1,5 @@
-Parameter Object Number Or Integer:
-  description: A number or integer parameter
+Header Object Number Or Integer:
+  description: A number or integer header
   fieldsGroup: true
   fields:
     -

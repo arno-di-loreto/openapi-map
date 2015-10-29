@@ -10,9 +10,9 @@ Security Scheme Object:
       description: The type of the security scheme.
       required: true
       values:
-        - basic
-        - apiKey
-        - oauth2
+        - value: basic
+        - value: apiKey
+        - value: oauth2
     -
       name: description
       type: string
@@ -23,5 +23,5 @@ Security Scheme Object:
       description: Fields if *type* value is *apiKey*.
     -
       name: <type is oauth2>
-      type: Security Scheme Object ApiKey
+      type: Security Scheme Object Oauth
       description: Fields if *type* value is *oauth2*.

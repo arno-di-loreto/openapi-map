@@ -42,7 +42,8 @@ Path Item Object:
       description: A definition of a PATCH operation on this path.
     -
       name: parameters
-      type: "[Parameter Object | Reference Object]"
+      type: "[Parameter Object]"
+      allowReference: true
       description: |
         A list of parameters that are applicable for all the operations described under this path.
         These parameters can be overridden at the operation level, but cannot be removed there.

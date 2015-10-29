@@ -1,5 +1,5 @@
-Parameter Object Not Array Or File:
-  description: Fields if *type* value is *string*, *number*, *integer* or *boolean*.
+Header Object Not Array:
+  description: Fields if *type* is *string*, *number*, *integer* or *boolean*.
   fieldsGroup: true
   fields:
     -
@@ -23,23 +23,16 @@ Parameter Object Not Array Or File:
         dateTime	  | string	| date-time	| As defined by date-time - RFC3339
         password	  | string  |	password | Used to hint UIs the input needs to be obscured.
     -
-      name: allowEmptyValue
-      type: boolean
-      description: |
-        Sets the ability to pass empty-valued parameters.
-        This is valid only for either query or formData parameters and allows you to send a parameter with a name only or an empty value.  
-        Default value is false.
-    -
       name: <type is string>
-      type: Parameter Object String
+      type: Header Object String
       description: Fields if *type* is *string*.
     -
       name: <type is number or integer>
-      type: Parameter Object Number Or Integer
+      type: Header Object Number Or Integer
       description: Fields if *type* is *number* or *integer*.
     -
       name: enum
-      type: "[Any]"
+      type: "[*]"
       description: |
         Authorized values.  
         See http://json-schema.org/latest/json-schema-validation.html#anchor76.

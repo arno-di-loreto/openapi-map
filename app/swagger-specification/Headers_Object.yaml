@@ -4,6 +4,7 @@ Headers Object:
     -
       name: "{name}"
       patterned: true
+      type: Header Object
       description: |
         The name of the property corresponds to the name of the header.  
         The value describes the type of the header.

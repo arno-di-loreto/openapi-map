@@ -48,7 +48,7 @@ Operation Object:
         Value MUST be as described under Mime Types.
     -
       name: parameters
-      type: "[Parameter Object | Reference Object]"
+      type: "[Parameter Object]"
       description: |
         A list of parameters that are applicable for this operation.
         If a parameter is already defined at the Path Item, the new definition will override it, but can never remove it.
@@ -59,7 +59,7 @@ Operation Object:
       allowReference: true
     -
       name: responses
-      type: Responses
+      type: Responses Object
       required: true
       description: The list of possible responses as they are returned from executing this operation.
     -

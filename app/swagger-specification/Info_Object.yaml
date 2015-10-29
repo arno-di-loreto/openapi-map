@@ -1,8 +1,6 @@
 Info Object:
   description: Provides metadata about the API. The metadata can be used by the clients if needed.
   allowExtension: true
-  swaggerTypeURL: http://swagger.io/specification/#infoObject
-  swaggerType: true
   fields:
     - name: title
       type: string

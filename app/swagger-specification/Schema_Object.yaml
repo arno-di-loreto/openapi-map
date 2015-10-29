@@ -4,3 +4,19 @@ Schema Object:
     These types can be objects, but also primitives and arrays.
     This object is based on the JSON Schema Specification Draft 4 and uses a predefined subset of it.
     On top of this subset, there are extensions provided by this specification to allow for more complete documentation.
+  fields:
+    -
+      name: <JSON Schema fields>
+      type: Schema Object JSON
+      description: The following properties are taken directly from the JSON Schema definition and follow the same specifications.
+    -
+      name: <Adapted JSON Schema fields>
+      type: Schema Object Adapted JSON
+      description: The following properties are taken directly from the JSON Schema definition and follow the same specifications.
+    
+    -
+      name: <Swagger Schema fields>
+      type: Schema Object Swagger
+      description: |
+        The following properties are taken from the JSON Schema definition but their definitions were adjusted to the Swagger Specification.  
+        Their definition is the same as the one from JSON Schema, only where the original definition references the JSON Schema definition, the Schema Object definition is used instead.

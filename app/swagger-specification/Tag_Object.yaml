@@ -1,6 +1,6 @@
-Tag:
+Tag Object:
   description: |
-    Allows adding meta data to a single tag that is used by the Operation Object.
+    Allows adding meta data to a single tag that is used by the *Operation Object*.  
     It is not mandatory to have a Tag Object per tag used there.
   allowExtension: true
   fields:
@@ -12,9 +12,7 @@ Tag:
     -
       name: description
       type: string
-      description: |
-        A short description for the tag.
-        GFM syntax can be used for rich text representation.
+      description: A short description for the tag.
       gfm: true
     -
       name: externalDocs
