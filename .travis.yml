@@ -6,3 +6,5 @@ before_script:
   - npm install -g gulp
   - bower install
 script: gulp
+after_success:
+    "curl --ftp-create-dirs -T uploadfilename -u $FTP_USER:$FTP_PASSWORD $FTP_SERVER"
