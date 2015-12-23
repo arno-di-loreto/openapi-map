@@ -5,7 +5,7 @@ It is developed by [Arnaud Lauret, the API Handyman](https://github.com/arno-di-
 This is NOT a rendering of an API Swagger specification (that will come next).
 
 ## How to use it?
-You can see a live demo on [apihandyman.io](http://apihandyman.io/swagger/swagger-specification-visual-documentation/)
+You can see a live demo on [apihandyman.io](http://swagger-specification-visual-documentation.apihandyman.io/)
 
 - Zoom in: Mouse scroll up
 - Zoom out: Mouse scroll down
@@ -70,6 +70,30 @@ This project use:
 - [d3js](http://d3js.org/) tree
   - The d3 tree is based on [D3.js Drag and Drop, Zoomable, Panning, Collapsible Tree with auto-sizing.](http://bl.ocks.org/robschmuecker/7880033) by [Rob Schmuecker](https://github.com/robschmuecker).
   - The tooltip has been inspired by [Adding tooltips to a d3.js graph](http://www.d3noob.org/2013/01/adding-tooltips-to-d3js-graph.html) by [3D Noob](http://www.d3noob.org/).
+
+## How to build and modify
+
+You need to install gulp and bower in order to build the project:
+```
+npm install -g gulp
+npm install -g bower
+```
+
+Command lines to download project's dependancies:
+```
+npm install
+bower install
+```
+
+Command line to build the project (generated files will be available in dist folder):
+```
+gulp
+```
+
+Command line to launch a local instance with automatic live reload if some files are modified:
+```
+gulp serve
+```
 
 ## Licence
 Licensed under the Apache License, Version 2.0 (the "License");
