@@ -4,7 +4,7 @@ import gulpLoadPlugins from 'gulp-load-plugins';
 import browserSync from 'browser-sync';
 import del from 'del';
 import {stream as wiredep} from 'wiredep';
-//For swagger-specification building
+//For openapi-specification building
 import concat from 'gulp-concat';
 import yaml from 'gulp-yaml';
 import prettify  from 'gulp-jsbeautifier';
@@ -28,17 +28,16 @@ gulp.task('styles', () => {
     .pipe(reload({stream: true}));
 });
 
-gulp.task('concat-swagger-specification', () => {
-    return gulp.src('app/swagger-specification/*.yaml')
-    .pipe(concat('swagger-specification.yaml'))
-    .pipe(gulp.dest('.tmp/'))
-    .pipe(gulp.dest('dist/'));
+gulp.task('concat-openapi-specification', () => {
+    return gulp.src('app/openapi-specification/*.yaml')
+    .pipe(concat('openapi-specification.yaml'))
+    .pipe(gulp.dest('.tmp/'));
 });
 
-gulp.task('json-swagger-specification', ['concat-swagger-specification'], () => {
-    return gulp.src('.tmp/swagger-specification.yaml')
-    .pipe(yaml('swagger-specification.json'))
-    .pipe(prettify('swagger-specification.json'))
+gulp.task('json-openapi-specification', ['concat-openapi-specification'], () => {
+    return gulp.src('.tmp/openapi-specification.yaml')
+    .pipe(yaml('openapi-specification.json'))
+    .pipe(prettify('openapi-specification.json'))
     .pipe(gulp.dest('.tmp/'))
     .pipe(gulp.dest('dist/'));
 });
@@ -51,7 +50,7 @@ gulp.task('templates', function(){
     }))
     .pipe(wrap('Handlebars.template(<%= contents %>)'))
     .pipe(declare({
-      namespace: 'SwaggerSpecificationVisualDocumentation',
+      namespace: 'OpenAPISpecificationVisualDocumentation',
       noRedeclare: true, // Avoid duplicate declarations
     }))
     .pipe(concat('templates.js'))
@@ -125,7 +124,7 @@ gulp.task('extras', () => {
 
 gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
 
-gulp.task('serve', ['styles', 'fonts', 'json-swagger-specification', 'templates'], () => {
+gulp.task('serve', ['styles', 'fonts', 'json-openapi-specification', 'templates'], () => {
   browserSync({
     notify: false,
     port: 9000,
@@ -149,7 +148,7 @@ gulp.task('serve', ['styles', 'fonts', 'json-swagger-specification', 'templates'
   gulp.watch('app/styles/**/*.css', ['styles']);
   gulp.watch('app/fonts/**/*', ['fonts']);
   gulp.watch('bower.json', ['wiredep', 'fonts']);
-  gulp.watch('app/swagger-specification/*.yaml', ['json-swagger-specification']);
+  gulp.watch('app/openapi-specification/*.yaml', ['json-openapi-specification']);
   gulp.watch('app/templates/**/*.hbs', ['templates']);
 });
 
@@ -190,7 +189,7 @@ gulp.task('wiredep', () => {
     .pipe(gulp.dest('app'));
 });
 
-gulp.task('build', ['lint', 'html', 'images', 'fonts', 'extras', 'json-swagger-specification', 'templates'], () => {
+gulp.task('build', ['lint', 'html', 'images', 'fonts', 'extras', 'json-openapi-specification', 'templates'], () => {
   return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
 });
 

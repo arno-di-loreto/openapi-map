@@ -2,9 +2,9 @@ Specification Extensions:
   name: ^x-
   type: Any
   patterned: true
-  swaggerType: true
+  openapiType: true
   description: |
-    While the Swagger Specification tries to accommodate most use cases, additional data can be added to extend the specification at certain points.  
+    While the OpenAPI Specification tries to accommodate most use cases, additional data can be added to extend the specification at certain points.  
     The field name MUST begin with *x-*, for example, *x-internal-id.*  
     The value can be null, a primitive, an array or an object.  
     When the value is an object or an array of object, the object's fields names do not need to start with *x-*.  

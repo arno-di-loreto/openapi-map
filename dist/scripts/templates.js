@@ -1,5 +1,5 @@
-this["SwaggerSpecificationVisualDocumentation"] = this["SwaggerSpecificationVisualDocumentation"] || {};
-this["SwaggerSpecificationVisualDocumentation"]["tooltip"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
+this["OpenAPISpecificationVisualDocumentation"] = this["OpenAPISpecificationVisualDocumentation"] || {};
+this["OpenAPISpecificationVisualDocumentation"]["tooltip"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
     var stack1, helper;
 
   return "    <i class=\"fa fa-indent fa-2x fa-pull-left\"></i><p>"
@@ -16,7 +16,7 @@ this["SwaggerSpecificationVisualDocumentation"]["tooltip"] = Handlebars.template
     + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.closedChildren : depth0),{"name":"if","hash":{},"fn":container.program(8, data, 0),"inverse":container.program(10, data, 0),"data":data})) != null ? stack1 : "")
     + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.gfm : depth0),{"name":"if","hash":{},"fn":container.program(15, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.allowExtension : depth0),{"name":"if","hash":{},"fn":container.program(17, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.swaggerType : depth0),{"name":"if","hash":{},"fn":container.program(19, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.openapiType : depth0),{"name":"if","hash":{},"fn":container.program(19, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + "  </div>\n    <h2>Description</h2>\n    <p>"
     + ((stack1 = ((helper = (helper = helpers.description || (depth0 != null ? depth0.description : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"description","hash":{},"data":data}) : helper))) != null ? stack1 : "")
     + "</p>\n\n"
@@ -55,8 +55,8 @@ this["SwaggerSpecificationVisualDocumentation"]["tooltip"] = Handlebars.template
     var helper;
 
   return "      <p class=\".list-group-item\"><i class=\"fa fa-external-link fa-fw fa-2x\"></i>&nbsp;<a href=\""
-    + container.escapeExpression(((helper = (helper = helpers.swaggerTypeURL || (depth0 != null ? depth0.swaggerTypeURL : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"swaggerTypeURL","hash":{},"data":data}) : helper)))
-    + "\" target=\"_blank\">Swagger documentation</a></p>\n";
+    + container.escapeExpression(((helper = (helper = helpers.openapiTypeURL || (depth0 != null ? depth0.openapiTypeURL : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"openapiTypeURL","hash":{},"data":data}) : helper)))
+    + "\" target=\"_blank\">OpenAPI Specification documentation</a></p>\n";
 },"21":function(container,depth0,helpers,partials,data) {
     var stack1, helper, options, buffer = 
   "      <h2>Values</h2>\n      <table id=\"table\" class=\"table table-striped table-bordered table-condensed table-hover\" >\n        <tr>\n            <th>\n                Value\n            </th>\n            <th>\n                Default\n            </th>\n            <th>\n                Description\n            </th>\n        </tr>\n\n";

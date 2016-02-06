@@ -31,8 +31,8 @@ Schema Object:
       type: '[Schema Object | Reference Object]'
       noFollow: true 
       description: |
-        Swagger allows combining and extending model definitions using the allOf property of JSON Schema, in effect offering model composition. allOf takes in an array of object definitions that are validated independently but together compose a single object.  
-        While composition offers model extensibility, it does not imply a hierarchy between the models. To support polymorphism, Swagger adds the support of the discriminator field. When used, the discriminator will be the name of the property used to decide which schema definition is used to validate the structure of the model. As such, the discriminator field MUST be a required field. The value of the chosen property has to be the friendly name given to the model under the definitions property. As such, inline schema definitions, which do not have a given id, cannot be used in polymorphism.
+        OpenAPI Specification allows combining and extending model definitions using the allOf property of JSON Schema, in effect offering model composition. allOf takes in an array of object definitions that are validated independently but together compose a single object.  
+        While composition offers model extensibility, it does not imply a hierarchy between the models. To support polymorphism, OpenAPI Specification adds the support of the discriminator field. When used, the discriminator will be the name of the property used to decide which schema definition is used to validate the structure of the model. As such, the discriminator field MUST be a required field. The value of the chosen property has to be the friendly name given to the model under the definitions property. As such, inline schema definitions, which do not have a given id, cannot be used in polymorphism.
     - 
       name: type
       description: Object's type

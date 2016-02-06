@@ -1,11 +1,11 @@
-# Swagger Specification Visual Documentation
-This is a prototype of a D3 rendering of *the* [Swagger specification](http://swagger.io/specification/) to provide an easy to read visual documentation.
+# OpenAPI Specification Visual Documentation
+This is a prototype of a D3 rendering of the [OpenAPI specification](https://openapis.org/specification) (fka Swagger Specification) to provide an easy to read visual documentation.
 It is developed by [Arnaud Lauret, the API Handyman](https://github.com/arno-di-loreto).
 
-This is NOT a rendering of an API Swagger specification (that will come next).
+This is NOT a rendering of an API OpenAPI specification.
 
 ## How to use it?
-You can see a live demo on [apihandyman.io](http://swagger-specification-visual-documentation.apihandyman.io/)
+You can see a live demo on [apihandyman.io](http://openapi-specification-visual-documentation.apihandyman.io/)
 
 - Zoom in: Mouse scroll up
 - Zoom out: Mouse scroll down
@@ -16,15 +16,14 @@ You can see a live demo on [apihandyman.io](http://swagger-specification-visual-
 
 ## How does it work?
 
-*app/swagger-specification* contains a set of YAML files describing each object provided by the Swagger specification.
-The content of these files is based on the Swagger specification itself, some precisions have been added when needed.
+*app/openapi-specification* contains a set of YAML files describing each object provided by the OpenAPI specification.
+The content of these files is based on the OpenAPI specification itself, some precisions have been added when needed.
 
 ```yaml
 Info Object:
   description: Provides metadata about the API. The metadata can be used by the clients if needed.
   allowExtension: true
-  swaggerTypeURL: http://swagger.io/specification/#infoObject
-  swaggerType: true
+  openapiType: true
   fields:
     - name: title
       type: string
@@ -50,7 +49,7 @@ Info Object:
 
 ```
 
-All these files are concatened in swagger-specification.yaml and then converted in swagger-specification.json.
+All these files are concatened in openapi-specification.yaml and then converted in openapi-specification.json.
 
 A tree is generated from the json file on runtime.   All descriptions are converted from markdown to html.
 

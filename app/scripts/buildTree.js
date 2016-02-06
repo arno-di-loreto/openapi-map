@@ -3,8 +3,8 @@
 /*global marked*/
 /*eslint no-use-before-define:0, no-unused-vars:0*/
 
-function buildNodeFromDefinition(swaggerDocumentation, definitionName){
-  var definition = swaggerDocumentation[definitionName];
+function buildNodeFromDefinition(openapiDocumentation, definitionName){
+  var definition = openapiDocumentation[definitionName];
   var node = {};
   node.name = definition.name;
   if(definition.description !== undefined && definition.description !== null){
@@ -24,30 +24,30 @@ function buildNodeFromDefinition(swaggerDocumentation, definitionName){
     node.fieldsGroup = false;
   }
   if(!node.fieldsGroup && node.type !== undefined){
-    node.swaggerType = true;
-    var swaggerTypeName = node.type.replace(/ /g, '').replace('[', '').replace(']', '');
-    swaggerTypeName = swaggerTypeName.charAt(0).toLowerCase() + swaggerTypeName.slice(1);
-    node.swaggerTypeURL = 'http://swagger.io/specification/#' + swaggerTypeName;
+    node.openapiType = true;
+    var openapiTypeName = node.type.replace(/ /g, '').replace('[', '').replace(']', '');
+    openapiTypeName = openapiTypeName.charAt(0).toLowerCase() + openapiTypeName.slice(1);
+    node.openapiTypeURL = 'https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#' + openapiTypeName;
   }
   else{
-    node.swaggerType = false;
+    node.openapiType = false;
   }
   node.required = definition.required;
   node.closedChildren = [];
   for(var index in definition.fields){
-      node.closedChildren.push(buildNodeFromField(swaggerDocumentation, definition.fields[index]));
+      node.closedChildren.push(buildNodeFromField(openapiDocumentation, definition.fields[index]));
   }
   if(node.allowExtension){
-    node.closedChildren.push(buildNodeFromField(swaggerDocumentation, swaggerDocumentation['Specification Extensions']));
+    node.closedChildren.push(buildNodeFromField(openapiDocumentation, openapiDocumentation['Specification Extensions']));
   }
   return node;
 }
 
-function buildNodeFromField(swaggerDocumentation, field){
+function buildNodeFromField(openapiDocumentation, field){
   var node = {};
   var nodeArray = false;
   if(field.type !== undefined){
-    node.swaggerType = false;
+    node.openapiType = false;
     var definitionName;
     if(field.type.indexOf('[') >= 0){
       definitionName = field.type.substring(1, field.type.length - 1);
@@ -57,8 +57,8 @@ function buildNodeFromField(swaggerDocumentation, field){
       definitionName = field.type;
       nodeArray = false;
     }
-    if(swaggerDocumentation[definitionName] !== undefined){
-      node = buildNodeFromDefinition(swaggerDocumentation, definitionName);
+    if(openapiDocumentation[definitionName] !== undefined){
+      node = buildNodeFromDefinition(openapiDocumentation, definitionName);
     }
   }
   node.name = field.name;
@@ -81,7 +81,7 @@ function buildNodeFromField(swaggerDocumentation, field){
   return node;
 }
 
-function buildTree(swaggerDocumentation){
-  var rootNode = buildNodeFromDefinition(swaggerDocumentation, 'Swagger Object');
+function buildTree(openapiDocumentation){
+  var rootNode = buildNodeFromDefinition(openapiDocumentation, 'Swagger Object');
   return rootNode;
 }

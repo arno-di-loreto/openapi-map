@@ -1,5 +1,5 @@
 Swagger Object:
-  name: Swagger definition
+  name: OpenAPI definition
   description: |
     This is the *root* document object for the API specification.  
     It combines what previously was the Resource Listing and API Declaration (version 1.2 and earlier) together into one document.
@@ -9,7 +9,7 @@ Swagger Object:
       type: string
       required: true
       description: |
-        Specifies the Swagger Specification version being used.  
+        Specifies the OpenAPI Specification version being used.  
         It can be used by the Swagger UI and other clients to interpret the API listing.
       values:
         - value: "2.0"
@@ -40,7 +40,7 @@ Swagger Object:
       type: [string]
       description: |
         The transfer protocol of the API.  
-        If the schemes is not included, the default scheme to be used is the one used to access the Swagger definition itself.
+        If the schemes is not included, the default scheme to be used is the one used to access the OpenAPI definition itself.
       values:
         - value: http
         - value: https

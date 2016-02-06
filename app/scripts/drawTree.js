@@ -1,11 +1,11 @@
 'use strict';
 
-/*global Handlebars, $, d3, SwaggerSpecificationVisualDocumentation*/
+/*global Handlebars, $, d3, OpenAPISpecificationVisualDocumentation*/
 /*eslint no-use-before-define:0, no-unused-vars:0*/
 
 //var templateSource = $('#documentationtemplate').html();
 //var template = Handlebars.compile(templateSource);
-var template = SwaggerSpecificationVisualDocumentation.tooltip;
+var template = OpenAPISpecificationVisualDocumentation.tooltip;
 
 //Adapted from http://bl.ocks.org/robschmuecker/7880033
 //DIV tooltip adapted from http://www.d3noob.org/2013/01/adding-tooltips-to-d3js-graph.html

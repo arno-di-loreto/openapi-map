@@ -1,5 +1,5 @@
 {
-  "name": "swagger-specification-visual-documentation",
+  "name": "openapi-specification-visual-documentation",
   "private": true,
   "dependencies": {
     "bootstrap": "~3.3.5",
