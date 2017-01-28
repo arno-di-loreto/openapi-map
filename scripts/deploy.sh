@@ -44,16 +44,6 @@ else
   DEPLOY_REPO_CREDENTIALS="https://${GH_TOKEN}@${TMP_URL}"
 fi
 
-if [ -z ${GH_USER+x} ]
-then 
-  echo "GH_TOKEN is not set, using default credentials"
-  DEPLOY_REPO_CREDENTIALS=$DEPLOY_REPO
-else 
-  echo "GH_TOKEN is set updating REPO_URL"
-  TMP_URL=`echo $DEPLOY_REPO | sed "s/https:\/\///"`
-  DEPLOY_REPO_CREDENTIALS="https://${GH_TOKEN}@${TMP_URL}"
-fi
-
 if [ -z ${PUBLISH_MESSAGE+x} ]
 then 
   PUBLISH_MESSAGE="publish"
@@ -104,7 +94,7 @@ function publish {
     echo "setting git user.email with GH_EMAIL env variable"
     git config --global user.email "$GH_EMAIL"
   fi
-  git add *
+  git add .
   git commit -m "$PUBLISH_MESSAGE"
   git push $DEPLOY_REPO_CREDENTIALS
 }
