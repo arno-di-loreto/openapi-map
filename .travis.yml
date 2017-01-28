@@ -12,6 +12,7 @@ branches:
 env:
   global:
     - DEPLOY_BRANCH=gh-pages
+    - BUILD_TARGET=dist
 
 before_script:
   - npm install -g gulp
