@@ -16,7 +16,7 @@ You can see a live demo on [apihandyman.io](http://openapi-specification-visual-
 
 ## How does it work?
 
-*app/openapi-specification* contains a set of YAML files describing each object provided by the OpenAPI specification.
+*data* contains a set of YAML files describing each object provided by the OpenAPI specification.
 The content of these files is based on the OpenAPI specification itself, some precisions have been added when needed.
 
 ```yaml
@@ -49,15 +49,11 @@ Info Object:
 
 ```
 
-All these files are concatened in openapi-specification.yaml and then converted in openapi-specification.json.
+All these files are concatened and converted in json in the data.json.
 
-A tree is generated from the json file on runtime.   All descriptions are converted from markdown to html.
+A tree is generated from the json file on runtime. All descriptions are converted from markdown to html.
 
 ## Tools used
-This project has been created and built with:
-- [Yeoman](http://yeoman.io/) and the [gulp-webapp](https://github.com/yeoman/generator-gulp-webapp) generator.
-- [npm](https://www.npmjs.com/)
-- [bower](http://bower.io/)
 
 This project use:
 - [Bootstrap](http://getbootstrap.com/) framework
@@ -72,16 +68,14 @@ This project use:
 
 ## How to build and modify
 
-You need to install gulp and bower in order to build the project:
+You need to install gulp in order to build the project:
 ```
 npm install -g gulp
-npm install -g bower
 ```
 
 Command lines to download project's dependancies:
 ```
 npm install
-bower install
 ```
 
 Command line to build the project (generated files will be available in dist folder):
