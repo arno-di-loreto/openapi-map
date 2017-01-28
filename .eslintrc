@@ -1,0 +1,12 @@
+extends: google
+env:
+    browser: true
+    node: true
+    mocha: true
+rules:
+    quotes:
+        - 2
+        - single
+    brace-style:
+        - 2
+        - stroustrup

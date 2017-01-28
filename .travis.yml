@@ -1,0 +1,25 @@
+language: node_js
+
+node_js:
+  - 6
+
+cache: bundler
+
+branches:
+  only:
+    - master
+
+env:
+  global:
+    - DEPLOY_BRANCH=gh-pages
+
+before_script:
+  - npm install -g gulp
+script: gulp
+
+deploy:
+  provider: script
+  skip_cleanup: true
+  script: scripts/deploy.sh
+  on:
+    branch: master
