@@ -94,7 +94,7 @@ function publish {
     echo "setting git user.email with GH_EMAIL env variable"
     git config --global user.email "$GH_EMAIL"
   fi
-  git add .
+  git add --all
   git commit -m "$PUBLISH_MESSAGE"
   git push $DEPLOY_REPO_CREDENTIALS
 }
