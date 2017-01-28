@@ -1,9 +1,0 @@
-Parameter Object Body:
-  description: Fields if *in* value is *body*.
-  fieldsGroup: true
-  fields:
-    -
-      name: body
-      required: true
-      type: Schema Object
-      description: The schema defining the type used for the body parameter.
