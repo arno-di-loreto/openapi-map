@@ -84,19 +84,24 @@ function prepare {
 function publish {
   echo "publishing"
   cd $DEPLOY_TARGET
-  if [ ${GH_USER+x} ]
-  then
-    echo "setting git user.name with GH_USER env variable" 
-    git config --global user.name "$GH_USER"
+  TO_COMMIT=`git status --porcelain | wc -l`
+  if [ "$TO_COMMIT" -eq "0" ]; then
+    echo "Nothing to commit on $DEPLOY_BRANCH in repo $DEPLOY_REPO";
+  else
+    if [ ${GH_USER+x} ]
+    then
+      echo "setting git user.name with GH_USER env variable" 
+      git config --global user.name "$GH_USER"
+    fi
+    if [ ${GH_EMAIL+x} ]
+    then
+      echo "setting git user.email with GH_EMAIL env variable"
+      git config --global user.email "$GH_EMAIL"
+    fi
+    git add --all
+    git commit -m "$PUBLISH_MESSAGE"
+    git push $DEPLOY_REPO_CREDENTIALS
   fi
-  if [ ${GH_EMAIL+x} ]
-  then
-    echo "setting git user.email with GH_EMAIL env variable"
-    git config --global user.email "$GH_EMAIL"
-  fi
-  git add --all
-  git commit -m "$PUBLISH_MESSAGE"
-  git push $DEPLOY_REPO_CREDENTIALS
 }
 
 function main {
