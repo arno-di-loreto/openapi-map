@@ -6,6 +6,7 @@ const handlebars = require('gulp-handlebars');
 const wrap = require('gulp-wrap');
 const declare = require('gulp-declare');
 const del = require('del');
+const webserver = require('gulp-webserver');
 
 gulp.task('build-data', () => {
   return gulp.src('data/*.yaml')
@@ -39,6 +40,23 @@ gulp.task('build-web', ['static', 'templates']);
 gulp.task('build', ['build-data', 'build-web']);
 
 gulp.task('clean', del.bind(null, ['dist']));
+
+gulp.task('watch', ['build'], function() {
+  return gulp.watch(['data/**/*', 'web/**/*'], ['build']);
+});
+
+gulp.task('webserver', function() {
+  return gulp.src(['dist'])
+    .pipe(webserver({
+      port: 8080,
+      livereload: true,
+      directoryListing: false,
+      open: true,
+      fallback: 'index.html'
+    }));
+});
+
+gulp.task('serve', ['webserver', 'watch']);
 
 gulp.task('default', ['clean'], () => {
   gulp.start('build');
