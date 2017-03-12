@@ -17,7 +17,7 @@ Schema Object:
     -
       name: description
       type: String
-      gfm: true
+      md: GFM
       description: The object's description
     -
       name: default

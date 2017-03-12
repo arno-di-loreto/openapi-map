@@ -42,10 +42,9 @@ gulp.task('build-data-files', function() {
   return merge(tasks);
 });
 
-// Build a versions.json file listing versions
+// Copy versions.json file to dist
 gulp.task('build-version-file', function() {
-  return gulp.src('dist/*.json')
-    .pipe(filelist('versions.json', {flatten: true}))
+  return gulp.src('data/versions.json')
     .pipe(gulp.dest('dist'));
 });
 

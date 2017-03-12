@@ -8,7 +8,7 @@ Info Object:
       description: The title of the application.
     - name: description
       type: string
-      gfm: true
+      md: GFM
       description: A short description of the application.
     - name: termsOfService
       type: string

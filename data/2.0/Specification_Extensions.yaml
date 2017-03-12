@@ -3,6 +3,7 @@ Specification Extensions:
   type: Any
   patterned: true
   openapiType: true
+  specificationAnchor: vendorExtensions
   description: |
     While the OpenAPI Specification tries to accommodate most use cases, additional data can be added to extend the specification at certain points.  
     The field name MUST begin with *x-*, for example, *x-internal-id.*  

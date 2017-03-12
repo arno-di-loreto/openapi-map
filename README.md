@@ -16,6 +16,7 @@ You can see it on [apihandyman.io](http://openapi-specification-visual-documenta
 
 ## How does it work?
 
+### Data files
 *data* contains sets of YAML files (one per version of the OpenAPI specification) describing each object provided by the OpenAPI specification.
 The content of these files is based on the OpenAPI specification itself, some precisions have been added when needed.
 
@@ -31,7 +32,7 @@ Info Object:
       description: The title of the application.
     - name: description
       type: string
-      gfm: true
+      md: GFM
       description: A short description of the application.
     - name: termsOfService
       type: string
@@ -49,8 +50,29 @@ Info Object:
 
 ```
 The build (`gulp`) concatenes these files and converts the result in json in the <version>.json file.
-A versions.json file listing available versions is also created (to populate the tab list on top of the tree rendering zone).
 A D3JS tree is generated from the json file on runtime. All descriptions are converted from markdown to html.
+
+### Versions file
+
+The `data/versions.json` define configuration for each version:
+
+| Property         | Description 
+|------------------|-----------------
+| name             | The name that will appear in tabs
+| url              | The json filename containing the data
+| root             | The root object of this version
+| specificationurl | The md file URL for this specification
+
+```JSON
+[
+  {
+    "name": "2.0",
+    "url": "2.0.json",
+    "root": "Swagger Object",
+    "specificationurl": "https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#"
+  }
+]
+```
 
 ## Tools used
 

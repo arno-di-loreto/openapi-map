@@ -18,7 +18,7 @@ Operation Object:
       name: description
       type: string
       description: A verbose explanation of the operation behavior.
-      gfm: true
+      md: GFM
     -
       name: externalDocs
       type: External Documentation Object

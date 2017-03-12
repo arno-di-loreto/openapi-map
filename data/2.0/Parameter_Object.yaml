@@ -49,7 +49,7 @@ Parameter Object:
     -
       name: description
       type: string
-      gfm: true
+      md: GFM
       description: |
         A brief description of the parameter.
         This could contain examples of use.

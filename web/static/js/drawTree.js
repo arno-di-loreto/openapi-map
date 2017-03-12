@@ -35,7 +35,7 @@ function drawTree(treeData){
         .size([viewerHeight, viewerWidth]);
 
     function showToolip(d){
-        console.log(d);
+        //console.log(d);
       if(d.description){
         $('#help').hide();
          var jdiv = $('#tooltip');
