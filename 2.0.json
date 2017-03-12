@@ -40,7 +40,7 @@
             "name": "description",
             "type": "string",
             "description": "A short description of the target documentation.",
-            "gfm": true
+            "md": "GFM"
         }, {
             "name": "url",
             "type": "string",
@@ -207,7 +207,7 @@
         }, {
             "name": "description",
             "type": "string",
-            "gfm": true,
+            "md": "GFM",
             "description": "A short description of the application."
         }, {
             "name": "termsOfService",
@@ -257,7 +257,7 @@
             "name": "description",
             "type": "string",
             "description": "A verbose explanation of the operation behavior.",
-            "gfm": true
+            "md": "GFM"
         }, {
             "name": "externalDocs",
             "type": "External Documentation Object",
@@ -343,7 +343,7 @@
         }, {
             "name": "description",
             "type": "string",
-            "gfm": true,
+            "md": "GFM",
             "description": "A brief description of the parameter.\nThis could contain examples of use.\n"
         }, {
             "name": "required",
@@ -598,7 +598,7 @@
             "name": "description",
             "type": "string",
             "required": true,
-            "gfm": true,
+            "md": "GFM",
             "description": "A short description of the response. GFM syntax can be used for rich text representation."
         }, {
             "name": "schema",
@@ -652,7 +652,7 @@
         }, {
             "name": "description",
             "type": "String",
-            "gfm": true,
+            "md": "GFM",
             "description": "The object's description"
         }, {
             "name": "default",
@@ -949,6 +949,7 @@
         "type": "Any",
         "patterned": true,
         "openapiType": true,
+        "specificationAnchor": "vendorExtensions",
         "description": "While the OpenAPI Specification tries to accommodate most use cases, additional data can be added to extend the specification at certain points.  \nThe field name MUST begin with *x-*, for example, *x-internal-id.*  \nThe value can be null, a primitive, an array or an object.  \nWhen the value is an object or an array of object, the object's fields names do not need to start with *x-*.  \nThe extensions may or may not be supported by the available tooling, but those may be extended as well to add requested support (if tools are internal or open-sourced).\n"
     },
     "Swagger Object": {
@@ -1048,7 +1049,7 @@
             "name": "description",
             "type": "string",
             "description": "A short description for the tag.",
-            "gfm": true
+            "md": "GFM"
         }, {
             "name": "externalDocs",
             "type": "ExternalDocumentation",
