@@ -54,7 +54,7 @@ A D3JS tree is generated from the json file on runtime. All descriptions are con
 
 ### Versions file
 
-The `data/versions.json` define configuration for each version:
+The `data/spec-versions.json` define configuration for each version:
 
 | Property         | Description 
 |------------------|-----------------
