@@ -6,7 +6,7 @@ External Documentation Object:
       name: description
       type: string
       description: A short description of the target documentation.
-      gfm: true
+      md: GFM
     -
       name: url
       type: string

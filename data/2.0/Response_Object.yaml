@@ -6,7 +6,7 @@ Response Object:
       name: description
       type: string
       required: true
-      gfm: true
+      md: GFM
       description: A short description of the response. GFM syntax can be used for rich text representation.
     -
       name: schema

@@ -11,24 +11,29 @@ function loadVersionFile(complete) {
 function populateVersionList(callback) {
   loadVersionFile(function(versions) {
     for (var i = 0; i < versions.length; i++) {
-      var versionfile = versions[i];
-      var version = versionfile.replace('.json', '');
+      var name = versions[i].name;
+      var url = versions[i].url;
+      var root = versions[i].root;
+      var specificationurl = versions[i].specificationurl;
       $('#versions').append('<li role="presentation" id="' +
-        versionfile +
+        name +
         '"><a onclick="javascript:showVersion(\'' +
-        versionfile +
+        name + '\',\'' +
+        url + '\',\'' +
+        root + '\',\'' +
+        specificationurl + '\',\'' +
         '\')">Version ' +
-        version +
+        name +
         '</a></li>');
     }
     callback(versions);
   });
 }
 
-function loadData(url, callback) {
+function loadData(url, root, specificationurl, callback) {
   $.getJSON(url)
   .then(function(data) {
-    var tree = buildTree(data);
+    var tree = buildTree(data, root, specificationurl);
     drawTree(tree);
     callback();
   })
@@ -37,11 +42,11 @@ function loadData(url, callback) {
   });
 }
 
-function showVersion(versionfile) {
-  loadData(versionfile, function() {
-    $('#versions li').each(function(index) {
+function showVersion(name, url, root, specificationurl) {
+  loadData(url, root, specificationurl, function() {
+    $('#versions li').each(function() {
         $(this).removeClass('active');
-        if ($(this).attr('id').localeCompare(versionfile) === 0) {
+        if ($(this).attr('id').localeCompare(name) === 0) {
           $(this).addClass('active');
         }
     });
@@ -49,5 +54,5 @@ function showVersion(versionfile) {
 }
 
 populateVersionList(function(versions) {
-  showVersion(versions[0]);
+  showVersion(versions[0].name, versions[0].url, versions[0].root, versions[0].specificationurl);
 });

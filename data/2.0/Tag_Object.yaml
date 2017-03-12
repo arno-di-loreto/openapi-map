@@ -13,7 +13,7 @@ Tag Object:
       name: description
       type: string
       description: A short description for the tag.
-      gfm: true
+      md: GFM
     -
       name: externalDocs
       type: ExternalDocumentation
