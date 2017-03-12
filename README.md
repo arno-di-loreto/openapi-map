@@ -1,11 +1,11 @@
 # OpenAPI Specification Visual Documentation
-This is a prototype of a D3 rendering of the [OpenAPI specification](https://openapis.org/specification) (fka Swagger Specification) to provide an easy to read visual documentation.
-It is developed by [Arnaud Lauret, the API Handyman](https://github.com/arno-di-loreto).
+This is a tree rendering of the [OpenAPI specification](https://openapis.org/specification) (fka The Swagger Specification) to provide an easy to read visual documentation.<br>
+It has been created by [Arnaud Lauret, the API Handyman](https://github.com/arno-di-loreto).
 
-This is NOT a rendering of an API OpenAPI specification.
+This tool does NOT a render an API's OpenAPI specification.
 
 ## How to use it?
-You can see a live demo on [apihandyman.io](http://openapi-specification-visual-documentation.apihandyman.io/)
+You can see it on [apihandyman.io](http://openapi-specification-visual-documentation.apihandyman.io/)
 
 - Zoom in: Mouse scroll up
 - Zoom out: Mouse scroll down
@@ -16,7 +16,7 @@ You can see a live demo on [apihandyman.io](http://openapi-specification-visual-
 
 ## How does it work?
 
-*data* contains a set of YAML files describing each object provided by the OpenAPI specification.
+*data* contains sets of YAML files (one per version of the OpenAPI specification) describing each object provided by the OpenAPI specification.
 The content of these files is based on the OpenAPI specification itself, some precisions have been added when needed.
 
 ```yaml
@@ -48,10 +48,9 @@ Info Object:
       description: Provides the version of the application API (not to be confused with the specification version).
 
 ```
-
-All these files are concatened and converted in json in the data.json.
-
-A tree is generated from the json file on runtime. All descriptions are converted from markdown to html.
+The build (`gulp`) concatenes these files and converts the result in json in the <version>.json file.
+A versions.json file listing available versions is also created (to populate the tab list on top of the tree rendering zone).
+A D3JS tree is generated from the json file on runtime. All descriptions are converted from markdown to html.
 
 ## Tools used
 
@@ -70,7 +69,7 @@ This project use:
 
 You need to install gulp in order to build the project:
 ```
-npm install -g gulp
+npm install -g gulp-cli
 ```
 
 Command lines to download project's dependancies:
@@ -87,6 +86,14 @@ Command line to launch a local instance with automatic live reload if some files
 ```
 gulp serve
 ```
+
+## Build and Hosting
+
+This project is build by [Travis CI](travis-ci.org) and deployed on [Github pages](https://pages.github.com/) using the following files:
+
+- .travis.yml: Travis CI Configuration file
+- scripts/deploy.sh: Deploy script (which basically commits the result of the build on the gh-pages branch of this repository)
+
 
 ## Licence
 Licensed under the Apache License, Version 2.0 (the "License");

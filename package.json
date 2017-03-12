@@ -8,18 +8,19 @@
   },
   "author": "Arnaud Lauret",
   "license": "ISC",
-  "dependencies": {
-    "gulp": "^3.9.1",
-    "gulp-concat": "^2.6.1",
-    "gulp-handlebars": "^4.0.0",
-    "gulp-jsbeautifier": "^2.0.4",
-    "gulp-webserver": "^0.9.1",
-    "gulp-yaml": "^1.0.1"
-  },
   "devDependencies": {
     "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
     "gulp-declare": "^0.3.0",
+    "gulp-filelist": "^1.0.0",
+    "gulp-handlebars": "^4.0.0",
+    "gulp-jsbeautifier": "^2.1.0",
+    "gulp-sequence": "^0.4.6",
+    "gulp-webserver": "^0.9.1",
     "gulp-wrap": "^0.13.0",
-    "handlebars": "^4.0.6"
+    "gulp-yaml": "^1.0.1",
+    "handlebars": "^4.0.6",
+    "merge-stream": "^1.0.1"
   }
 }

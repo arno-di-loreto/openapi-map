@@ -7,9 +7,43 @@
 
 /* Space out content a bit */
 body {
-  padding-top: 20px;
   padding-bottom: 20px;
 }
+
+.navbar {
+  margin-bottom: 0px;
+  border-bottom: 0px;
+}
+
+#versions {
+  padding-left: 15px;
+}
+
+#tooltip-container {
+  overflow: scroll;
+}
+
+#tree-container {
+  border-right: 1px solid #e5e5e5;
+}
+
+.navbar-brand {
+  margin-bottom: 0px;
+}
+
+.title {
+  padding-left: 0px;
+  color: #777;
+}
+
+.github-ribbon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: 0;
+  z-index: 999;
+}
+
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
