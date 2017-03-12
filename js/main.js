@@ -1,10 +1,10 @@
 'use strict';
 
 function loadVersionFile(complete) {
-  $.getJSON('versions.json')
+  $.getJSON('spec-versions.json')
   .then(complete)
   .fail(function(error) {
-    console.log('Failed to load versions.json master file', error);
+    console.log('Failed to load spec-versions.json file', error);
   });
 }
 
@@ -38,7 +38,7 @@ function loadData(url, root, specificationurl, callback) {
     callback();
   })
   .fail(function(error) { 
-    console.log('Failed to load apis.json master file', error);
+    console.log('Failed to load ' + url + ' file', error);
   });
 }
 
