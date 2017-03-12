@@ -44,7 +44,7 @@ gulp.task('build-data-files', function() {
 
 // Copy versions.json file to dist
 gulp.task('build-version-file', function() {
-  return gulp.src('data/versions.json')
+  return gulp.src('data/*.json')
     .pipe(gulp.dest('dist'));
 });
 
