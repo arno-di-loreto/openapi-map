@@ -21,8 +21,12 @@ function drawTree(treeData){
     var root;
 
     // size of the diagram
+    $('#tree-container').empty();
+    $('#tooltip').empty();
+    $('#help').show();
     var viewerWidth = $('#tree-container').width();
-    var viewerHeight = $(document).height() - $('#tree-container').position().top - 50;
+    var viewerHeight = $(document).height() - $('#tree-container').position().top - 75;
+    $('#tooltip-container').css('max-height',viewerHeight+'px');
 
     var toolTipY = $('#tree-container').position().top;
     var toolTipX = $('#tree-container').position().left;
@@ -30,15 +34,20 @@ function drawTree(treeData){
     var tree = d3.layout.tree()
         .size([viewerHeight, viewerWidth]);
 
-    //http://www.d3noob.org/2013/01/adding-tooltips-to-d3js-graph.html
+    function showToolip(d){
+        console.log(d);
+      if(d.description){
+        $('#help').hide();
+         var jdiv = $('#tooltip');
+         jdiv.html(template(d));
+         /*
+         //http://www.d3noob.org/2013/01/adding-tooltips-to-d3js-graph.html
     //var div = d3.select('body').append('div')
     var div = d3.select('#tooltip-container')
         //.attr('class', 'tooltip')
         .attr('id', 'node-tooltip');
         //.style('opacity', 0);
-
-    function showToolip(d){
-      if(d.description){
+          console.log(div),
         div.transition()
             .duration(200)
             .style('opacity', .9);
@@ -52,6 +61,7 @@ function drawTree(treeData){
             //.style('top', '80px' );
             //.style('left', toolTipX + 'px')
             //.style('top', toolTipY + 'px');
+           */ 
       }
     }
 

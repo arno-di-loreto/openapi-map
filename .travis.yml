@@ -15,7 +15,7 @@ env:
     - BUILD_TARGET=dist
 
 before_script:
-  - npm install -g gulp
+  - npm install -g gulp-cli
 script: gulp
 
 deploy:
