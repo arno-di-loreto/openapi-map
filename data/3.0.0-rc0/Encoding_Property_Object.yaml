@@ -1,0 +1,22 @@
+Encoding Property Object:
+  description: A single encoding definition applied to a single schema property.
+  allowExtension: true
+  changelog:
+    isNew: true
+  fields:
+    - 
+      name: contentType
+      type: string
+      description: "The Content-Type to use for encoding a specific property. Default value depends on the property type: for string with format being binary - application/octet-stream; for other primitive types - plain/text; for object - application/json; for array - the default is defined based on the inner type."
+    -
+      name: Headers
+      type: object
+      description: A string map allowing additional information to be provided as headers, for example Content-Disposition. Note Content-Type is described separately and will be ignored from this section.
+    -
+      name: style
+      type: string
+      description: The Content-Type to use for encoding a specific property. See (#parameterContent) for details on the style property. The behavior follows the same values allowed for query parameters, including default values.
+    -
+      name: explode
+      type: boolean
+      description: When this is true, property values of type array or object generate separate parameters for each value of the array, or key-value-pair of the map. For other types of properties this property has no effect. When style is form, the default value is true. For all other styles, the default value is false.

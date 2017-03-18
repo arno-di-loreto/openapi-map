@@ -1,0 +1,28 @@
+Link Object:
+  description: The Link Object is responsible for defining a possible operation based on a single response.
+  specificationAnchor: link-object
+  changelog:
+    isNew: true
+  fields:
+    - 
+      name: href
+      type: string
+      description: a relative or absolute URL to a linked resource. This field is mutually exclusive with the operationId field.
+    -
+      name: operationId
+      type: string
+      description: the name of an existing, resolvable OAS operation, as defined with a unique operationId. This field is mutually exclusive with the href field. Relative href values MAY be used to locate an existing Operation Object in the OAS.
+    -
+      name: parameters
+      type: Link Parameters Object
+      description: an object representing parameters to pass to an operation as specified with operationId or identified via href.
+    -
+      name: headers
+      type: Headers Object
+      description: an object representing headers to pass to the linked resource. Where conflicts occur between these headers, and those defined in the related operation, these headers override.
+    -
+      name: description
+      type: string
+      md: CommonMark
+      description: a description of the link, supports CommonMark syntax.
+      

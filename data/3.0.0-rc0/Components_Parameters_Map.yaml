@@ -1,0 +1,8 @@
+Components Parameters Map:
+  description: An object to hold reusable Parameters Objects.
+  specificationAnchor: componentsObject
+  fields:
+    -
+      name: "{name}"
+      description: A resusable Parameter Object
+      type: Parameter Object 

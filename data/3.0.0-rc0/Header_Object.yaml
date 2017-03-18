@@ -1,0 +1,38 @@
+Header Object:
+  description: |
+    The Header Object follows the structure of the Parameter Object, with the following changes:
+
+    - name MUST NOT be specified, it is given in the Headers Object.
+    - in MUST NOT be specified, it is implicitly in header.
+    - All traits that are affected by the location MUST follow the location of header (for example, style).
+
+    Note: allowEmptyValue shouldn't be used too (only for query parameters)
+  allowExtension: true
+  changelog:
+    status: Modifed
+  fields:
+    -
+      name: description
+      type: string
+      md: CommonMark
+      description: |
+        A brief description of the parameter. This could contain examples of use. CommonMark syntax can be used for rich text representation.    
+    -
+      name: required
+      type: boolean
+      description: |
+        Determines whether this parameter is mandatory. If the parameter location is "path", this property is required and its value MUST be true. Otherwise, the property MAY be included and its default value is false.
+    -
+      name: deprecated
+      type: boolean
+      description: Specifies that a parameter is deprecated and SHOULD be transitioned out of usage.
+      changelog:
+        isNew: true
+    -
+      name: <using style and schema>
+      type: Parameter Object Style Schema
+      description: The rules for serialization of the parameter are specified in one of two ways. For simpler scenarios, a style and schema can be used to describe the structure and syntax of the parameter.
+    -
+      name: <using content>
+      type: Parameter Object Content
+      description: For more complex scenarios a Content Object can be used to define the media type and schema of the parameter. This option is mutually exclusive with the simple scenario above. When example or examples are provided in conjunction with the schema object, the example must follow the prescribed serialization strategy for the parameter.

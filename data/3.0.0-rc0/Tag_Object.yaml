@@ -1,0 +1,18 @@
+Tag Object:
+  description: Allows adding meta data to a single tag that is used by the Operation Object. It is not mandatory to have a Tag Object per tag used there.
+  allowExtension: true
+  fields:
+    -
+      name: name
+      type: string
+      description: The name of the tag.
+      required: true
+    -
+      name: description
+      type: string
+      description: A short description for the tag. CommonMark syntax can be used for rich text representation.
+      md: CommonMark
+    -
+      name: externalDocs
+      type: ExternalDocumentation
+      description: Additional external documentation for this tag.

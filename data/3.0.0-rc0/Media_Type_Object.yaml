@@ -1,0 +1,23 @@
+Media Type Object:
+  description: Each Media Type Object provides schema and examples for a the media type identified by its key. Media Type Objects can be used in a Content Object.
+  allowExtension: true
+  changelog:
+    isNew: true
+  fields:
+    - name: schema
+      type: Schema Object
+      description: The schema defining the type used for the request body.
+    -
+      name: examples
+      type: "[Example Object]"
+      allowReference: true
+      description: Examples of the media type. Each example in the Examples array SHOULD be in the correct format as specified in the media type. The examples object is mutually exclusive to the example object. Furthermore, if referencing a schema which contains an example, the examples value SHALL override the example provided by the schema.
+    -
+      name: example
+      type: Example Object
+      allowReference: true
+      description: Example of the content type. The example object SHOULD be in the correct format as specified in the parameter encoding. The example object is mutually exclusive to the examples object. Furthermore, if referencing a schema which contains an example, the example value SHALL override the example provided by the the schema.
+    -
+      name: encoding
+      type: Encoding Object
+      description: Encoding of the media type. The encoding object SHOULD only apply to requestBody objects when the content type is multipart.

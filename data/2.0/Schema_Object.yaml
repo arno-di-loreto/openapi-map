@@ -37,6 +37,7 @@ Schema Object:
     - 
       name: type
       description: Object's type
+      type: string
       values:
         -
           value: array
@@ -75,4 +76,8 @@ Schema Object:
     -
       name: <type is object>
       type: Schema Object Object
+      description: Fields when *type* is *object*
+    -
+      name: <OpenAPI properties>
+      type: Schema Object OpenAPI
       description: Fields when *type* is *object*

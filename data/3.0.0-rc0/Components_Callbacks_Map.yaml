@@ -1,0 +1,8 @@
+Components Callbacks Map:
+  description: An object to hold reusable Callback Objects.
+  specificationAnchor: componentsObject
+  fields:
+    -
+      name: "{name}"
+      description: A resusable Callback Object
+      type: Callback Object

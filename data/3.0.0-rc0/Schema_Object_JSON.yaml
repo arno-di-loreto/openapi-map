@@ -1,0 +1,26 @@
+Schema Object JSON:
+  description: The following properties are taken directly from the JSON Schema definition and follow the same specifications
+  fieldsGroup: true
+  fields:
+    -
+      name: <Modified JSON properties>
+      type: Schema Object Modified JSON
+      changelog:
+        status: Modifed
+      description: The following properties are taken from the JSON Schema definition but their definitions were adjusted to the OpenAPI Specification.
+    -
+      name: <type is array>
+      type: Schema Object Array
+      description: Properties when *type* is *array*
+    -
+      name: <type is string>
+      type: Schema Object String
+      description: Properties when *type* is *string*
+    -
+      name: <type is number or integer>
+      type: Schema Object Number Or Integer
+      description: Properties when *type* is *number* or *integer*
+    -
+      name: <type is object>
+      type: Schema Object Object
+      description: Properties when *type* is *object*

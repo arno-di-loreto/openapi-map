@@ -1,0 +1,9 @@
+Callbacks Object:
+  changelog:
+    isTrue: true
+  description: An object to hold reusable Callback Objects.
+  fields:
+    -
+      name: "{name}"
+      description: A resusable Callback Object
+      type: Callback Object

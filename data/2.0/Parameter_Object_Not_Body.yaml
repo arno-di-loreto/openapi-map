@@ -30,6 +30,7 @@ Parameter Object Not Body:
       description: Fields if *type* value is *string*, *number*, *integer* or *boolean*.
     -
       name: default
+      type: "*"
       description: |
         Declares the value of the parameter that the server will use if none is provided.
         For example a *count* to control the number of results per page might default to 100 if not supplied by the client in the request.

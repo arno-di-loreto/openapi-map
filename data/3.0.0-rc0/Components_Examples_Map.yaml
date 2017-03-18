@@ -1,0 +1,8 @@
+Components Examples Map:
+  description: An object to hold reusable Example Objects.
+  specificationAnchor: componentsObject
+  fields:
+    -
+      name: "{name}"
+      description: A resusable Example Object
+      type: Example Object 

@@ -27,6 +27,15 @@ body {
   border-right: 1px solid #e5e5e5;
 }
 
+#typedescription{
+  border-top: 1px solid #e5e5e5;
+}
+
+.documentation {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
 .navbar-brand {
   margin-bottom: 0px;
 }

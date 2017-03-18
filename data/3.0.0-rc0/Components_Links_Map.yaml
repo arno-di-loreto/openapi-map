@@ -1,0 +1,8 @@
+Components Links Map:
+  description: An object to hold reusable Link Objects.
+  specificationAnchor: componentsObject
+  fields:
+    -
+      name: "{name}"
+      description: A resusable Link Object
+      type: Link Object 

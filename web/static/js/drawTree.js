@@ -1,6 +1,25 @@
 'use strict';
 var template = OpenAPISpecificationVisualDocumentation.tooltip;
 
+function getStrokeColor(node) {
+  var color;
+  if (node.isTechnical) {
+    color = 'grey';
+  }
+  else if (node.changelog) {
+    if (node.changelog.isNew) {
+      color = 'green';
+    }
+    else if (node.changelog.isModified) {
+      color = 'orange';
+    }
+  }
+  else {
+    color = 'steelblue';
+  }
+  return color;
+}
+
 //Adapted from http://bl.ocks.org/robschmuecker/7880033
 //DIV tooltip adapted from http://www.d3noob.org/2013/01/adding-tooltips-to-d3js-graph.html
 function drawTree(treeData){
@@ -36,7 +55,7 @@ function drawTree(treeData){
 
     function showToolip(d){
         //console.log(d);
-      if(d.description){
+      if(d.description || d.typeDescription){
         $('#help').hide();
          var jdiv = $('#tooltip');
          jdiv.html(template(d));
@@ -355,7 +374,10 @@ function drawTree(treeData){
             .attr('r', 4.5)
             .style('fill', function(d) {
                 return d.closedChildren ? 'lightsteelblue' : '#fff';
-            });
+            })
+            .style('stroke', function(d) {
+                return getStrokeColor(d);
+            })
 
         // Transition nodes to their new position.
         var nodeUpdate = node.transition()

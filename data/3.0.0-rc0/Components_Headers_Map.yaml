@@ -1,0 +1,8 @@
+Components Headers Map:
+  description: An object to hold reusable Header Objects.
+  specificationAnchor: componentsObject
+  fields:
+    -
+      name: "{name}"
+      description: A resusable Header Object
+      type: Header Object 

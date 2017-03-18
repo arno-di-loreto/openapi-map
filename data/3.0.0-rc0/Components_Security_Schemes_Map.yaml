@@ -1,0 +1,8 @@
+Components Security Schemes Map:
+  description: An object to hold reusable Schema Objects.
+  specificationAnchor: componentsObject
+  fields:
+    -
+      name: "{name}"
+      description: A resusable Security Scheme Object
+      type: Security Scheme Object

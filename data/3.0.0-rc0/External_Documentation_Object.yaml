@@ -1,0 +1,14 @@
+External Documentation Object:
+  description: Allows referencing an external resource for extended documentation.
+  allowExtension: true
+  fields:
+    -
+      name: description
+      type: string
+      description: A short description of the target documentation. CommonMark syntax can be used for rich text representation.
+      md: CommonMarck
+    -
+      name: url
+      type: string
+      description: The URL for the target documentation. Value MUST be in the format of a URL.
+      required: true

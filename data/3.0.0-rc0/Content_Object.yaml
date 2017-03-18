@@ -1,0 +1,12 @@
+Content Object:
+  description: |
+    Describes a set of supported media types. A Content Object can be used in Request Body Object, Parameter Objects, Header Objects, and Response Objects.
+
+    Each key in the Content Object is the media type of the Media Type Object.
+  changelog:
+    isNew: true
+    details: Replace `consumes` and `produces`. Reusable `Content Object` can be described in `components`.
+  fields:
+    - name: "{media type}"
+      type: Media Type Object
+      description: A media type object
