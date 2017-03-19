@@ -37,6 +37,8 @@ function getDocumentationUrl(openapiType, anchor, specificationUrl) {
   return documentationUrl;
 }
 
+var pRegEx = new RegExp('^<p>.*');
+
 /**
  * @description Generate HTML for Markdown
  * @param {String} md The Mardown
@@ -46,6 +48,13 @@ function getHTMLFromMD(md) {
   var html;
   if (md !== undefined && md !== null) {
     html = marked(md);
+    if (pRegEx.test(html)) {
+      html = html.substring(3, html.length - 5);
+    }
+    //if (html.startsWith('<p>')) {
+    //  html = html.substring(3, html.length - 5);
+    //}
+    
   }
   else {
     html = md;
@@ -226,10 +235,6 @@ function buildNodeFromOpenapiType(openapiDocumentation,
 
 function buildNodeFromField(openapiDocumentation, field, specificationUrl, parentNode) {
   var node;
-  if(field.type.localeCompare('Server Object')===0){
-    console.log('url', field);
-    console.log(parentNode);
-  }
   if (!isAtomicField(openapiDocumentation, field)) {
     var withChildren;
     if (field.noFollow === true) {
@@ -254,6 +259,9 @@ function buildNodeFromField(openapiDocumentation, field, specificationUrl, paren
   node.name = field.name;
   node.description = getHTMLFromMD(field.description);
   node.changelog = field.changelog;
+  if (field.additionalType !== undefined) {
+    node.additionalType = field.additionalType;
+  }
   if (node.changelog !== undefined &&
       node.changelog.details !== undefined) {
     node.changelog.details = getHTMLFromMD(node.changelog.details);
@@ -279,6 +287,5 @@ function buildTree(openapiDocumentation, root, specificationUrl) {
     openapiDocumentation, root, specificationUrl, null, true);
   // var rootNode = buildNodeFromOpenapiType(
   // openapiDocumentation, 'Paths Object', specificationUrl, null, true);
-  console.log('DONE', rootNode);
   return rootNode;
 }

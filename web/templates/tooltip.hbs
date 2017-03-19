@@ -1,6 +1,6 @@
 <div class="entry">
   <!-- fields group -->
-  {{#if fieldsGroup}}
+  {{#if isFieldsGroup}}
     <i class="fa fa-indent fa-2x fa-pull-left"></i><p>{{{description}}}</p>
   <!-- other -->
   {{else}}
@@ -16,7 +16,7 @@
               <div class="list-group-item list-group-item-success"><span class="fa fa-info-circle fa-fw fa-2x"></span><strong>New property! </strong>{{{changelog.details}}}</div>
             {{/if}}
             {{#if changelog.isModified}}
-              <div class="list-group-item list-group-item-warning"><strong>Modified property! </strong>{{{changelog.details}}}</div>
+              <div class="list-group-item list-group-item-warning"><span class="fa fa-exclamation-triangle fa-fw fa-2x"></span><strong>Modified property! </strong>{{{changelog.details}}}</div>
             {{/if}}
             {{#if changelog.isInfo}}
               <div class="list-group-item list-group-item-info"><i class="fa fa-info-circle fa-fw fa-2x"></i>{{{changelog.details}}}</div>
@@ -27,14 +27,13 @@
             {{#if isArray}}
               <p class="list-group-item"><i class="fa fa-list-ul fa-fw fa-2x"></i>&nbsp;Array</p>
             {{/if}}
-            {{#if closedChildren}}
+            {{#if isOpenapiType}}
               <p class="list-group-item"><i class="fa fa-cubes fa-fw fa-2x"></i>&nbsp;{{type}}</p>
             {{else}}
-              {{#if children}}
-                <p class="list-group-item"><i class="fa fa-cubes fa-fw fa-2x"></i>&nbsp;{{type}}</p>
-              {{else}}
-                <p class="list-group-item"><i class="fa fa-cube fa-fw fa-2x"></i>&nbsp;{{type}}</p>
-              {{/if}}
+              <p class="list-group-item"><i class="fa fa-cube fa-fw fa-2x"></i>&nbsp;{{type}}</p>
+            {{/if}}
+            {{#if additionalType}}
+              <p class="list-group-item"><i class="fa fa-cube fa-fw fa-2x"></i>&nbsp;{{additionalType}}</p>
             {{/if}}
             {{#if md}}
               <p class="list-group-item"><i class="fa fa-file-code-o fa-fw fa-2x"></i>&nbsp;Supports markdown ({{{md}}} syntax)</p>

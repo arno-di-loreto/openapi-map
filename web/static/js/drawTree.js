@@ -3,9 +3,6 @@ var template = OpenAPISpecificationVisualDocumentation.tooltip;
 
 function getStrokeColor(node) {
   var color;
-  if(node.name.localeCompare('url')===0) {
-      console.log(node);
-  }
   if (node.isTechnical) {
     color = 'grey';
   }
@@ -15,14 +12,14 @@ function getStrokeColor(node) {
   else if (node.changelog !== undefined && node.changelog.isModified) {
     color = 'orange';
   }
-  else if (node.parentChangelog !== undefined && node.parentChangelog.isNew) {
-    color = 'green';
-  }
   else if (node.typeChangelog !== undefined && node.typeChangelog.isNew) {
     color = 'green';
   }
   else if (node.typeChangelog !== undefined && node.typeChangelog.isModified) {
     color = 'orange';
+  }
+  else if (node.parent !== undefined && node.parent.typeChangelog !== undefined && node.parent.typeChangelog.isNew) {
+    color = 'green';
   }
   else {
     color = 'steelblue';
