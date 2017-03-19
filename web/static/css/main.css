@@ -1,13 +1,10 @@
-.browserupgrade {
-  margin: 0.2em 0;
-  background: #ccc;
-  color: #000;
-  padding: 0.2em 0;
-}
-
 /* Space out content a bit */
-body {
+/*body {
   padding-bottom: 20px;
+}*/
+
+#navbar ul li.active {
+  background-color: #eee;
 }
 
 .navbar {
@@ -15,15 +12,37 @@ body {
   border-bottom: 0px;
 }
 
+#navbar a, .navbar-header a{
+  color: black
+}
+
+.container-fluid {
+  padding-right: 0px;
+}
+
+#header-container {
+  padding-bottom: 10px;
+}
+
+.navbar-brand>img {
+  display: inline
+}
+
+.navbar-brand {
+  padding-top: 8px;
+}
+
 #versions {
   padding-left: 15px;
 }
 
 #tooltip-container {
+  border-top: 1px solid #e5e5e5;
   overflow: scroll;
 }
 
 #tree-container {
+  border-top: 1px solid #e5e5e5;
   border-right: 1px solid #e5e5e5;
 }
 
@@ -31,9 +50,9 @@ body {
   border-top: 1px solid #e5e5e5;
 }
 
-.documentation {
+.documentation, #help {
   padding-left: 10px;
-  padding-right: 10px;
+  padding-right: 25px;
 }
 
 .navbar-brand {
@@ -77,7 +96,7 @@ body {
 
 /* Custom page footer */
 .footer {
-  padding-top: 19px;
+  padding-top: 10px;
   color: #777;
   border-top: 1px solid #e5e5e5;
 }

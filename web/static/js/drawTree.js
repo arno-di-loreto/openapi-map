@@ -51,7 +51,7 @@ function drawTree(treeData){
     $('#tooltip').empty();
     $('#help').show();
     var viewerWidth = $('#tree-container').width();
-    var viewerHeight = $(document).height() - $('#tree-container').position().top - 75;
+    var viewerHeight = $(document).height() - $('#tree-container').position().top - 50;
     $('#tooltip-container').css('max-height',viewerHeight+'px');
 
     var toolTipY = $('#tree-container').position().top;
