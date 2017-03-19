@@ -1,9 +1,11 @@
 Callbacks Object:
   changelog:
     isNew: true
+  allowExtension: true
   description: An object to hold reusable Callback Objects.
   fields:
     -
       name: "{name}"
       description: A resusable Callback Object
       type: Callback Object
+      allowReference: true

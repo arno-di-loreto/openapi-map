@@ -10,19 +10,50 @@ function getStrokeColor(node) {
     color = 'green';
   }
   else if (node.changelog !== undefined && node.changelog.isModified) {
-    color = 'orange';
+    color = '#f69640';
   }
   else if (node.typeChangelog !== undefined && node.typeChangelog.isNew) {
     color = 'green';
   }
   else if (node.typeChangelog !== undefined && node.typeChangelog.isModified) {
-    color = 'orange';
+    color = '#f69640';
   }
   else if (node.parent !== undefined && node.parent.typeChangelog !== undefined && node.parent.typeChangelog.isNew) {
     color = 'green';
   }
   else {
     color = 'steelblue';
+  }
+  return color;
+}
+
+function getFillColor(node) {
+  var color;
+  if (node.closedChildren){
+    if (node.isTechnical) {
+        color = 'lightgrey';
+    }
+    else if (node.changelog !== undefined && node.changelog.isNew) {
+        color = 'lightgreen';
+    }
+    else if (node.changelog !== undefined && node.changelog.isModified) {
+        color = '#ffd06f';
+    }
+    else if (node.typeChangelog !== undefined && node.typeChangelog.isNew) {
+        color = 'lightgreen';
+    }
+    else if (node.typeChangelog !== undefined && node.typeChangelog.isModified) {
+        color = '#ffd06f';
+    }
+    else if (node.parent !== undefined && node.parent.typeChangelog !== undefined && node.parent.typeChangelog.isNew) {
+        color = 'lightgreen';
+    }
+    else {
+        color = 'lightblue';
+    }
+  }
+  else {
+    color = '#fff';
   }
   return color;
 }
@@ -380,7 +411,8 @@ function drawTree(treeData){
         node.select('circle.nodeCircle')
             .attr('r', 4.5)
             .style('fill', function(d) {
-                return d.closedChildren ? 'lightsteelblue' : '#fff';
+                //return d.closedChildren ? 'lightsteelblue' : '#fff';
+                return getFillColor(d);
             })
             .style('stroke', function(d) {
                 return getStrokeColor(d);

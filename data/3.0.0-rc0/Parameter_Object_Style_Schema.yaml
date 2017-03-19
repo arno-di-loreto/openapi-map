@@ -1,35 +1,44 @@
 Parameter Object Style Schema:
   description: The rules for serialization of the parameter are specified in one of two ways. For simpler scenarios, a style and schema can be used to describe the structure and syntax of the parameter.
   fieldsGroup: true
-  changelog:
-    isNew: true
   fields:
     -
       name: style
       type: string
+      changelog:
+        isNew: true
       description: |
         Describes how the parameter value will be serialized depending on type of the parameter value. Default values (based on value of in): for query - form; for path - simple; for header - simple; for cookie - form."
-      values:
     - 
       name: explode
       type: boolean
+      changelog:
+        isNew: true
       description: When this is true, parameter values of type array or object generate separate parameters for each value of the array, or key-value-pair of the map. For other types of parameters this property has no effect. When style is form, the default value is true. For all other styles, the default value is false.
     -
       name: allowReserved
       type: boolean
+      changelog:
+        isNew: true
       description: "Determines whether the parameter value SHOULD allow reserved characters, as defined by RFC3986 :/?#[]@!$&'()*+,;= to be included without percent-encoding. This property only applies to parameters with an in value of query. The default value is false."
     -
       name: schema
       type: Schema Object
       allowReference: true
+      changelog:
+        isNew: true
       description: The schema defining the type used for the parameter.
     -
       name: examples
       type: "[Example Object]"
       allowReference: true
+      changelog:
+        isNew: true
       description: Examples of the content type. Each example in the Examples array SHOULD be in the correct format as specified parameter encoding. The examples object is mutually exclusive to the example object. Furthermore, if referencing a schema which contains an example, the examples value SHALL override the example provided by the schema.
     -
       name: example
       type: Example Object
       allowReference: true
+      changelog:
+        isNew: true
       description: Example of the content type. The example object SHOULD be in the correct format as specified in the parameter encoding. The example object is mutually exclusive to the examples object. Furthermore, if referencing a schema which contains an example, the example value SHALL override the example provided by the the schema.

@@ -4,6 +4,10 @@ Path Item Object:
   allowExtension: true
   changelog:
     isModified: true
+    details: |
+      - Enhance resource point of view by adding `summary` and `description` on path level.
+      - HTTP methode `trace` has been added (TRACE allows the client to see what is being received at the other end of the request chain and use that data for testing or diagnostic information. See [RFC7231](https://tools.ietf.org/html/rfc7231#section-4.3.8).)
+      - The `servers` property enhance documentation and test possibilities (also available on top and operation levels).
   fields:
     - 
       name: summary

@@ -2,11 +2,18 @@ OpenAPI Object:
   name: OpenAPI 3.0.0-rc0
   specificationAnchor: oasObject
   description: |
+    OpenAPI 3.0.0 top level object.
     This is the root document object for the API specification. It combines what previously was the Resource Listing and API Declaration (version 1.2 and earlier) together into one document.
   allowExtension: true
   changelog:
     isModified: true
-    details: The `Swagger Object` has been renamed `OpenAPI Object` and the object's structure has been modified.
+    details: |
+      The new OpenAPI specification version 3.0.0 offers many welcomed improvements and new features (see OpenAPI [blog post series about this](https://www.openapis.org/news/blogs/2016/10/tdc-structural-improvements-explaining-30-spec-part-2)).
+      
+      Here are the noticeable changes on top level (*navigate through the tree to see what happened on other levels*): 
+      - Bye bye `swagger` and hello `openapi`.
+      - Reusable definitions are centralized in `components` making the document more consistent (the previous version mixed reusable and global definitions on the same level).
+
     deletedProperties:
       - name: swagger
         replacedBy: openapi

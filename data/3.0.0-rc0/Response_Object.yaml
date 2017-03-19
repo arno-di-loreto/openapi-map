@@ -1,17 +1,21 @@
 Response Object:
   description: Describes a single response from an API Operation, including design-time, static links to operations based on the response.
+  allowExtension: true
   changelog:
     isModified: true
-    details: Object's structure modified
+    details: |
+      - Better control on media type, response handles returned media type with `content.{mediatype}`. It replaces `produces` definition on `Operation Object` or top level.
+      - Enhanced hypermedia design with `links`.
+      - Headers are easier to define because they can be defined in `components.headers` and used in `headers`
     deletedProperties:
       - 
         name: schema
-        replacedBy: content
-        specificationAnchor: contentObject
+        replacedBy: content.{media type}.schema
+        see: Media Type Object
       -
         name: example
-        replacedBy: Content Object.{media type}.schema
-        specificationAnchor: mediaTypeObject
+        replacedBy: content.{media type}.example or content.{media type}.examples
+        see: Media Type Object
   fields:
     - 
       name: description

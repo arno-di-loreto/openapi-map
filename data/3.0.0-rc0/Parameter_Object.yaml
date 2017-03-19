@@ -13,11 +13,83 @@ Parameter Object:
   allowExtension: true
   changelog:
     isModified: true
-    description: |
-      - Describes query, header path and cookie (new!) parameters.
-      - Body parameters are now defined with a Request Body Object.
-      - Atomic parameters (string or boolean for example) are now defined with a schema like objects
-      - Former `formData` parameters (used for media types `application/x-www-form-urlencoded` or `multipart/form-data` are handled with a Content Object which allow to define the media type of parameters, request bodies, headers or responses.
+    details: |
+      - Besides query, header and path parameters, `cookie` parameters can be defined.
+      - Body parameters are now defined with a `Request Body Object`.
+      - All parameters types (even atomic ones like string or boolean for example) are now defined with a `Schema Object`.
+      - Former `formData` parameters (used for media types `application/x-www-form-urlencoded` or `multipart/form-data` are handled with a `Content Object` which allow to define the media type of parameters, request bodies, headers or responses.
+      - `Example(s)` can be provided.
+      - Parameters can now be `deprecated`.
+      - More control on serialization (with `allowReserved`, `style` and `explode`).
+    deletedProperties:
+      -
+        name: body
+        replacedBy: schema or content.schema
+        see: Parameter Object
+      - 
+        name: default
+        replacedBy: schema.default or content.{media type}.schema.default
+        see: Schema Object
+      -
+        name: items
+        replacedBy: schema.items or content.{media type}.schema.items
+        see: Schema Object
+      -
+        name: collectionFormat
+        replacedBy: schema.collectionFormat or content.{media type}.schema.collectionFormat
+        see: Schema Object
+      -
+        name: maxItems
+        replacedBy: schema.maxItems or content.{media type}.schema.maxItems
+        see: Schema Object
+      -
+        name: minItems
+        replacedBy: schema.minItems or content.{media type}.schema.minItems
+        see: Schema Object
+      -
+        name: uniqueItems
+        replacedBy: schema.uniqueItems or content.{media type}.schema.uniqueItems
+        see: Schema Object
+      -
+        name: format
+        replacedBy: schema.format or content.{media type}.schema.format
+        see: Schema Object
+      -
+        name: enum
+        replacedBy: schema.enum or content.{media type}.schema.enum
+        see: Schema Object
+      -
+        name: pattern
+        replacedBy: schema.pattern or content.{media type}.schema.pattern
+        see: Schema Object
+      -
+        name: maxLength
+        replacedBy: schema.maxLength or content.{media type}.schema.maxLength
+        see: Schema Object
+      -
+        name: minLength
+        replacedBy: schema.minLength or content.{media type}.schema.minLength
+        see: Schema Object
+      -
+        name: maximum
+        replacedBy: schema.maximum or content.{media type}.schema.maximum
+        see: Schema Object
+      -
+        name: exclusiveMaximum
+        replacedBy: schema.exclusiveMaximum or content.{media type}.schema.exclusiveMaximum
+        see: Schema Object
+      -
+        name: minimum
+        replacedBy: schema.minimum or content.{media type}.schema.minimum
+        see: Schema Object
+      -
+        name: exclusiveMinimum
+        replacedBy: schema.exclusiveMinimum or content.{media type}.schema.exclusiveMinimum
+        see: Schema Object
+      -
+        name: multipleOf
+        replacedBy: schema.multipleOf or content.{media type}.schema.multipleOf
+        see: Schema Object
   fields:
     -
       name: name
@@ -34,7 +106,8 @@ Parameter Object:
       description: The location of the parameter. Possible values are "query", "header", "path" or "cookie".
       changelog:
         isModified: true
-        details: formData (replaced by ?) and body (replaced by Request Body) have been removed
+        details: |
+          `formData` (replaced by the use of a `Content Object`) and `body` (replaced by `Request Body`) values have been removed.
       values:
         -
           value: query
@@ -74,8 +147,12 @@ Parameter Object:
     -
       name: <using style and schema>
       type: Parameter Object Style Schema
+      changelog:
+        isNew: true
       description: The rules for serialization of the parameter are specified in one of two ways. For simpler scenarios, a style and schema can be used to describe the structure and syntax of the parameter.
     -
       name: <using content>
       type: Parameter Object Content
+      changelog:
+        isNew: true
       description: For more complex scenarios a Content Object can be used to define the media type and schema of the parameter. This option is mutually exclusive with the simple scenario above. When example or examples are provided in conjunction with the schema object, the example must follow the prescribed serialization strategy for the parameter.

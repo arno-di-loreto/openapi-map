@@ -1,4 +1,5 @@
 Links Object:
+  allowExtension: true
   description: |
     The links object represents a set of possible design-time links for a response. The presence of a link does not guarantee the caller's ability to successfully invoke it, rather it provides a known relationship and traversal mechanism between responses and other operations.
 
@@ -12,3 +13,4 @@ Links Object:
       name: "{name}"
       description: A short name for the link, following the naming constraints of the names for Component Objects.
       type: Link Object 
+      allowReference: true

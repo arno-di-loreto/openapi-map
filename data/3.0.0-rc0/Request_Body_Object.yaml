@@ -2,6 +2,7 @@ Request Body Object:
   description: Describes a single request body.
   changelog:
     isNew: true
+  allowExtension: true
   fields:
     - 
       name: description

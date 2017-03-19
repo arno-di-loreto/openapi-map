@@ -6,4 +6,6 @@ Parameter Object Content:
   fields:
     - name: content
       type: Content Object
+      changelog:
+        isNew: true
       description: The content of the parameter.

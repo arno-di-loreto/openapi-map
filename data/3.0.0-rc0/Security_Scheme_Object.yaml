@@ -3,9 +3,10 @@ Security Scheme Object:
   changelog:
     isModified: true
     details: |
-      - Oauth2 configuration is made in a dedicated Oauth Flow Object (reusing the `flow` property)
-      - OpenID Connect support has been added.
-      - Basic Authorisation is ????
+      - Better overall security definitions with:
+        - a more generic HTTP authentication (that goes beyond the previous `basic` type)
+        - a more complete Oauth2 description (`OAuth Flows Object`) including some OpenId connect aspect (`openIdConnectUrl`)
+      - APIKey support is unchanged  
     deletedProperties:
       -
         name: apiKey

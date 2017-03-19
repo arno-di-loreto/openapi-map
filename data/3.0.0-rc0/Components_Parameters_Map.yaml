@@ -6,5 +6,5 @@ Components Parameters Map:
   fields:
     -
       name: "{name}"
-      description: A resusable Parameter Object
+      description: A reusable Parameter Object
       type: Parameter Object 

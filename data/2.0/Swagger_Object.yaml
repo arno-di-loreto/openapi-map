@@ -1,7 +1,7 @@
 Swagger Object:
-  name: OpenAPI definition
+  name: OpenAPI 2.0
   description: |
-    This is the *root* document object for the API specification.  
+    OpenAPI 2.0 top level object. This is the *root* document object for the API specification.  
     It combines what previously was the Resource Listing and API Declaration (version 1.2 and earlier) together into one document.
   allowExtension: true
   fields:

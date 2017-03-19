@@ -1,7 +1,13 @@
 Operation Object:
   description: Describes a single API operation on a path.
+  allowExtension: true
   changelog:
     isModified: true
+    details: |
+      - Better and consistent parameters description by using `Schema Object` even for atomic ones.
+      - Request body is now define separetely (`requestBody`).
+      - Async/event API design is possible thanks to `callbacks` (webhooks).
+      - The `servers` property enhance documentation and test possibilities (also available on top and path levels).
     deletedProperties:
       - 
         name: produces
@@ -27,7 +33,7 @@ Operation Object:
     -
       name: description
       type: string
-      md: CommondMark
+      md: CommonMark
       description: A verbose explanation of the operation behavior. CommonMark syntax can be used for rich text representation.
     -
       name: externalDocs
@@ -52,7 +58,7 @@ Operation Object:
       required: true
       changelog:
         isNew: true
-        details: Replace `paramaters` with `in = body`
+        details: Replace `parameters` with `in = body`
       description: The request body applicable for this operation. The requestBody is only supported in HTTP methods where the HTTP 1.1 specification has explicitly defined semantics for request bodies. In other cases where the HTTP spec is vague, requestBody SHALL be ignored by consumers.
     -
       name: responses

@@ -11,13 +11,11 @@ Schema Object:
   changelog:
     isModified: true
     details: |
-      OpenAPI properties:
-        - `nullable`, `writeOnly`, `example` and `deprecated` have been added.
-        - Inheritance and polymorphism mecanism has been modified (see `discriminator`).
-        - `readOnly` behaviour has been modified.
-
-      JSON Schema properties:
-        - `oneOf`, `anyOf` and `not` have been added.  
+      - Enhanced consistency and easier design with extensive use of Schema Object for all definitions (parameters, bodies, responses, headers)
+      - Inheritance and polymorphism mecanism has been enhanced (`oneOf`, `anyOf` and `not` have been added) and clarified (see new `discriminator` behaviour).
+      - Creating read/write models is easier with `readOnly` (behaviour modified) and `writeOnly` (new).
+      - Enhance versioning thanks to `deprecated`.
+      - Better documentation with the possibility to have multiple `examples`.
   fields:
     -
       name: <JSON Schema properties>

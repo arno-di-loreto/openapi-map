@@ -1,6 +1,7 @@
 Link Object:
   description: The Link Object is responsible for defining a possible operation based on a single response.
   specificationAnchor: link-object
+  allowExtension: true
   changelog:
     isNew: true
   fields:
