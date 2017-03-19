@@ -1,7 +1,5 @@
 Headers Object:
   description: Lists the headers that can be sent in a response or forwarded via a link. Note that RFC 7230 states header names are case insensitive.
-  changelog:
-    isModified: true
   fields:
     - name: "{name}"
       type: Header Object

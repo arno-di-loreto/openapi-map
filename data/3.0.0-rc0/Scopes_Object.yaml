@@ -3,7 +3,7 @@ Scopes Object:
   allowExtension: true
   fields:
     - 
-      name: {name}
+      name: "{name}"
       type: string
       description: Maps between a name of a scope to a short description of it (as the value of the property).
       patterned: true

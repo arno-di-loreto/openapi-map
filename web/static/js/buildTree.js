@@ -103,7 +103,7 @@ function isFieldsGroup(openapiDocumentation, type) {
   var openapiTypeName = getOpenapiTypeName(type);
   var definition = openapiDocumentation[openapiTypeName];
   var result;
-  if (definition.fieldsGroup === undefined) {
+  if (definition === undefined || definition.fieldsGroup === undefined) {
     result = false;
   }
   else {
@@ -150,10 +150,27 @@ function isArray(type) {
   return type.indexOf('[') >= 0;
 }
 
-function getNewProperties(type) {
+function getFields(typeDefinition, openapiDocumentation) {
   var result = [];
-  for (var i = 0; i < type.fields.length; i++) {
-    var property = type.fields[i];
+  for (var i = 0; i < typeDefinition.fields.length; i++) {
+    var field = typeDefinition.fields[i];
+    if (isFieldsGroup(openapiDocumentation, field.type)) {
+      var fieldsGroupDefinition = openapiDocumentation[field.type];
+      result = result.concat(
+        getFields(fieldsGroupDefinition, openapiDocumentation));
+    }
+    else {
+      result.push(field);
+    }
+  }
+  return result;
+}
+
+function getNewProperties(type, openapiDocumentation) {
+  var result = [];
+  var fields = getFields(type, openapiDocumentation);
+  for (var i = 0; i < fields.length; i++) {
+    var property = fields[i];
     if (property.changelog && property.changelog.isNew) {
       result.push({
         name: property.name,
@@ -164,10 +181,11 @@ function getNewProperties(type) {
   return result;
 }
 
-function getModifiedProperties(type) {
+function getModifiedProperties(type, openapiDocumentation) {
   var result = [];
-  for (var i = 0; i < type.fields.length; i++) {
-    var property = type.fields[i];
+  var fields = getFields(type, openapiDocumentation);
+  for (var i = 0; i < fields.length; i++) {
+    var property = fields[i];
     if (property.changelog && property.changelog.isModified) {
       result.push({
         name: property.name,
@@ -236,7 +254,7 @@ function buildNodeFromOpenapiType(openapiDocumentation,
     node.typeChangelog.details = getHTMLFromMD(node.typeChangelog.details);
   }
 
-  var newProperties = getNewProperties(definition);
+  var newProperties = getNewProperties(definition, openapiDocumentation);
   if (newProperties.length > 0) {
     if (node.typeChangelog === undefined) {
       node.typeChangelog = {newProperties: newProperties};
@@ -246,7 +264,7 @@ function buildNodeFromOpenapiType(openapiDocumentation,
     }
   }
 
-  var modifiedProperties = getModifiedProperties(definition);
+  var modifiedProperties = getModifiedProperties(definition, openapiDocumentation);
   if (modifiedProperties.length > 0) {
     if (node.typeChangelog === undefined) {
       node.typeChangelog = {modifiedProperties: modifiedProperties};

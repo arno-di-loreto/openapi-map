@@ -1,0 +1,28 @@
+OAuth Flow Object:
+  description: Configuration details for a supported OAuth Flow
+  specificationAnchor: oauthFlowObject
+  changelog:
+    isNew: true
+  fields:
+    - 
+      name: authorizationUrl
+      type: string
+      validity: oauth2 ("implicit", "authorizationCode")
+      required: true
+      description: The authorization URL to be used for this flow. This MUST be in the form of a URL.
+    -
+      name: tokenUrl
+      type: string
+      validity: oauth2 ("password", "clientCredentials", "authorizationCode")
+      required: true
+      description: The token URL to be used for this flow. This MUST be in the form of a URL.
+    -
+      name: refreshUrl
+      type: string
+      validity: oauth2
+      description: The URL to be used for obtaining refresh tokens. This MUST be in the form of a URL.
+    -
+      name: scopes
+      type: Scopes Object
+      validity: oauth2
+      description: The available scopes for the OAuth2 security scheme.
