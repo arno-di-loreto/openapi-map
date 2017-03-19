@@ -1,0 +1,16 @@
+Links Object:
+  allowExtension: true
+  description: |
+    The links object represents a set of possible design-time links for a response. The presence of a link does not guarantee the caller's ability to successfully invoke it, rather it provides a known relationship and traversal mechanism between responses and other operations.
+
+    As opposed to dynamic links (links provided in the response payload), the OAS linking mechanism does not require that link information be provided in a specific response format at runtime.
+
+    For computing links, and providing instructions to execute them, variable substitution is used for accessing values in a response and using them as values while invoking the linked operation.
+  changelog:
+    isNew: true
+  fields:
+    -
+      name: "{name}"
+      description: A short name for the link, following the naming constraints of the names for Component Objects.
+      type: Link Object 
+      allowReference: true

@@ -1,0 +1,8 @@
+Encoding Object:
+  description: An object representing multipart region encoding for requestBody objects.
+  changelog:
+    isNew: true
+  fields:
+    - name: "{property}"
+      type: Encoding Property Object
+      description: The property name to which the special encoding are applied. This field MUST exist in the schema as a property.

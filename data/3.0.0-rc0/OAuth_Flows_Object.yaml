@@ -1,0 +1,23 @@
+OAuth Flows Object:
+  description: Allows configuration of the supported OAuth Flows.
+  changelog:
+    isNew: true
+  specificationAnchor: oauthFlowsObject
+  allowExtension: true
+  fields:
+    - 
+      name: implicit
+      type: OAuth Flow Object
+      description: Configuration for the OAuth Implicit flow
+    - 
+      name: password
+      type: OAuth Flow Object
+      description: Configuration for the OAuth Resource Owner Password flow
+    - 
+      name: clientCredentials
+      type: OAuth Flow Object
+      description: Configuration for the OAuth Client Credentials flow. Previously called application in OpenAPI 2.0.
+    -
+      name: authorizationCode
+      type: OAuth Flow Object
+      description: Configuration for the OAuth Authorization Code flow. Previously called accessCode in OpenAPI 2.0.

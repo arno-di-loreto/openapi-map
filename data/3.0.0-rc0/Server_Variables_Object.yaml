@@ -1,0 +1,10 @@
+Server Variables Object:
+  description: An object holding variables for substitution in the URL template.
+  allowExtension: true
+  changelog:
+    isNew: true
+  fields:
+    - name: "{name}"
+      type: Server Variable Object
+      description: A single definition, mapping a *name* to the schema it defines.
+      patterned: true

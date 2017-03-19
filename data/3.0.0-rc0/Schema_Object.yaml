@@ -1,0 +1,31 @@
+Schema Object:
+  description: |
+    The Schema Object allows the definition of input and output data types. These types can be objects, but also primitives and arrays. This object is an extended subset of the [JSON Schema Specification Wright Draft 00](http://json-schema.org/).
+
+    Further information about the properties can be found in [JSON Schema Core](https://tools.ietf.org/html/draft-wright-json-schema-00) and [JSON Schema Validation](https://tools.ietf.org/html/draft-wright-json-schema-validation-00). Unless stated otherwise, the property definitions follow the JSON Schema specification as referenced here.
+
+    Alternatively, any time a Schema Object can be used, a Reference Object can be used in its place. This allows referencing definitions in place of defining them inline.
+
+    Additional properties defined by the JSON Schema specification that are not mentioned here are strictly unsupported.
+  allowExtension: true
+  changelog:
+    isModified: true
+    details: |
+      - Enhanced consistency and easier design with extensive use of Schema Object for all definitions (parameters, bodies, responses, headers)
+      - Inheritance and polymorphism mecanism has been enhanced (`oneOf`, `anyOf` and `not` have been added) and clarified (see new `discriminator` behaviour).
+      - Creating read/write models is easier with `readOnly` (behaviour modified) and `writeOnly` (new).
+      - Enhance versioning thanks to `deprecated`.
+      - Better documentation with the possibility to have multiple `examples`.
+  fields:
+    -
+      name: <JSON Schema properties>
+      type: Schema Object JSON
+      changelog:
+        isModified: true
+      description: JSON Schema Properties
+    -
+      name: <OpenAPI properties>
+      type: Schema Object OpenAPI
+      changelog:
+        isModified: true
+      description: Other than the JSON Schema subset fields, the following fields MAY be used for further schema documentation.

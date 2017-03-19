@@ -1,0 +1,69 @@
+Path Item Object:
+  description: |
+    Describes the operations available on a single path. A Path Item MAY be empty, due to ACL constraints. The path itself is still exposed to the documentation viewer but they will not know which operations and parameters are available.
+  allowExtension: true
+  changelog:
+    isModified: true
+    details: |
+      - Enhance resource point of view by adding `summary` and `description` on path level.
+      - HTTP methode `trace` has been added (TRACE allows the client to see what is being received at the other end of the request chain and use that data for testing or diagnostic information. See [RFC7231](https://tools.ietf.org/html/rfc7231#section-4.3.8).)
+      - The `servers` property enhance documentation and test possibilities (also available on top and operation levels).
+  fields:
+    - 
+      name: summary
+      type: string
+      description: An optional, string summary, intended to apply to all operations in this path.
+      changelog:
+        isNew: true
+    - 
+      name: description
+      type: string
+      description: An optional, string description, intended to apply to all operations in this path.
+      changelog:
+        isNew: true
+    - 
+      name: get
+      type: Operation Object
+      description: A definition of a GET operation on this path.
+    -
+      name: put
+      type: Operation Object
+      description: A definition of a PUT operation on this path.
+    -
+      name: post
+      type: Operation Object
+      description: A definition of a POST operation on this path.
+    -
+      name: delete
+      type: Operation Object
+      description: A definition of a DELETE operation on this path.
+    -
+      name: options
+      type: Operation Object
+      description: A definition of a OPTIONS operation on this path.
+    -
+      name: head
+      type: Operation Object
+      description: A definition of a HEAD operation on this path.
+    -
+      name: patch
+      type: Operation Object
+      description: A definition of a PATCH operation on this path.
+    - 
+      name: trace
+      type: Operation Object
+      description: A definition of a TRACE operation on this path.
+      changelog:
+        isNew: true
+    -
+      name: servers
+      type: Server Object
+      description: An alternative `server` array to service all operations in this path.
+      changelog:
+        isNew: true
+    -
+      name: parameters
+      type: "[Parameter Object]"
+      allowReference: true
+      description: |
+        A list of parameters that are applicable for all the operations described under this path. These parameters can be overridden at the operation level, but cannot be removed there. The list MUST NOT include duplicated parameters. A unique parameter is defined by a combination of a name and location. The list can use the Reference Object to link to parameters that are defined at the OpenAPI Object's parameters. 

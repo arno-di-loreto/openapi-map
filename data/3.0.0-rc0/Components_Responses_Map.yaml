@@ -1,0 +1,10 @@
+Components Responses Map:
+  description: An object to hold reusable Response Objects.
+  specificationAnchor: componentsObject
+  changelog:
+    isNew: true
+  fields:
+    -
+      name: "{name}"
+      description: A resusable Response Object
+      type: Response Object 

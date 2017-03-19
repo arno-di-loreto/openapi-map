@@ -1,0 +1,158 @@
+Parameter Object:
+  description: |
+    Describes a single operation parameter.
+
+    A unique parameter is defined by a combination of a name and location.
+
+    There are four possible parameter locations (as specified with the in field):
+
+    - path - Used together with Path Templating, where the parameter value is actually part of the operation's URL. This does not include the host or base path of the API. For example, in /items/{itemId}, the path parameter is itemId.
+    - query - Parameters that are appended to the URL. For example, in /items?id=###, the query parameter is id.
+    - header - Custom headers that are expected as part of the request. Note that RFC 7230 states header names are case insensitive.
+    - cookie - Used to pass a specific cookie value to the API.
+  allowExtension: true
+  changelog:
+    isModified: true
+    details: |
+      - Besides query, header and path parameters, `cookie` parameters can be defined.
+      - Body parameters are now defined with a `Request Body Object`.
+      - All parameters types (even atomic ones like string or boolean for example) are now defined with a `Schema Object`.
+      - Former `formData` parameters (used for media types `application/x-www-form-urlencoded` or `multipart/form-data` are handled with a `Content Object` which allow to define the media type of parameters, request bodies, headers or responses.
+      - `Example(s)` can be provided.
+      - Parameters can now be `deprecated`.
+      - More control on serialization (with `allowReserved`, `style` and `explode`).
+    deletedProperties:
+      -
+        name: body
+        replacedBy: schema or content.schema
+        see: Parameter Object
+      - 
+        name: default
+        replacedBy: schema.default or content.{media type}.schema.default
+        see: Schema Object
+      -
+        name: items
+        replacedBy: schema.items or content.{media type}.schema.items
+        see: Schema Object
+      -
+        name: collectionFormat
+        replacedBy: schema.collectionFormat or content.{media type}.schema.collectionFormat
+        see: Schema Object
+      -
+        name: maxItems
+        replacedBy: schema.maxItems or content.{media type}.schema.maxItems
+        see: Schema Object
+      -
+        name: minItems
+        replacedBy: schema.minItems or content.{media type}.schema.minItems
+        see: Schema Object
+      -
+        name: uniqueItems
+        replacedBy: schema.uniqueItems or content.{media type}.schema.uniqueItems
+        see: Schema Object
+      -
+        name: format
+        replacedBy: schema.format or content.{media type}.schema.format
+        see: Schema Object
+      -
+        name: enum
+        replacedBy: schema.enum or content.{media type}.schema.enum
+        see: Schema Object
+      -
+        name: pattern
+        replacedBy: schema.pattern or content.{media type}.schema.pattern
+        see: Schema Object
+      -
+        name: maxLength
+        replacedBy: schema.maxLength or content.{media type}.schema.maxLength
+        see: Schema Object
+      -
+        name: minLength
+        replacedBy: schema.minLength or content.{media type}.schema.minLength
+        see: Schema Object
+      -
+        name: maximum
+        replacedBy: schema.maximum or content.{media type}.schema.maximum
+        see: Schema Object
+      -
+        name: exclusiveMaximum
+        replacedBy: schema.exclusiveMaximum or content.{media type}.schema.exclusiveMaximum
+        see: Schema Object
+      -
+        name: minimum
+        replacedBy: schema.minimum or content.{media type}.schema.minimum
+        see: Schema Object
+      -
+        name: exclusiveMinimum
+        replacedBy: schema.exclusiveMinimum or content.{media type}.schema.exclusiveMinimum
+        see: Schema Object
+      -
+        name: multipleOf
+        replacedBy: schema.multipleOf or content.{media type}.schema.multipleOf
+        see: Schema Object
+  fields:
+    -
+      name: name
+      required: true
+      type: string
+      description: |
+        The name of the parameter. Parameter names are case sensitive.
+        If in is "path", the name field MUST correspond to the associated path segment from the path field in the Paths Object. See Path Templating for further information.
+        For all other cases, the name corresponds to the parameter name used based on the in property.
+    -
+      name: in
+      type: string
+      required: true
+      description: The location of the parameter. Possible values are "query", "header", "path" or "cookie".
+      changelog:
+        isModified: true
+        details: |
+          `formData` (replaced by the use of a `Content Object`) and `body` (replaced by `Request Body`) values have been removed.
+      values:
+        -
+          value: query
+          description: "Parameters that are appended to the URL. For example, in /items?id=###, the query parameter is id."
+        -
+          value: header
+          description: Custom headers that are expected as part of the request. Note that RFC 7230 states header names are case insensitive.
+        -
+          value: path
+          description: |
+            Used together with Path Templating, where the parameter value is actually part of the operation's URL. This does not include the host or base path of the API. For example, in /items/{itemId}, the path parameter is itemId.
+        -
+          value: cookie
+          description: Used to pass a specific cookie value to the API.
+    
+    -
+      name: description
+      type: string
+      md: CommonMark
+      description: |
+        A brief description of the parameter. This could contain examples of use. CommonMark syntax can be used for rich text representation.    
+    -
+      name: required
+      type: boolean
+      description: |
+        Determines whether this parameter is mandatory. If the parameter location is "path", this property is required and its value MUST be true. Otherwise, the property MAY be included and its default value is false.
+    -
+      name: deprecated
+      type: boolean
+      description: Specifies that a parameter is deprecated and SHOULD be transitioned out of usage.
+      changelog:
+        isNew: true
+    -
+      name: allowEmptyValue
+      type: boolean
+      description: Sets the ability to pass empty-valued parameters. This is valid only for query parameters and allows sending a parameter with an empty value. Default value is false. If style is used, if behavior is n/a, the value of allowEmptyValue SHALL be ignored.
+    -
+      name: <using style and schema>
+      type: Parameter Object Style Schema
+      changelog:
+        isNew: true
+      description: The rules for serialization of the parameter are specified in one of two ways. For simpler scenarios, a style and schema can be used to describe the structure and syntax of the parameter.
+    -
+      name: <using content>
+      type: Parameter Object Content
+      changelog:
+        isNew: true
+      description: For more complex scenarios a Content Object can be used to define the media type and schema of the parameter. This option is mutually exclusive with the simple scenario above. When example or examples are provided in conjunction with the schema object, the example must follow the prescribed serialization strategy for the parameter.

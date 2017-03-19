@@ -1,0 +1,134 @@
+Schema Object Modified JSON:
+  description: The following properties are taken from the JSON Schema definition but their definitions were adjusted to the OpenAPI Specification.
+  fieldsGroup: true
+  changelog:
+    isModified: true
+  fields:
+    - 
+      name: type
+      type: string
+      description: Value MUST be a string. Multiple types via an array are not supported.
+      values:
+        -
+          value: array
+          description: A JSON array.
+        -
+          value: boolean
+          description: A JSON boolean.
+        -
+          value: integer
+          description: A JSON number without a fraction or exponent part.
+        -
+          value: number
+          description: Any JSON number. Number includes integer.
+        -
+          value: 'null'
+          description: The JSON null value.
+        -
+          value: object
+          description: A JSON object.
+          default: true
+        -
+          value: string
+          description: A JSON string.
+    - 
+      name: allOf
+      type: "[Schema Object]"
+      allowReference: true
+      noFollow: true
+      description: |
+        Inline or referenced schema MUST be of a Schema Object and not a standard JSON Schema.
+
+        [What the JSON Schema Specification says](http://json-schema.org/latest/json-schema-validation.html#rfc.section.5.22): This keyword's value MUST be an array. This array MUST have at least one element.
+
+        Elements of the array MUST be objects. Each object MUST be a valid JSON Schema.
+
+        An instance validates successfully against this keyword if it validates successfully against all schemas defined by this keyword's value.
+    - 
+      name: oneOf
+      type: "[Schema Object]"
+      allowReference: true
+      noFollow: true
+      changelog:
+        isNew: true
+      description: |
+        Inline or referenced schema MUST be of a Schema Object and not a standard JSON Schema.
+
+        [What the JSON Schema Specification says](http://json-schema.org/latest/json-schema-validation.html#rfc.section.5.24): This keyword's value MUST be an array. This array MUST have at least one element.
+
+        Elements of the array MUST be objects. Each object MUST be a valid JSON Schema.
+
+        An instance validates successfully against this keyword if it validates successfully against at least one schema defined by this keyword's value.
+    -
+      name: anyOf
+      type: "[Schema Object]"
+      allowReference: true
+      noFollow: true
+      changelog:
+        isNew: true
+      description: |
+        Inline or referenced schema MUST be of a Schema Object and not a standard JSON Schema.
+
+        [What the JSON Schema Specification says](http://json-schema.org/latest/json-schema-validation.html#rfc.section.5.23):This keyword's value MUST be an array. This array MUST have at least one element.
+
+        Elements of the array MUST be objects. Each object MUST be a valid JSON Schema.
+
+        An instance validates successfully against this keyword if it validates successfully against at least one schema defined by this keyword's value.
+    - 
+      name: not
+      type: "Schema Object"
+      allowReference: true
+      noFollow: true
+      changelog:
+        isNew: true
+      description: |
+        Inline or referenced schema MUST be of a Schema Object and not a standard JSON Schema.
+
+        [What the JSON Schema Specification says](http://json-schema.org/latest/json-schema-validation.html#rfc.section.5.25): This keyword's value MUST be an object. This object MUST be a valid JSON Schema.
+
+        An instance is valid against this keyword if it fails to validate successfully against the schema defined by this keyword.
+    - 
+      name: items
+      type: "Schema Object"
+      allowReference: true
+      noFollow: true
+      description: Value MUST be an object and not an array. Inline or referenced schema MUST be of a Schema Object and not a standard JSON Schema. items MUST be present if the type is array.
+    - 
+      name: properties
+      type: "Schema Object"
+      allowReference: true
+      noFollow: true
+      description: Property definitions MUST be a Schema Object and not a standard JSON Schema (inline or referenced).
+    - 
+      name: additionalProperties
+      type: Schema Object
+      additionalType: Boolean
+      allowReference: true
+      noFollow: true
+      changelog:
+        isModified: true
+        details: Can now be a boolean besides a Schema Object. 
+      description: |
+        Value can be boolean or object. Inline or referenced schema MUST be of a Schema Object and not a standard JSON Schema.
+
+        [What the JSON Schema Specification says](http://json-schema.org/latest/json-schema-validation.html#rfc.section.5.18): The value of "additionalProperties" MUST be a boolean or a schema.
+
+        If "additionalProperties" is absent, it may be considered present with an empty schema as a value.
+
+        If "additionalProperties" is true, validation always succeeds.
+
+        If "additionalProperties" is false, validation succeeds only if the instance is an object and all properties on the instance were covered by "properties" and/or "patternProperties".
+
+        If "additionalProperties" is an object, validate the value as a schema to all of the properties that weren't validated by "properties" nor "patternProperties".
+    - 
+      name: description
+      type: string
+      description: CommonMark syntax can be used for rich text representation.
+    - 
+      name: format
+      type: string
+      description: See Data Type Formats for further details. While relying on JSON Schema's defined formats, the OAS offers a few additional predefined formats.
+    - 
+      name: default
+      type: '*'
+      description: The default value represents what would be assumed by the consumer of the input as the value of the schema if one is not provided. Unlike JSON Schema, the value MUST conform to the defined type for the Schema Object defined at the same level. For example, of type is string, then default can be "foo" but cannot be 1.

@@ -1,0 +1,10 @@
+Components Request Bodies Map:
+  description: An object to hold reusable Request Body Objects.
+  specificationAnchor: componentsObject
+  changelog:
+    isNew: true
+  fields:
+    -
+      name: "{name}"
+      description: A resusable Request Body Object
+      type: Request Body Object 

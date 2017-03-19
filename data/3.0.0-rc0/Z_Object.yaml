@@ -1,0 +1,6 @@
+Z Object:
+  description: tmp
+  fields:
+    - name: tmp
+      type: string
+      description: tmp

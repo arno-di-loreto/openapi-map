@@ -1,6 +1,6 @@
-Schema Object Swagger:
+Schema Object OpenAPI:
   fieldsGroup: true
-  description: The following properties are taken directly from the JSON Schema definition and follow the same specifications.
+  description: Other than the JSON Schema subset fields, the following fields may be used for further schema documentation.
   fields:
     - 
       name: discriminator

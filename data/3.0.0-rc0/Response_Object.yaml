@@ -1,0 +1,45 @@
+Response Object:
+  description: Describes a single response from an API Operation, including design-time, static links to operations based on the response.
+  allowExtension: true
+  changelog:
+    isModified: true
+    details: |
+      - Better control on media type, response handles returned media type with `content.{mediatype}`. It replaces `produces` definition on `Operation Object` or top level.
+      - Enhanced hypermedia design with `links`.
+      - Headers are easier to define because they can be defined in `components.headers` and used in `headers`
+    deletedProperties:
+      - 
+        name: schema
+        replacedBy: content.{media type}.schema
+        see: Media Type Object
+      -
+        name: example
+        replacedBy: content.{media type}.example or content.{media type}.examples
+        see: Media Type Object
+  fields:
+    - 
+      name: description
+      type: string
+      isRequired: true
+      md: CommonMark
+      description: A short description of the response. CommonMark syntax can be used for rich text representation.
+    -
+      name: headers
+      type: Headers Object
+      changelog:
+        isModified: true
+        details: Headers can now be defined in the root `components`
+      description: A list of headers that are sent with the response.
+    -
+      name: content
+      type: Content Object
+      changelog:
+        isNew: true
+        details: Replace `schema` but also `Operation Object.produces` or `Open API Object.produces`
+      description: An object containing descriptions of potential response payloads.
+    -
+      name: links
+      type: Links Object
+      changelog:
+        isNew: true
+      description: An object representing operations related to the response payload.

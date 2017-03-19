@@ -1,0 +1,59 @@
+Components Object:
+  description: Holds a set of reusable objects for different aspects of the OAS. All objects defined within the components object will have no effect on the API unless they are explicitly referenced from properties outside the components object.
+  allowExtension: true
+  changelog:
+    isNew: true
+    details: Contains former root `responses`, `parameters` (split into `parameters` and `requestBodies`) and `definitions` (as `schemas`).
+  fields:
+    - 
+      name: schemas
+      type: Components Schemas Map
+      changelog:
+        isInfo: true
+        details: Replace root `definitions`
+      description: A map of reusable Schema Objects.
+    -
+      name: responses
+      type: Components Responses Map
+      changelog:
+        isInfo: true
+        details: Replace root `responses`
+      description: A map of reusable Response Objects.
+    -
+      name: parameters
+      type: Components Parameters Map
+      changelog:
+        isInfo: true
+        details: Replace root `parameters` (Only non body parameters, body ones are in `requestBodies`).
+      description: A map of reusable Parameter Objects.
+    -
+      name: examples
+      type: Components Examples Map
+      description: A map of reusable Example Objects.
+    -
+      name: requestBodies
+      type: Components Request Bodies Map
+      changelog:
+        isInfo: true
+        details: Partially replace root `parameters` (Body parameters only, others are in `parameters`).
+      description: A map of reusable Request Bodies Objects.
+    -
+      name: headers
+      type: Components Headers Map
+      description: A map of reusable Header Objects.
+    -
+      name: securitySchemes
+      type: Components Security Schemes Map
+      changelog:
+        isInfo: true
+        details: Replace root `securityDefinitions`.
+      description: A map of reusable Security Scheme Objects.
+    -
+      name: links
+      type: Components Links Map
+      description: A map of reusable Link Objects.
+    -
+      name: callbacks
+      type: Components Callbacks Map
+      description: A map of reusable Callback Objects.
+    

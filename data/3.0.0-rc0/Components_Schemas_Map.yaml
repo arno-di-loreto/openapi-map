@@ -1,0 +1,10 @@
+Components Schemas Map:
+  description: An object to hold reusable Schema Objects.
+  specificationAnchor: componentsObject
+  changelog:
+    isNew: true
+  fields:
+    -
+      name: "{name}"
+      description: A resusable Schema Object
+      type: Schema Object

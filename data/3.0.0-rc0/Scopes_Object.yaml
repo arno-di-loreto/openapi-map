@@ -1,0 +1,9 @@
+Scopes Object:
+  description: Lists the available scopes for an OAuth2 security scheme.
+  allowExtension: true
+  fields:
+    - 
+      name: "{name}"
+      type: string
+      description: Maps between a name of a scope to a short description of it (as the value of the property).
+      patterned: true

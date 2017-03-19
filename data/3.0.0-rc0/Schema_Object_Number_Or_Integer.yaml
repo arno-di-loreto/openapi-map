@@ -1,0 +1,48 @@
+Schema Object Number Or Integer:
+  description: A number or integer value
+  fieldsGroup: true
+  fields:
+    -
+      name: format
+      type: string
+      description: |
+        The extending format for the previously mentioned type.  
+        See Data Type Formats for further details.  
+        
+        Common Name | type | format| Comments
+        ------------|------|-------|---------
+        integer	    | integer | int32 | signed 32 bits
+        long	      | integer	| int64	| signed 64 bits
+        float	      | number	| float |	
+        double	    | number	| double|	
+
+    -
+      name: maximum
+      type: number
+      description: |
+        Maximum value.  
+        See http://json-schema.org/latest/json-schema-validation.html#anchor17.
+    -
+      name: exclusiveMaximum
+      type: boolean
+      description: |
+        Indicate if the value must be < maximum.  
+        See http://json-schema.org/latest/json-schema-validation.html#anchor17.
+    -
+      name: minimum
+      type: number
+      description: |
+        Minimum value.  
+        See http://json-schema.org/latest/json-schema-validation.html#anchor21.
+    -
+      name: exclusiveMinimum
+      type: boolean
+      description: |
+        Indicate if the value must value > minimum.  
+        See http://json-schema.org/latest/json-schema-validation.html#anchor21.
+    -
+      name: multipleOf
+      type: number
+      description: |
+        The value must be a multiple of *multiplOf*.  
+        See http://json-schema.org/latest/json-schema-validation.html#anchor14.

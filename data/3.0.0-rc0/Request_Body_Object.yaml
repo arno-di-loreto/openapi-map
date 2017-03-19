@@ -1,0 +1,19 @@
+Request Body Object:
+  description: Describes a single request body.
+  changelog:
+    isNew: true
+  allowExtension: true
+  fields:
+    - 
+      name: description
+      type: string
+      md: CommonMark
+      description: 	A brief description of the request body. This could contain examples of use. CommonMark syntax can be used for rich text representation.
+    - 
+      name: content
+      type: Content Object
+      description: The content of the request body.
+    -
+      name: required
+      type: boolean
+      description: Determines if the request body is required in the request. Defaults to true.

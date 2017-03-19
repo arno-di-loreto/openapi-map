@@ -1,7 +1,7 @@
 Swagger Object:
-  name: OpenAPI definition
+  name: OpenAPI 2.0
   description: |
-    This is the *root* document object for the API specification.  
+    OpenAPI 2.0 top level object. This is the *root* document object for the API specification.  
     It combines what previously was the Resource Listing and API Declaration (version 1.2 and earlier) together into one document.
   allowExtension: true
   fields:
@@ -37,7 +37,7 @@ Swagger Object:
         The value MUST start with a leading slash (/).  
         The basePath does not support path templating.
     - name: schemes
-      type: [string]
+      type: "[string]"
       description: |
         The transfer protocol of the API.  
         If the schemes is not included, the default scheme to be used is the one used to access the OpenAPI definition itself.
@@ -49,13 +49,13 @@ Swagger Object:
         - value: wss
           description: "Secured [web socket](https://en.wikipedia.org/wiki/WebSocket) scheme"
     - name: consumes
-      type: [string]
+      type: "[string]"
       description: |
         A list of MIME types the APIs can consume.  
         This is global to all APIs but can be overridden on specific API calls.  
         Value MUST be as described under Mime Types.
     - name: produces
-      type: [string]
+      type: "[string]"
       description: |
         A list of MIME types the APIs can produce.  
         This is global to all APIs but can be overridden on specific API calls.  
