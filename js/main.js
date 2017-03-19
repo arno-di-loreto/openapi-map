@@ -15,14 +15,14 @@ function populateVersionList(callback) {
       var url = versions[i].url;
       var root = versions[i].root;
       var specificationurl = versions[i].specificationurl;
-      $('#versions').append('<li role="presentation" id="' +
+      $('#versions').append('<li class="nav-item" id="' +
         name +
-        '"><a onclick="javascript:showVersion(\'' +
+        '"><a href="javascript:showVersion(\'' +
         name + '\',\'' +
         url + '\',\'' +
         root + '\',\'' +
         specificationurl + '\',\'' +
-        '\')">Version ' +
+        '\');">Version ' +
         name +
         '</a></li>');
     }
@@ -45,12 +45,18 @@ function loadData(url, root, specificationurl, callback) {
 function showVersion(name, url, root, specificationurl) {
   loadData(url, root, specificationurl, function() {
     $('#versions li').each(function() {
+        $(this).blur();
         $(this).removeClass('active');
         if ($(this).attr('id').localeCompare(name) === 0) {
           $(this).addClass('active');
         }
     });
   });
+}
+
+function showHome() {
+  $('#tooltip').empty();
+  $('#help').show();
 }
 
 populateVersionList(function(versions) {

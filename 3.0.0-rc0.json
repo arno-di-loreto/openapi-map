@@ -1,0 +1,1661 @@
+{
+    "Callback Object": {
+        "changelog": {
+            "isNew": true
+        },
+        "allowExtension": true,
+        "description": "A map of possible out-of band callbacks related to the parent operation. Each value in the map is a Path Item Object that describes a set of requests that may be initiated by the API provider and the expected responses. The key value used to identify the callback object is an expression, evaluated at runtime, that identifies a URL to use for the callback operation.",
+        "fields": [{
+            "name": "{expression}",
+            "type": "Path Item Object",
+            "noFollow": true,
+            "description": "A Path Item Object used to define a callback request and expected responses"
+        }]
+    },
+    "Callbacks Object": {
+        "changelog": {
+            "isNew": true
+        },
+        "allowExtension": true,
+        "description": "An object to hold reusable Callback Objects.",
+        "fields": [{
+            "name": "{name}",
+            "description": "A resusable Callback Object",
+            "type": "Callback Object",
+            "allowReference": true
+        }]
+    },
+    "Components Callbacks Map": {
+        "changelog": {
+            "isNew": true
+        },
+        "description": "An object to hold reusable Callback Objects.",
+        "specificationAnchor": "componentsObject",
+        "fields": [{
+            "name": "{name}",
+            "description": "A resusable Callback Object",
+            "type": "Callback Object"
+        }]
+    },
+    "Components Examples Map": {
+        "description": "An object to hold reusable Example Objects.",
+        "specificationAnchor": "componentsObject",
+        "changelog": {
+            "isNew": true
+        },
+        "fields": [{
+            "name": "{name}",
+            "description": "A resusable Example Object",
+            "type": "Example Object"
+        }]
+    },
+    "Components Headers Map": {
+        "description": "An object to hold reusable Header Objects.",
+        "specificationAnchor": "componentsObject",
+        "changelog": {
+            "isNew": true
+        },
+        "fields": [{
+            "name": "{name}",
+            "description": "A resusable Header Object",
+            "type": "Header Object"
+        }]
+    },
+    "Components Links Map": {
+        "description": "An object to hold reusable Link Objects.",
+        "specificationAnchor": "componentsObject",
+        "changelog": {
+            "isNew": true
+        },
+        "fields": [{
+            "name": "{name}",
+            "description": "A resusable Link Object",
+            "type": "Link Object"
+        }]
+    },
+    "Components Object": {
+        "description": "Holds a set of reusable objects for different aspects of the OAS. All objects defined within the components object will have no effect on the API unless they are explicitly referenced from properties outside the components object.",
+        "allowExtension": true,
+        "changelog": {
+            "isNew": true,
+            "details": "Contains former root `responses`, `parameters` (split into `parameters` and `requestBodies`) and `definitions` (as `schemas`)."
+        },
+        "fields": [{
+            "name": "schemas",
+            "type": "Components Schemas Map",
+            "changelog": {
+                "isInfo": true,
+                "details": "Replace root `definitions`"
+            },
+            "description": "A map of reusable Schema Objects."
+        }, {
+            "name": "responses",
+            "type": "Components Responses Map",
+            "changelog": {
+                "isInfo": true,
+                "details": "Replace root `responses`"
+            },
+            "description": "A map of reusable Response Objects."
+        }, {
+            "name": "parameters",
+            "type": "Components Parameters Map",
+            "changelog": {
+                "isInfo": true,
+                "details": "Replace root `parameters` (Only non body parameters, body ones are in `requestBodies`)."
+            },
+            "description": "A map of reusable Parameter Objects."
+        }, {
+            "name": "examples",
+            "type": "Components Examples Map",
+            "description": "A map of reusable Example Objects."
+        }, {
+            "name": "requestBodies",
+            "type": "Components Request Bodies Map",
+            "changelog": {
+                "isInfo": true,
+                "details": "Partially replace root `parameters` (Body parameters only, others are in `parameters`)."
+            },
+            "description": "A map of reusable Request Bodies Objects."
+        }, {
+            "name": "headers",
+            "type": "Components Headers Map",
+            "description": "A map of reusable Header Objects."
+        }, {
+            "name": "securitySchemes",
+            "type": "Components Security Schemes Map",
+            "changelog": {
+                "isInfo": true,
+                "details": "Replace root `securityDefinitions`."
+            },
+            "description": "A map of reusable Security Scheme Objects."
+        }, {
+            "name": "links",
+            "type": "Components Links Map",
+            "description": "A map of reusable Link Objects."
+        }, {
+            "name": "callbacks",
+            "type": "Components Callbacks Map",
+            "description": "A map of reusable Callback Objects."
+        }]
+    },
+    "Components Parameters Map": {
+        "description": "An object to hold reusable Parameters Objects.",
+        "specificationAnchor": "componentsObject",
+        "changelog": {
+            "isNew": true
+        },
+        "fields": [{
+            "name": "{name}",
+            "description": "A reusable Parameter Object",
+            "type": "Parameter Object"
+        }]
+    },
+    "Components Request Bodies Map": {
+        "description": "An object to hold reusable Request Body Objects.",
+        "specificationAnchor": "componentsObject",
+        "changelog": {
+            "isNew": true
+        },
+        "fields": [{
+            "name": "{name}",
+            "description": "A resusable Request Body Object",
+            "type": "Request Body Object"
+        }]
+    },
+    "Components Responses Map": {
+        "description": "An object to hold reusable Response Objects.",
+        "specificationAnchor": "componentsObject",
+        "changelog": {
+            "isNew": true
+        },
+        "fields": [{
+            "name": "{name}",
+            "description": "A resusable Response Object",
+            "type": "Response Object"
+        }]
+    },
+    "Components Schemas Map": {
+        "description": "An object to hold reusable Schema Objects.",
+        "specificationAnchor": "componentsObject",
+        "changelog": {
+            "isNew": true
+        },
+        "fields": [{
+            "name": "{name}",
+            "description": "A resusable Schema Object",
+            "type": "Schema Object"
+        }]
+    },
+    "Components Security Schemes Map": {
+        "description": "An object to hold reusable Schema Objects.",
+        "specificationAnchor": "componentsObject",
+        "changelog": {
+            "isNew": true
+        },
+        "fields": [{
+            "name": "{name}",
+            "description": "A resusable Security Scheme Object",
+            "type": "Security Scheme Object"
+        }]
+    },
+    "Contact Object": {
+        "description": "Contact information for the exposed API.",
+        "allowExtension": true,
+        "fields": [{
+            "name": "name",
+            "type": "string",
+            "description": "The identifying name of the contact person/organization."
+        }, {
+            "name": "url",
+            "type": "string",
+            "description": "The URL pointing to the contact information.  \nMUST be in the format of a URL.\n"
+        }, {
+            "name": "email",
+            "type": "string",
+            "description": "The email address of the contact person/organization.  \nMUST be in the format of an email address.\n"
+        }]
+    },
+    "Content Object": {
+        "description": "Describes a set of supported media types. A Content Object can be used in Request Body Object, Parameter Objects, Header Objects, and Response Objects.\n\nEach key in the Content Object is the media type of the Media Type Object.\n",
+        "changelog": {
+            "isNew": true,
+            "details": "Replace `consumes` and `produces`. Reusable `Content Object` can be described in `components`."
+        },
+        "fields": [{
+            "name": "{media type}",
+            "type": "Media Type Object",
+            "description": "A media type object"
+        }]
+    },
+    "Encoding Object": {
+        "description": "An object representing multipart region encoding for requestBody objects.",
+        "changelog": {
+            "isNew": true
+        },
+        "fields": [{
+            "name": "{property}",
+            "type": "Encoding Property Object",
+            "description": "The property name to which the special encoding are applied. This field MUST exist in the schema as a property."
+        }]
+    },
+    "Encoding Property Object": {
+        "description": "A single encoding definition applied to a single schema property.",
+        "allowExtension": true,
+        "changelog": {
+            "isNew": true
+        },
+        "fields": [{
+            "name": "contentType",
+            "type": "string",
+            "description": "The Content-Type to use for encoding a specific property. Default value depends on the property type: for string with format being binary - application/octet-stream; for other primitive types - plain/text; for object - application/json; for array - the default is defined based on the inner type."
+        }, {
+            "name": "Headers",
+            "type": "object",
+            "description": "A string map allowing additional information to be provided as headers, for example Content-Disposition. Note Content-Type is described separately and will be ignored from this section."
+        }, {
+            "name": "style",
+            "type": "string",
+            "description": "The Content-Type to use for encoding a specific property. See (#parameterContent) for details on the style property. The behavior follows the same values allowed for query parameters, including default values."
+        }, {
+            "name": "explode",
+            "type": "boolean",
+            "description": "When this is true, property values of type array or object generate separate parameters for each value of the array, or key-value-pair of the map. For other types of properties this property has no effect. When style is form, the default value is true. For all other styles, the default value is false."
+        }]
+    },
+    "Example Object": {
+        "description": "Allows sharing examples for operation requests and responses. This object can either be a freeform object, array or primitive value. To represent examples of media types that cannot naturally represented in the OpenAPI definition, a string value can be used to contain the example with escaping where necessary.",
+        "changelog": {
+            "isNew": true
+        },
+        "fields": [{
+            "name": "<Example Object>",
+            "type": "freeform object, array or primitive value",
+            "description": "Allows sharing examples for operation requests and responses. This object can either be a freeform object, array or primitive value. To represent examples of media types that cannot naturally represented in the OpenAPI definition, a string value can be used to contain the example with escaping where necessary."
+        }]
+    },
+    "External Documentation Object": {
+        "description": "Allows referencing an external resource for extended documentation.",
+        "allowExtension": true,
+        "fields": [{
+            "name": "description",
+            "type": "string",
+            "description": "A short description of the target documentation. CommonMark syntax can be used for rich text representation.",
+            "md": "CommonMarck"
+        }, {
+            "name": "url",
+            "type": "string",
+            "description": "The URL for the target documentation. Value MUST be in the format of a URL.",
+            "required": true
+        }]
+    },
+    "Header Object": {
+        "description": "The Header Object follows the structure of the Parameter Object, with the following changes:\n\n- name MUST NOT be specified, it is given in the Headers Object.\n- in MUST NOT be specified, it is implicitly in header.\n- All traits that are affected by the location MUST follow the location of header (for example, style).\n\nNote: allowEmptyValue shouldn't be used too (only for query parameters)\n",
+        "allowExtension": true,
+        "changelog": {
+            "isModified": true,
+            "details": "Response headers are defined almost like parameters and can now be defined in `OpenAPI Object.components.headers` and reused with a `$ref`.",
+            "deletedProperties": [{
+                "name": "default",
+                "replacedBy": "schema.default or content.{media type}.schema.default",
+                "see": "Schema Object"
+            }, {
+                "name": "items",
+                "replacedBy": "schema.items or content.{media type}.schema.items",
+                "see": "Schema Object"
+            }, {
+                "name": "collectionFormat",
+                "replacedBy": "schema.collectionFormat or content.{media type}.schema.collectionFormat",
+                "see": "Schema Object"
+            }, {
+                "name": "maxItems",
+                "replacedBy": "schema.maxItems or content.{media type}.schema.maxItems",
+                "see": "Schema Object"
+            }, {
+                "name": "minItems",
+                "replacedBy": "schema.minItems or content.{media type}.schema.minItems",
+                "see": "Schema Object"
+            }, {
+                "name": "uniqueItems",
+                "replacedBy": "schema.uniqueItems or content.{media type}.schema.uniqueItems",
+                "see": "Schema Object"
+            }, {
+                "name": "format",
+                "replacedBy": "schema.format or content.{media type}.schema.format",
+                "see": "Schema Object"
+            }, {
+                "name": "enum",
+                "replacedBy": "schema.enum or content.{media type}.schema.enum",
+                "see": "Schema Object"
+            }, {
+                "name": "pattern",
+                "replacedBy": "schema.pattern or content.{media type}.schema.pattern",
+                "see": "Schema Object"
+            }, {
+                "name": "maxLength",
+                "replacedBy": "schema.maxLength or content.{media type}.schema.maxLength",
+                "see": "Schema Object"
+            }, {
+                "name": "minLength",
+                "replacedBy": "schema.minLength or content.{media type}.schema.minLength",
+                "see": "Schema Object"
+            }, {
+                "name": "maximum",
+                "replacedBy": "schema.maximum or content.{media type}.schema.maximum",
+                "see": "Schema Object"
+            }, {
+                "name": "exclusiveMaximum",
+                "replacedBy": "schema.exclusiveMaximum or content.{media type}.schema.exclusiveMaximum",
+                "see": "Schema Object"
+            }, {
+                "name": "minimum",
+                "replacedBy": "schema.minimum or content.{media type}.schema.minimum",
+                "see": "Schema Object"
+            }, {
+                "name": "exclusiveMinimum",
+                "replacedBy": "schema.exclusiveMinimum or content.{media type}.schema.exclusiveMinimum",
+                "see": "Schema Object"
+            }, {
+                "name": "multipleOf",
+                "replacedBy": "schema.multipleOf or content.{media type}.schema.multipleOf",
+                "see": "Schema Object"
+            }]
+        },
+        "fields": [{
+            "name": "description",
+            "type": "string",
+            "md": "CommonMark",
+            "description": "A brief description of the parameter. This could contain examples of use. CommonMark syntax can be used for rich text representation.    \n"
+        }, {
+            "name": "required",
+            "type": "boolean",
+            "description": "Determines whether this parameter is mandatory. If the parameter location is \"path\", this property is required and its value MUST be true. Otherwise, the property MAY be included and its default value is false.\n"
+        }, {
+            "name": "deprecated",
+            "type": "boolean",
+            "description": "Specifies that a parameter is deprecated and SHOULD be transitioned out of usage.",
+            "changelog": {
+                "isNew": true
+            }
+        }, {
+            "name": "<using style and schema>",
+            "type": "Parameter Object Style Schema",
+            "description": "The rules for serialization of the parameter are specified in one of two ways. For simpler scenarios, a style and schema can be used to describe the structure and syntax of the parameter."
+        }, {
+            "name": "<using content>",
+            "type": "Parameter Object Content",
+            "description": "For more complex scenarios a Content Object can be used to define the media type and schema of the parameter. This option is mutually exclusive with the simple scenario above. When example or examples are provided in conjunction with the schema object, the example must follow the prescribed serialization strategy for the parameter."
+        }]
+    },
+    "Headers Object": {
+        "description": "Lists the headers that can be sent in a response or forwarded via a link. Note that RFC 7230 states header names are case insensitive.",
+        "fields": [{
+            "name": "{name}",
+            "type": "Header Object",
+            "description": "The name of the property corresponds to the name of the header. The value describes the type of the header.",
+            "allowReference": true,
+            "changelog": {
+                "isModified": true,
+                "details": "Headers can now be defined in components to be reused"
+            }
+        }]
+    },
+    "Info Object": {
+        "description": "Provides metadata about the API. The metadata can be used by the clients if needed.",
+        "allowExtension": true,
+        "fields": [{
+            "name": "title",
+            "type": "string",
+            "required": true,
+            "description": "The title of the application."
+        }, {
+            "name": "description",
+            "type": "string",
+            "md": "CommonMark",
+            "description": "A short description of the application. CommonMark syntax can be used for rich text representation."
+        }, {
+            "name": "termsOfService",
+            "type": "string",
+            "description": "A URL to the Terms of Service for the API."
+        }, {
+            "name": "contact",
+            "type": "Contact Object",
+            "description": "The contact information for the exposed API."
+        }, {
+            "name": "licence",
+            "type": "Licence Object",
+            "description": "The license information for the exposed API."
+        }, {
+            "name": "version",
+            "type": "string",
+            "required": true,
+            "description": "The version of the API definition (which is distinct from the OpenAPI specification version or the API implementation version)."
+        }]
+    },
+    "Licence Object": {
+        "description": "License information for the exposed API.",
+        "allowExtension": true,
+        "fields": [{
+            "name": "name",
+            "type": "string",
+            "required": true,
+            "description": "The license name used for the API."
+        }, {
+            "name": "url",
+            "type": "string",
+            "description": "A URL to the license used for the API.  \nMUST be in the format of a URL.\n"
+        }]
+    },
+    "Link Object": {
+        "description": "The Link Object is responsible for defining a possible operation based on a single response.",
+        "specificationAnchor": "link-object",
+        "allowExtension": true,
+        "changelog": {
+            "isNew": true
+        },
+        "fields": [{
+            "name": "href",
+            "type": "string",
+            "description": "a relative or absolute URL to a linked resource. This field is mutually exclusive with the operationId field."
+        }, {
+            "name": "operationId",
+            "type": "string",
+            "description": "the name of an existing, resolvable OAS operation, as defined with a unique operationId. This field is mutually exclusive with the href field. Relative href values MAY be used to locate an existing Operation Object in the OAS."
+        }, {
+            "name": "parameters",
+            "type": "Link Parameters Object",
+            "description": "an object representing parameters to pass to an operation as specified with operationId or identified via href."
+        }, {
+            "name": "headers",
+            "type": "Headers Object",
+            "description": "an object representing headers to pass to the linked resource. Where conflicts occur between these headers, and those defined in the related operation, these headers override."
+        }, {
+            "name": "description",
+            "type": "string",
+            "md": "CommonMark",
+            "description": "a description of the link, supports CommonMark syntax."
+        }]
+    },
+    "Link Parameters Object": {
+        "description": "Using the operationId to reference an operation in the definition has many benefits, including the ability to define media type options, security requirements, response and error payloads. Many operations require parameters to be passed, and these MAY be dynamic depending on the response itself.\n\nTo specify parameters required by the operation, we can use a Link Parameters Object. This object contains parameter names along with static or dynamic values\n",
+        "changelog": {
+            "isNew": true
+        },
+        "fields": [{
+            "name": "{name}",
+            "type": "Any or {expression}",
+            "specificationAnchor": "variableSubstitution",
+            "description": "A constant value or [expression](https://github.com/OAI/OpenAPI-Specification/blob/3.0.0-rc0/versions/3.0.md#variableSubstitution) to be evaluated and passed to the linked operation."
+        }]
+    },
+    "Links Object": {
+        "allowExtension": true,
+        "description": "The links object represents a set of possible design-time links for a response. The presence of a link does not guarantee the caller's ability to successfully invoke it, rather it provides a known relationship and traversal mechanism between responses and other operations.\n\nAs opposed to dynamic links (links provided in the response payload), the OAS linking mechanism does not require that link information be provided in a specific response format at runtime.\n\nFor computing links, and providing instructions to execute them, variable substitution is used for accessing values in a response and using them as values while invoking the linked operation.\n",
+        "changelog": {
+            "isNew": true
+        },
+        "fields": [{
+            "name": "{name}",
+            "description": "A short name for the link, following the naming constraints of the names for Component Objects.",
+            "type": "Link Object",
+            "allowReference": true
+        }]
+    },
+    "Media Type Object": {
+        "description": "Each Media Type Object provides schema and examples for a the media type identified by its key. Media Type Objects can be used in a Content Object.",
+        "allowExtension": true,
+        "changelog": {
+            "isNew": true
+        },
+        "fields": [{
+            "name": "schema",
+            "type": "Schema Object",
+            "description": "The schema defining the type used for the request body."
+        }, {
+            "name": "examples",
+            "type": "[Example Object]",
+            "allowReference": true,
+            "description": "Examples of the media type. Each example in the Examples array SHOULD be in the correct format as specified in the media type. The examples object is mutually exclusive to the example object. Furthermore, if referencing a schema which contains an example, the examples value SHALL override the example provided by the schema."
+        }, {
+            "name": "example",
+            "type": "Example Object",
+            "allowReference": true,
+            "description": "Example of the content type. The example object SHOULD be in the correct format as specified in the parameter encoding. The example object is mutually exclusive to the examples object. Furthermore, if referencing a schema which contains an example, the example value SHALL override the example provided by the the schema."
+        }, {
+            "name": "encoding",
+            "type": "Encoding Object",
+            "description": "Encoding of the media type. The encoding object SHOULD only apply to requestBody objects when the content type is multipart."
+        }]
+    },
+    "OAuth Flow Object": {
+        "description": "Configuration details for a supported OAuth Flow",
+        "specificationAnchor": "oauthFlowObject",
+        "changelog": {
+            "isNew": true
+        },
+        "fields": [{
+            "name": "authorizationUrl",
+            "type": "string",
+            "validity": "oauth2 (\"implicit\", \"authorizationCode\")",
+            "required": true,
+            "description": "The authorization URL to be used for this flow. This MUST be in the form of a URL."
+        }, {
+            "name": "tokenUrl",
+            "type": "string",
+            "validity": "oauth2 (\"password\", \"clientCredentials\", \"authorizationCode\")",
+            "required": true,
+            "description": "The token URL to be used for this flow. This MUST be in the form of a URL."
+        }, {
+            "name": "refreshUrl",
+            "type": "string",
+            "validity": "oauth2",
+            "description": "The URL to be used for obtaining refresh tokens. This MUST be in the form of a URL."
+        }, {
+            "name": "scopes",
+            "type": "Scopes Object",
+            "validity": "oauth2",
+            "description": "The available scopes for the OAuth2 security scheme."
+        }]
+    },
+    "OAuth Flows Object": {
+        "description": "Allows configuration of the supported OAuth Flows.",
+        "changelog": {
+            "isNew": true
+        },
+        "specificationAnchor": "oauthFlowsObject",
+        "allowExtension": true,
+        "fields": [{
+            "name": "implicit",
+            "type": "OAuth Flow Object",
+            "description": "Configuration for the OAuth Implicit flow"
+        }, {
+            "name": "password",
+            "type": "OAuth Flow Object",
+            "description": "Configuration for the OAuth Resource Owner Password flow"
+        }, {
+            "name": "clientCredentials",
+            "type": "OAuth Flow Object",
+            "description": "Configuration for the OAuth Client Credentials flow. Previously called application in OpenAPI 2.0."
+        }, {
+            "name": "authorizationCode",
+            "type": "OAuth Flow Object",
+            "description": "Configuration for the OAuth Authorization Code flow. Previously called accessCode in OpenAPI 2.0."
+        }]
+    },
+    "OpenAPI Object": {
+        "name": "OpenAPI 3.0.0-rc0",
+        "specificationAnchor": "oasObject",
+        "description": "OpenAPI 3.0.0 top level object.\nThis is the root document object for the API specification. It combines what previously was the Resource Listing and API Declaration (version 1.2 and earlier) together into one document.\n",
+        "allowExtension": true,
+        "changelog": {
+            "isModified": true,
+            "details": "The new OpenAPI specification version 3.0.0 offers many welcomed improvements and new features (see OpenAPI [blog post series about this](https://www.openapis.org/news/blogs/2016/10/tdc-structural-improvements-explaining-30-spec-part-2)).\n\nHere are the noticeable changes on top level (*navigate through the tree to see what happened on other levels*): \n- Bye bye `swagger` and hello `openapi`.\n- Reusable definitions are centralized in `components` making the document more consistent (the previous version mixed reusable and global definitions on the same level).\n",
+            "deletedProperties": [{
+                "name": "swagger",
+                "replacedBy": "openapi",
+                "see": "OpenAPI Object"
+            }, {
+                "name": "host",
+                "replacedBy": "servers[].url",
+                "see": "Server Object"
+            }, {
+                "name": "basePath",
+                "replacedBy": "servers[].url",
+                "see": "Server Object"
+            }, {
+                "name": "schemes",
+                "replacedBy": "servers[].url",
+                "see": "Server Object"
+            }, {
+                "name": "definitions",
+                "replacedBy": "components.schemas",
+                "see": "Components Object"
+            }, {
+                "name": "parameters",
+                "replacedBy": "components.parameters and components.requestBodies",
+                "see": "Components Object"
+            }, {
+                "name": "securityDefinitions",
+                "replacedBy": "components.securitySchemas",
+                "see": "Components Object"
+            }, {
+                "name": "consumes",
+                "replacedBy": "Content Object.{media type}",
+                "see": "Content Object"
+            }, {
+                "name": "produces",
+                "replacedBy": "Content Object.{media type}",
+                "see": "Content Object"
+            }]
+        },
+        "fields": [{
+            "name": "openapi",
+            "type": "string",
+            "required": true,
+            "changelog": {
+                "isNew": true,
+                "details": "Replace the `swagger` property"
+            },
+            "description": "Specifies the OpenAPI Specification version being used. It can be used by tooling Specifications and clients to interpret the version. The structure SHALL be `major.minor.patch`, where `patch` versions MUST be compatible with the existing `major.minor` tooling. Typically `patch` versions will be introduced to address errors in the documentation, and tooling SHOULD typically be compatible with the corresponding `major.minor` (3.0.*). Patch versions will correspond to patches of this document.\n"
+        }, {
+            "name": "info",
+            "type": "Info Object",
+            "required": true,
+            "description": "Provides metadata about the API. The metadata can be used by the clients if needed."
+        }, {
+            "name": "servers",
+            "type": "[Server Object]",
+            "description": "An optional array of Server Objects which provide connectivity information to a target server.",
+            "changelog": {
+                "isNew": true
+            }
+        }, {
+            "name": "paths",
+            "type": "Paths Object",
+            "required": true,
+            "description": "Required. The available paths and operations for the API."
+        }, {
+            "name": "components",
+            "type": "Components Object",
+            "description": "An element to hold various schemas for the specification.",
+            "changelog": {
+                "isNew": true
+            }
+        }, {
+            "name": "security",
+            "type": "[Security Requirement Object]",
+            "description": "A declaration of which security mechanisms can be used across the API. The list of values includes alternative security requirement objects that can be used. Only one of the security requirement objects need to be satisfied to authorize a request. Individual operations can override this definition."
+        }, {
+            "name": "tags",
+            "type": "[Tag Object]",
+            "description": "A list of tags used by the specification with additional metadata. The order of the tags can be used to reflect on their order by the parsing tools. Not all tags that are used by the Operation Object must be declared. The tags that are not declared MAY be organized randomly or based on the tools' logic. Each tag name in the list MUST be unique."
+        }, {
+            "name": "externalDocs",
+            "type": "External Documentation Object",
+            "description": "Additional external documentation."
+        }]
+    },
+    "Operation Object": {
+        "description": "Describes a single API operation on a path.",
+        "allowExtension": true,
+        "changelog": {
+            "isModified": true,
+            "details": "- Better and consistent parameters description by using `Schema Object` even for atomic ones.\n- Request body is now define separetely (`requestBody`).\n- Async/event API design is possible thanks to `callbacks` (webhooks).\n- The `servers` property enhance documentation and test possibilities (also available on top and path levels).\n",
+            "deletedProperties": [{
+                "name": "produces",
+                "replacedBy": "responses.{HTTP Status}.content.{media type}",
+                "specificationAnchor": "mediaTypeObject"
+            }, {
+                "name": "consumes",
+                "replacedBy": "requestBody.content.{media type}",
+                "specificationAnchor": "mediaTypeObject"
+            }, {
+                "name": "schemes",
+                "replacedBy": "servers",
+                "specificationAnchor": "Server Object"
+            }]
+        },
+        "fields": [{
+            "name": "tags",
+            "type": "[string]",
+            "description": "A list of tags for API documentation control. Tags can be used for logical grouping of operations by resources or any other qualifier."
+        }, {
+            "name": "summary",
+            "type": "string",
+            "description": "A short summary of what the operation does. For maximum readability in editing or documentation generation tools, this field SHOULD be less than 120 characters."
+        }, {
+            "name": "description",
+            "type": "string",
+            "md": "CommonMark",
+            "description": "A verbose explanation of the operation behavior. CommonMark syntax can be used for rich text representation."
+        }, {
+            "name": "externalDocs",
+            "type": "External Documentation Object",
+            "description": "Additional external documentation for this operation."
+        }, {
+            "name": "operationId",
+            "type": "string",
+            "description": "Unique string used to identify the operation. The id MUST be unique among all operations described in the API. Tools and libraries MAY use the operationId to uniquely identify an operation, therefore, it is recommended to follow common programming naming conventions."
+        }, {
+            "name": "parameters",
+            "type": "[Parameter Object]",
+            "allowReference": true,
+            "changelog": {
+                "isModified": true,
+                "details": "Does not describe body parameter anymore (see requestBody)"
+            },
+            "description": "A list of parameters that are applicable for this operation. If a parameter is already defined at the Path Item, the new definition will override it but can never remove it. The list MUST NOT include duplicated parameters. A unique parameter is defined by a combination of a name and location. The list can use the Reference Object to link to parameters that are defined at the OpenAPI Object's parameters."
+        }, {
+            "name": "requestBody",
+            "type": "Request Body Object",
+            "allowReference": true,
+            "required": true,
+            "changelog": {
+                "isNew": true,
+                "details": "Replace `parameters` with `in = body`"
+            },
+            "description": "The request body applicable for this operation. The requestBody is only supported in HTTP methods where the HTTP 1.1 specification has explicitly defined semantics for request bodies. In other cases where the HTTP spec is vague, requestBody SHALL be ignored by consumers."
+        }, {
+            "name": "responses",
+            "type": "Responses Object",
+            "required": true,
+            "descriptions": "The list of possible responses as they are returned from executing this operation."
+        }, {
+            "name": "callbacks",
+            "type": "Callbacks Object",
+            "changelog": {
+                "isNew": true
+            },
+            "description": "The list of possible callbacks as they are returned from executing this operation."
+        }, {
+            "name": "deprecated",
+            "type": "boolean",
+            "description": "Declares this operation to be deprecated. Consumers SHOULD refrain from usage of the declared operation. Default value is false."
+        }, {
+            "name": "security",
+            "type": "Security Requirement Object",
+            "changelog": {
+                "isNew": true
+            },
+            "description": "A declaration of which security mechanisms can be used for this operation. The list of values includes alternative security requirement objects that can be used. Only one of the security requirement objects need to be satisfied to authorize a request. This definition overrides any declared top-level security. To remove a top-level `security` declaration, an empty array can be used."
+        }, {
+            "name": "servers",
+            "type": "Server Object",
+            "changelog": {
+                "isNew": true
+            },
+            "description": "An alternative server array to service this operation. If an alternative server object is specified at the Path Item Object or Root level, it will be overridden by this value."
+        }]
+    },
+    "Parameter Object": {
+        "description": "Describes a single operation parameter.\n\nA unique parameter is defined by a combination of a name and location.\n\nThere are four possible parameter locations (as specified with the in field):\n\n- path - Used together with Path Templating, where the parameter value is actually part of the operation's URL. This does not include the host or base path of the API. For example, in /items/{itemId}, the path parameter is itemId.\n- query - Parameters that are appended to the URL. For example, in /items?id=###, the query parameter is id.\n- header - Custom headers that are expected as part of the request. Note that RFC 7230 states header names are case insensitive.\n- cookie - Used to pass a specific cookie value to the API.\n",
+        "allowExtension": true,
+        "changelog": {
+            "isModified": true,
+            "details": "- Besides query, header and path parameters, `cookie` parameters can be defined.\n- Body parameters are now defined with a `Request Body Object`.\n- All parameters types (even atomic ones like string or boolean for example) are now defined with a `Schema Object`.\n- Former `formData` parameters (used for media types `application/x-www-form-urlencoded` or `multipart/form-data` are handled with a `Content Object` which allow to define the media type of parameters, request bodies, headers or responses.\n- `Example(s)` can be provided.\n- Parameters can now be `deprecated`.\n- More control on serialization (with `allowReserved`, `style` and `explode`).\n",
+            "deletedProperties": [{
+                "name": "body",
+                "replacedBy": "schema or content.schema",
+                "see": "Parameter Object"
+            }, {
+                "name": "default",
+                "replacedBy": "schema.default or content.{media type}.schema.default",
+                "see": "Schema Object"
+            }, {
+                "name": "items",
+                "replacedBy": "schema.items or content.{media type}.schema.items",
+                "see": "Schema Object"
+            }, {
+                "name": "collectionFormat",
+                "replacedBy": "schema.collectionFormat or content.{media type}.schema.collectionFormat",
+                "see": "Schema Object"
+            }, {
+                "name": "maxItems",
+                "replacedBy": "schema.maxItems or content.{media type}.schema.maxItems",
+                "see": "Schema Object"
+            }, {
+                "name": "minItems",
+                "replacedBy": "schema.minItems or content.{media type}.schema.minItems",
+                "see": "Schema Object"
+            }, {
+                "name": "uniqueItems",
+                "replacedBy": "schema.uniqueItems or content.{media type}.schema.uniqueItems",
+                "see": "Schema Object"
+            }, {
+                "name": "format",
+                "replacedBy": "schema.format or content.{media type}.schema.format",
+                "see": "Schema Object"
+            }, {
+                "name": "enum",
+                "replacedBy": "schema.enum or content.{media type}.schema.enum",
+                "see": "Schema Object"
+            }, {
+                "name": "pattern",
+                "replacedBy": "schema.pattern or content.{media type}.schema.pattern",
+                "see": "Schema Object"
+            }, {
+                "name": "maxLength",
+                "replacedBy": "schema.maxLength or content.{media type}.schema.maxLength",
+                "see": "Schema Object"
+            }, {
+                "name": "minLength",
+                "replacedBy": "schema.minLength or content.{media type}.schema.minLength",
+                "see": "Schema Object"
+            }, {
+                "name": "maximum",
+                "replacedBy": "schema.maximum or content.{media type}.schema.maximum",
+                "see": "Schema Object"
+            }, {
+                "name": "exclusiveMaximum",
+                "replacedBy": "schema.exclusiveMaximum or content.{media type}.schema.exclusiveMaximum",
+                "see": "Schema Object"
+            }, {
+                "name": "minimum",
+                "replacedBy": "schema.minimum or content.{media type}.schema.minimum",
+                "see": "Schema Object"
+            }, {
+                "name": "exclusiveMinimum",
+                "replacedBy": "schema.exclusiveMinimum or content.{media type}.schema.exclusiveMinimum",
+                "see": "Schema Object"
+            }, {
+                "name": "multipleOf",
+                "replacedBy": "schema.multipleOf or content.{media type}.schema.multipleOf",
+                "see": "Schema Object"
+            }]
+        },
+        "fields": [{
+            "name": "name",
+            "required": true,
+            "type": "string",
+            "description": "The name of the parameter. Parameter names are case sensitive.\nIf in is \"path\", the name field MUST correspond to the associated path segment from the path field in the Paths Object. See Path Templating for further information.\nFor all other cases, the name corresponds to the parameter name used based on the in property.\n"
+        }, {
+            "name": "in",
+            "type": "string",
+            "required": true,
+            "description": "The location of the parameter. Possible values are \"query\", \"header\", \"path\" or \"cookie\".",
+            "changelog": {
+                "isModified": true,
+                "details": "`formData` (replaced by the use of a `Content Object`) and `body` (replaced by `Request Body`) values have been removed.\n"
+            },
+            "values": [{
+                "value": "query",
+                "description": "Parameters that are appended to the URL. For example, in /items?id=###, the query parameter is id."
+            }, {
+                "value": "header",
+                "description": "Custom headers that are expected as part of the request. Note that RFC 7230 states header names are case insensitive."
+            }, {
+                "value": "path",
+                "description": "Used together with Path Templating, where the parameter value is actually part of the operation's URL. This does not include the host or base path of the API. For example, in /items/{itemId}, the path parameter is itemId.\n"
+            }, {
+                "value": "cookie",
+                "description": "Used to pass a specific cookie value to the API."
+            }]
+        }, {
+            "name": "description",
+            "type": "string",
+            "md": "CommonMark",
+            "description": "A brief description of the parameter. This could contain examples of use. CommonMark syntax can be used for rich text representation.    \n"
+        }, {
+            "name": "required",
+            "type": "boolean",
+            "description": "Determines whether this parameter is mandatory. If the parameter location is \"path\", this property is required and its value MUST be true. Otherwise, the property MAY be included and its default value is false.\n"
+        }, {
+            "name": "deprecated",
+            "type": "boolean",
+            "description": "Specifies that a parameter is deprecated and SHOULD be transitioned out of usage.",
+            "changelog": {
+                "isNew": true
+            }
+        }, {
+            "name": "allowEmptyValue",
+            "type": "boolean",
+            "description": "Sets the ability to pass empty-valued parameters. This is valid only for query parameters and allows sending a parameter with an empty value. Default value is false. If style is used, if behavior is n/a, the value of allowEmptyValue SHALL be ignored."
+        }, {
+            "name": "<using style and schema>",
+            "type": "Parameter Object Style Schema",
+            "changelog": {
+                "isNew": true
+            },
+            "description": "The rules for serialization of the parameter are specified in one of two ways. For simpler scenarios, a style and schema can be used to describe the structure and syntax of the parameter."
+        }, {
+            "name": "<using content>",
+            "type": "Parameter Object Content",
+            "changelog": {
+                "isNew": true
+            },
+            "description": "For more complex scenarios a Content Object can be used to define the media type and schema of the parameter. This option is mutually exclusive with the simple scenario above. When example or examples are provided in conjunction with the schema object, the example must follow the prescribed serialization strategy for the parameter."
+        }]
+    },
+    "Parameter Object Content": {
+        "description": "For more complex scenarios a Content Object can be used to define the media type and schema of the parameter. This option is mutually exclusive with the simple scenario above. When example or examples are provided in conjunction with the schema object, the example must follow the prescribed serialization strategy for the parameter.",
+        "fieldsGroup": true,
+        "changelog": {
+            "isNew": true
+        },
+        "fields": [{
+            "name": "content",
+            "type": "Content Object",
+            "changelog": {
+                "isNew": true
+            },
+            "description": "The content of the parameter."
+        }]
+    },
+    "Parameter Object Style Schema": {
+        "description": "The rules for serialization of the parameter are specified in one of two ways. For simpler scenarios, a style and schema can be used to describe the structure and syntax of the parameter.",
+        "fieldsGroup": true,
+        "fields": [{
+            "name": "style",
+            "type": "string",
+            "changelog": {
+                "isNew": true
+            },
+            "description": "Describes how the parameter value will be serialized depending on type of the parameter value. Default values (based on value of in): for query - form; for path - simple; for header - simple; for cookie - form.\"\n"
+        }, {
+            "name": "explode",
+            "type": "boolean",
+            "changelog": {
+                "isNew": true
+            },
+            "description": "When this is true, parameter values of type array or object generate separate parameters for each value of the array, or key-value-pair of the map. For other types of parameters this property has no effect. When style is form, the default value is true. For all other styles, the default value is false."
+        }, {
+            "name": "allowReserved",
+            "type": "boolean",
+            "changelog": {
+                "isNew": true
+            },
+            "description": "Determines whether the parameter value SHOULD allow reserved characters, as defined by RFC3986 :/?#[]@!$&'()*+,;= to be included without percent-encoding. This property only applies to parameters with an in value of query. The default value is false."
+        }, {
+            "name": "schema",
+            "type": "Schema Object",
+            "allowReference": true,
+            "changelog": {
+                "isNew": true
+            },
+            "description": "The schema defining the type used for the parameter."
+        }, {
+            "name": "examples",
+            "type": "[Example Object]",
+            "allowReference": true,
+            "changelog": {
+                "isNew": true
+            },
+            "description": "Examples of the content type. Each example in the Examples array SHOULD be in the correct format as specified parameter encoding. The examples object is mutually exclusive to the example object. Furthermore, if referencing a schema which contains an example, the examples value SHALL override the example provided by the schema."
+        }, {
+            "name": "example",
+            "type": "Example Object",
+            "allowReference": true,
+            "changelog": {
+                "isNew": true
+            },
+            "description": "Example of the content type. The example object SHOULD be in the correct format as specified in the parameter encoding. The example object is mutually exclusive to the examples object. Furthermore, if referencing a schema which contains an example, the example value SHALL override the example provided by the the schema."
+        }]
+    },
+    "Path Item Object": {
+        "description": "Describes the operations available on a single path. A Path Item MAY be empty, due to ACL constraints. The path itself is still exposed to the documentation viewer but they will not know which operations and parameters are available.\n",
+        "allowExtension": true,
+        "changelog": {
+            "isModified": true,
+            "details": "- Enhance resource point of view by adding `summary` and `description` on path level.\n- HTTP methode `trace` has been added (TRACE allows the client to see what is being received at the other end of the request chain and use that data for testing or diagnostic information. See [RFC7231](https://tools.ietf.org/html/rfc7231#section-4.3.8).)\n- The `servers` property enhance documentation and test possibilities (also available on top and operation levels).\n"
+        },
+        "fields": [{
+            "name": "summary",
+            "type": "string",
+            "description": "An optional, string summary, intended to apply to all operations in this path.",
+            "changelog": {
+                "isNew": true
+            }
+        }, {
+            "name": "description",
+            "type": "string",
+            "description": "An optional, string description, intended to apply to all operations in this path.",
+            "changelog": {
+                "isNew": true
+            }
+        }, {
+            "name": "get",
+            "type": "Operation Object",
+            "description": "A definition of a GET operation on this path."
+        }, {
+            "name": "put",
+            "type": "Operation Object",
+            "description": "A definition of a PUT operation on this path."
+        }, {
+            "name": "post",
+            "type": "Operation Object",
+            "description": "A definition of a POST operation on this path."
+        }, {
+            "name": "delete",
+            "type": "Operation Object",
+            "description": "A definition of a DELETE operation on this path."
+        }, {
+            "name": "options",
+            "type": "Operation Object",
+            "description": "A definition of a OPTIONS operation on this path."
+        }, {
+            "name": "head",
+            "type": "Operation Object",
+            "description": "A definition of a HEAD operation on this path."
+        }, {
+            "name": "patch",
+            "type": "Operation Object",
+            "description": "A definition of a PATCH operation on this path."
+        }, {
+            "name": "trace",
+            "type": "Operation Object",
+            "description": "A definition of a TRACE operation on this path.",
+            "changelog": {
+                "isNew": true
+            }
+        }, {
+            "name": "servers",
+            "type": "Server Object",
+            "description": "An alternative `server` array to service all operations in this path.",
+            "changelog": {
+                "isNew": true
+            }
+        }, {
+            "name": "parameters",
+            "type": "[Parameter Object]",
+            "allowReference": true,
+            "description": "A list of parameters that are applicable for all the operations described under this path. These parameters can be overridden at the operation level, but cannot be removed there. The list MUST NOT include duplicated parameters. A unique parameter is defined by a combination of a name and location. The list can use the Reference Object to link to parameters that are defined at the OpenAPI Object's parameters. \n"
+        }]
+    },
+    "Paths Object": {
+        "description": "Holds the relative paths to the individual endpoints and their operations. The path is appended to the URL from the `Server Object` in order to construct the full URL. The Paths MAY be empty, due to ACL constraints.\n",
+        "allowExtension": true,
+        "fields": [{
+            "name": "/{path}",
+            "type": "Path Item Object",
+            "required": true,
+            "allowReference": true,
+            "description": "A relative path to an individual endpoint. The field name MUST begin with a slash. The path is appended (no relative URL resolution) to the expanded URL from the `Server Object`'s url field in order to construct the full URL. Path templating is allowed.\n"
+        }]
+    },
+    "Reference Object": {
+        "name": "$ref",
+        "type": "string",
+        "description": "A simple object to allow referencing other definitions in the specification. It can be used to reference parameters and responses that are defined at the top level for reuse.\n\nThe Reference Object is a JSON Reference that uses a JSON Pointer as its value. For this specification, only canonical dereferencing is supported.\n"
+    },
+    "Request Body Object": {
+        "description": "Describes a single request body.",
+        "changelog": {
+            "isNew": true
+        },
+        "allowExtension": true,
+        "fields": [{
+            "name": "description",
+            "type": "string",
+            "md": "CommonMark",
+            "description": "A brief description of the request body. This could contain examples of use. CommonMark syntax can be used for rich text representation."
+        }, {
+            "name": "content",
+            "type": "Content Object",
+            "description": "The content of the request body."
+        }, {
+            "name": "required",
+            "type": "boolean",
+            "description": "Determines if the request body is required in the request. Defaults to true."
+        }]
+    },
+    "Response Object": {
+        "description": "Describes a single response from an API Operation, including design-time, static links to operations based on the response.",
+        "allowExtension": true,
+        "changelog": {
+            "isModified": true,
+            "details": "- Better control on media type, response handles returned media type with `content.{mediatype}`. It replaces `produces` definition on `Operation Object` or top level.\n- Enhanced hypermedia design with `links`.\n- Headers are easier to define because they can be defined in `components.headers` and used in `headers`\n",
+            "deletedProperties": [{
+                "name": "schema",
+                "replacedBy": "content.{media type}.schema",
+                "see": "Media Type Object"
+            }, {
+                "name": "example",
+                "replacedBy": "content.{media type}.example or content.{media type}.examples",
+                "see": "Media Type Object"
+            }]
+        },
+        "fields": [{
+            "name": "description",
+            "type": "string",
+            "isRequired": true,
+            "md": "CommonMark",
+            "description": "A short description of the response. CommonMark syntax can be used for rich text representation."
+        }, {
+            "name": "headers",
+            "type": "Headers Object",
+            "changelog": {
+                "isModified": true,
+                "details": "Headers can now be defined in the root `components`"
+            },
+            "description": "A list of headers that are sent with the response."
+        }, {
+            "name": "content",
+            "type": "Content Object",
+            "changelog": {
+                "isNew": true,
+                "details": "Replace `schema` but also `Operation Object.produces` or `Open API Object.produces`"
+            },
+            "description": "An object containing descriptions of potential response payloads."
+        }, {
+            "name": "links",
+            "type": "Links Object",
+            "changelog": {
+                "isNew": true
+            },
+            "description": "An object representing operations related to the response payload."
+        }]
+    },
+    "Responses Object": {
+        "description": "A container for the expected responses of an operation. The container maps a HTTP response code to the expected response. It is not expected from the documentation to necessarily cover all possible HTTP response codes, since they may not be known in advance. However, it is expected from the documentation to cover a successful operation response and any known errors.\n\nThe default MAY be used as a default response object for all HTTP codes that are not covered individually by the specification.\n\nThe Responses Object MUST contain at least one response code, and it SHOULD be the response for a successful operation call.\n",
+        "allowExtension": true,
+        "changelog": {
+            "isModified": true
+        },
+        "fields": [{
+            "name": "default",
+            "allowReference": true,
+            "type": "Response Object",
+            "description": "The documentation of responses other than the ones declared for specific HTTP response codes. It can be used to cover undeclared responses. Reference Object can be used to link to a response that is defined at the Swagger Object's responses section."
+        }, {
+            "name": "{HTTP status code}",
+            "allowReference": true,
+            "type": "Response Object",
+            "changelog": {
+                "isModified": true,
+                "details": "Wildcard are now allowed (2XX for example)"
+            },
+            "description": "Any HTTP status code can be used as the property name (one property per HTTP status code). Describes the expected response for that HTTP status code. Reference Object can be used to link to a response that is defined at the OpenAPI Object's responses section. This field MUST be quoted for compatibility between JSON and YAML (i.e. \"200\"), and MAY contain the uppercase character, X to designate a wildcard, such as 2XX to represent all response codes between [200-299]."
+        }]
+    },
+    "Schema Object": {
+        "description": "The Schema Object allows the definition of input and output data types. These types can be objects, but also primitives and arrays. This object is an extended subset of the [JSON Schema Specification Wright Draft 00](http://json-schema.org/).\n\nFurther information about the properties can be found in [JSON Schema Core](https://tools.ietf.org/html/draft-wright-json-schema-00) and [JSON Schema Validation](https://tools.ietf.org/html/draft-wright-json-schema-validation-00). Unless stated otherwise, the property definitions follow the JSON Schema specification as referenced here.\n\nAlternatively, any time a Schema Object can be used, a Reference Object can be used in its place. This allows referencing definitions in place of defining them inline.\n\nAdditional properties defined by the JSON Schema specification that are not mentioned here are strictly unsupported.\n",
+        "allowExtension": true,
+        "changelog": {
+            "isModified": true,
+            "details": "- Enhanced consistency and easier design with extensive use of Schema Object for all definitions (parameters, bodies, responses, headers)\n- Inheritance and polymorphism mecanism has been enhanced (`oneOf`, `anyOf` and `not` have been added) and clarified (see new `discriminator` behaviour).\n- Creating read/write models is easier with `readOnly` (behaviour modified) and `writeOnly` (new).\n- Enhance versioning thanks to `deprecated`.\n- Better documentation with the possibility to have multiple `examples`.\n"
+        },
+        "fields": [{
+            "name": "<JSON Schema properties>",
+            "type": "Schema Object JSON",
+            "changelog": {
+                "isModified": true
+            },
+            "description": "JSON Schema Properties"
+        }, {
+            "name": "<OpenAPI properties>",
+            "type": "Schema Object OpenAPI",
+            "changelog": {
+                "isModified": true
+            },
+            "description": "Other than the JSON Schema subset fields, the following fields MAY be used for further schema documentation."
+        }]
+    },
+    "Schema Object Array": {
+        "description:": "Fields if type is array.",
+        "fieldsGroup": true,
+        "fields": [{
+            "name": "items",
+            "type": "Items Object",
+            "description": "Describes the type of items in the array."
+        }, {
+            "name": "maxItems",
+            "type": "number",
+            "description": "Maximum count of items in array"
+        }, {
+            "name": "minItems",
+            "type": "number",
+            "description": "Minimum count of items in array."
+        }, {
+            "name": "uniqueItems",
+            "type": "boolean",
+            "description": "Allow only unique items in array."
+        }]
+    },
+    "Schema Object JSON": {
+        "description": "The following properties are taken directly from the JSON Schema definition and follow the same specifications",
+        "fieldsGroup": true,
+        "fields": [{
+            "name": "<Modified JSON properties>",
+            "type": "Schema Object Modified JSON",
+            "changelog": {
+                "isModified": true
+            },
+            "description": "The following properties are taken from the JSON Schema definition but their definitions were adjusted to the OpenAPI Specification."
+        }, {
+            "name": "<type is array>",
+            "type": "Schema Object Array",
+            "description": "Properties when *type* is *array*"
+        }, {
+            "name": "<type is string>",
+            "type": "Schema Object String",
+            "description": "Properties when *type* is *string*"
+        }, {
+            "name": "<type is number or integer>",
+            "type": "Schema Object Number Or Integer",
+            "description": "Properties when *type* is *number* or *integer*"
+        }, {
+            "name": "<type is object>",
+            "type": "Schema Object Object",
+            "description": "Properties when *type* is *object*"
+        }]
+    },
+    "Schema Object Modified JSON": {
+        "description": "The following properties are taken from the JSON Schema definition but their definitions were adjusted to the OpenAPI Specification.",
+        "fieldsGroup": true,
+        "changelog": {
+            "isModified": true
+        },
+        "fields": [{
+            "name": "type",
+            "type": "string",
+            "description": "Value MUST be a string. Multiple types via an array are not supported.",
+            "values": [{
+                "value": "array",
+                "description": "A JSON array."
+            }, {
+                "value": "boolean",
+                "description": "A JSON boolean."
+            }, {
+                "value": "integer",
+                "description": "A JSON number without a fraction or exponent part."
+            }, {
+                "value": "number",
+                "description": "Any JSON number. Number includes integer."
+            }, {
+                "value": "null",
+                "description": "The JSON null value."
+            }, {
+                "value": "object",
+                "description": "A JSON object.",
+                "default": true
+            }, {
+                "value": "string",
+                "description": "A JSON string."
+            }]
+        }, {
+            "name": "allOf",
+            "type": "[Schema Object]",
+            "allowReference": true,
+            "noFollow": true,
+            "description": "Inline or referenced schema MUST be of a Schema Object and not a standard JSON Schema.\n\n[What the JSON Schema Specification says](http://json-schema.org/latest/json-schema-validation.html#rfc.section.5.22): This keyword's value MUST be an array. This array MUST have at least one element.\n\nElements of the array MUST be objects. Each object MUST be a valid JSON Schema.\n\nAn instance validates successfully against this keyword if it validates successfully against all schemas defined by this keyword's value.\n"
+        }, {
+            "name": "oneOf",
+            "type": "[Schema Object]",
+            "allowReference": true,
+            "noFollow": true,
+            "changelog": {
+                "isNew": true
+            },
+            "description": "Inline or referenced schema MUST be of a Schema Object and not a standard JSON Schema.\n\n[What the JSON Schema Specification says](http://json-schema.org/latest/json-schema-validation.html#rfc.section.5.24): This keyword's value MUST be an array. This array MUST have at least one element.\n\nElements of the array MUST be objects. Each object MUST be a valid JSON Schema.\n\nAn instance validates successfully against this keyword if it validates successfully against at least one schema defined by this keyword's value.\n"
+        }, {
+            "name": "anyOf",
+            "type": "[Schema Object]",
+            "allowReference": true,
+            "noFollow": true,
+            "changelog": {
+                "isNew": true
+            },
+            "description": "Inline or referenced schema MUST be of a Schema Object and not a standard JSON Schema.\n\n[What the JSON Schema Specification says](http://json-schema.org/latest/json-schema-validation.html#rfc.section.5.23):This keyword's value MUST be an array. This array MUST have at least one element.\n\nElements of the array MUST be objects. Each object MUST be a valid JSON Schema.\n\nAn instance validates successfully against this keyword if it validates successfully against at least one schema defined by this keyword's value.\n"
+        }, {
+            "name": "not",
+            "type": "Schema Object",
+            "allowReference": true,
+            "noFollow": true,
+            "changelog": {
+                "isNew": true
+            },
+            "description": "Inline or referenced schema MUST be of a Schema Object and not a standard JSON Schema.\n\n[What the JSON Schema Specification says](http://json-schema.org/latest/json-schema-validation.html#rfc.section.5.25): This keyword's value MUST be an object. This object MUST be a valid JSON Schema.\n\nAn instance is valid against this keyword if it fails to validate successfully against the schema defined by this keyword.\n"
+        }, {
+            "name": "items",
+            "type": "Schema Object",
+            "allowReference": true,
+            "noFollow": true,
+            "description": "Value MUST be an object and not an array. Inline or referenced schema MUST be of a Schema Object and not a standard JSON Schema. items MUST be present if the type is array."
+        }, {
+            "name": "properties",
+            "type": "Schema Object",
+            "allowReference": true,
+            "noFollow": true,
+            "description": "Property definitions MUST be a Schema Object and not a standard JSON Schema (inline or referenced)."
+        }, {
+            "name": "additionalProperties",
+            "type": "Schema Object",
+            "additionalType": "Boolean",
+            "allowReference": true,
+            "noFollow": true,
+            "changelog": {
+                "isModified": true,
+                "details": "Can now be a boolean besides a Schema Object."
+            },
+            "description": "Value can be boolean or object. Inline or referenced schema MUST be of a Schema Object and not a standard JSON Schema.\n\n[What the JSON Schema Specification says](http://json-schema.org/latest/json-schema-validation.html#rfc.section.5.18): The value of \"additionalProperties\" MUST be a boolean or a schema.\n\nIf \"additionalProperties\" is absent, it may be considered present with an empty schema as a value.\n\nIf \"additionalProperties\" is true, validation always succeeds.\n\nIf \"additionalProperties\" is false, validation succeeds only if the instance is an object and all properties on the instance were covered by \"properties\" and/or \"patternProperties\".\n\nIf \"additionalProperties\" is an object, validate the value as a schema to all of the properties that weren't validated by \"properties\" nor \"patternProperties\".\n"
+        }, {
+            "name": "description",
+            "type": "string",
+            "description": "CommonMark syntax can be used for rich text representation."
+        }, {
+            "name": "format",
+            "type": "string",
+            "description": "See Data Type Formats for further details. While relying on JSON Schema's defined formats, the OAS offers a few additional predefined formats."
+        }, {
+            "name": "default",
+            "type": "*",
+            "description": "The default value represents what would be assumed by the consumer of the input as the value of the schema if one is not provided. Unlike JSON Schema, the value MUST conform to the defined type for the Schema Object defined at the same level. For example, of type is string, then default can be \"foo\" but cannot be 1."
+        }]
+    },
+    "Schema Object Number Or Integer": {
+        "description": "A number or integer value",
+        "fieldsGroup": true,
+        "fields": [{
+            "name": "format",
+            "type": "string",
+            "description": "The extending format for the previously mentioned type.  \nSee Data Type Formats for further details.  \n\nCommon Name | type | format| Comments\n------------|------|-------|---------\ninteger\t    | integer | int32 | signed 32 bits\nlong\t      | integer\t| int64\t| signed 64 bits\nfloat\t      | number\t| float |\t\ndouble\t    | number\t| double|\t\n"
+        }, {
+            "name": "maximum",
+            "type": "number",
+            "description": "Maximum value.  \nSee http://json-schema.org/latest/json-schema-validation.html#anchor17.\n"
+        }, {
+            "name": "exclusiveMaximum",
+            "type": "boolean",
+            "description": "Indicate if the value must be < maximum.  \nSee http://json-schema.org/latest/json-schema-validation.html#anchor17.\n"
+        }, {
+            "name": "minimum",
+            "type": "number",
+            "description": "Minimum value.  \nSee http://json-schema.org/latest/json-schema-validation.html#anchor21.\n"
+        }, {
+            "name": "exclusiveMinimum",
+            "type": "boolean",
+            "description": "Indicate if the value must value > minimum.  \nSee http://json-schema.org/latest/json-schema-validation.html#anchor21.\n"
+        }, {
+            "name": "multipleOf",
+            "type": "number",
+            "description": "The value must be a multiple of *multiplOf*.  \nSee http://json-schema.org/latest/json-schema-validation.html#anchor14.\n"
+        }]
+    },
+    "Schema Object Object": {
+        "fieldsGroup": true,
+        "description": "type value is object.",
+        "fields": [{
+            "name": "properties",
+            "description": "List of properties.",
+            "type": "[Schema Object | Reference Object]",
+            "noFollow": true
+        }, {
+            "name": "additionalProperties",
+            "description": "Additionnal properties to create a map.",
+            "type": "[Schema Object | Reference Object]",
+            "noFollow": true
+        }, {
+            "name": "required",
+            "type": "[string]",
+            "description": "The list of required properties."
+        }, {
+            "name": "maxProperties",
+            "type": "integer",
+            "description": "An object instance is valid against \"maxProperties\" if its number of properties is less than, or equal to, the value of this keyword."
+        }, {
+            "name": "minProperties",
+            "type": "integer",
+            "description": "An object instance is valid against \"minProperties\" if its number of properties is greater than, or equal to, the value of this keyword."
+        }]
+    },
+    "Schema Object OpenAPI": {
+        "fieldsGroup": true,
+        "description": "Other than the JSON Schema subset fields, the following fields may be used for further schema documentation.",
+        "fields": [{
+            "name": "nullable",
+            "type": "boolean",
+            "changelog": {
+                "isNew": true
+            },
+            "description": "Allows sending a null value for the defined schema. Default value is false."
+        }, {
+            "name": "discriminator",
+            "type": "string",
+            "changelog": {
+                "isModified": true,
+                "details": "Composition and inheritance mecanism has been clarified."
+            },
+            "description": "Adds support for polymorphism. The discriminator is the schema property name that is used to differentiate between other schema that inherit this schema. The property name used MUST be defined at this schema and it MUST be in the required property list. When used, the value MUST be the name of this schema or any schema that inherits it. See [Composition and Inheritance](https://github.com/OAI/OpenAPI-Specification/blob/3.0.0-rc0/versions/3.0.md#schemaComposition) for more details.\n"
+        }, {
+            "name": "readOnly",
+            "type": "boolean",
+            "changelog": {
+                "isModified": true,
+                "details": "Light behavior modification concerning a required property (see description and also the new property `writeOnly`)"
+            },
+            "description": "Relevant only for Schema \"properties\" definitions. Declares the property as \"read only\". This means that it MAY be sent as part of a response but SHOULD NOT be sent as part of the request. If property is marked as readOnly being true and is in the required list, the required will take effect on the response only. A property MUST NOT be marked as both readOnly and writeOnly being true. Default value is false.\n"
+        }, {
+            "name": "writeOnly",
+            "type": "boolean",
+            "changelog": {
+                "isNew": true
+            },
+            "description": "Relevant only for Schema \"properties\" definitions. Declares the property as \"write only\". This means that it MAY be sent as part of a request but SHOULD NOT be sent as part of the response. If property is marked as writeOnly being true and is in the required list, the required will take effect on the request only. A property MUST NOT be marked as both readOnly and writeOnly being true. Default value is false.\n"
+        }, {
+            "name": "xml",
+            "type": "XML Object",
+            "description": "This MAY be used only on properties schemas. It has no effect on root schemas. Adds Additional metadata to describe the XML representation format of this property.\n"
+        }, {
+            "name": "externalDocs",
+            "type": "External Documentation Object",
+            "description": "Additional external documentation for this schema."
+        }, {
+            "name": "example",
+            "type": "Any",
+            "description": "A free-form property to include an example of an instance for this schema."
+        }, {
+            "name": "examples",
+            "type": "Any",
+            "changelog": {
+                "isNew": true
+            },
+            "description": "An array of free-formed properties to include examples for this schema."
+        }, {
+            "name": "deprecated",
+            "type": "boolean",
+            "changelog": {
+                "isNew": true
+            },
+            "description": "Specifies that a schema is deprecated and SHOULD be transitioned out of usage."
+        }]
+    },
+    "Schema Object String": {
+        "description": "type value is string",
+        "fieldsGroup": true,
+        "fields": [{
+            "name": "format",
+            "type": "String",
+            "description": "The extending format for the previously mentioned type.  \nSee Data Type Formats for further details.  \n\nCommon Name | format    | Comments\n------------|-----------|---------\nbyte\t      | byte\t    | base64 encoded characters\nbinary\t    | binary    |\tany sequence of octets\ndate\t      | date\t    | As defined by full-date - RFC3339\ndateTime\t  | date-time\t| As defined by date-time - RFC3339\npassword\t  | password  | Used to hint UIs the input needs to be obscured.\n"
+        }, {
+            "name": "pattern",
+            "type": "string",
+            "description": "This string SHOULD be a valid regular expression, according to the ECMA 262 regular expression dialect.  \nSee http://json-schema.org/latest/json-schema-validation.html#anchor33.  \nSee https://regex101.com/\n"
+        }, {
+            "name": "maxLength",
+            "type": "integer",
+            "description": "Maximum string's length.  \nSee http://json-schema.org/latest/json-schema-validation.html#anchor26.\n"
+        }, {
+            "name": "minLength",
+            "type": "integer",
+            "description": "Minimum string's length.  \nSee http://json-schema.org/latest/json-schema-validation.html#anchor29.\n"
+        }]
+    },
+    "Scopes Object": {
+        "description": "Lists the available scopes for an OAuth2 security scheme.",
+        "allowExtension": true,
+        "fields": [{
+            "name": "{name}",
+            "type": "string",
+            "description": "Maps between a name of a scope to a short description of it (as the value of the property).",
+            "patterned": true
+        }]
+    },
+    "Security Requirement Object": {
+        "allowExtension": true,
+        "description": "Lists the required security schemes to execute this operation. The name used for each property MUST correspond to a security scheme declared in the Security Schemes under the Components Object.\n\nSecurity Requirement Objects that contain multiple schemes require that all schemes MUST be satisfied for a request to be authorized. This enables support for scenarios where there multiple query parameters or HTTP headers are required to convey security information.\n\nWhen a list of Security Requirement Objects is defined on the Open API object or Operation Object, only one of Security Requirement Objects in the list needs to be satisfied to authorize.\n",
+        "fields": [{
+            "name": "{name}",
+            "type": "[string]",
+            "description": "Each name MUST correspond to a security scheme which is declared in the Security Schemes under the Components Object. If the security scheme is of type \"oauth2\" or \"openIdConnect\", then the value is a list of scope names required for the execution. For other security scheme types, the array MUST be empty.\n"
+        }]
+    },
+    "Security Scheme Object": {
+        "description": "Allows the definition of a security scheme that can be used by the operations. Supported schemes are HTTP authentication, an API key (either as a header or as a query parameter) and OAuth2's common flows (implicit, password, application and access code).",
+        "changelog": {
+            "isModified": true,
+            "details": "- Better overall security definitions with:\n  - a more generic HTTP authentication (that goes beyond the previous `basic` type)\n  - a more complete Oauth2 description (`OAuth Flows Object`) including some OpenId connect aspect (`openIdConnectUrl`)\n- APIKey support is unchanged  \n",
+            "deletedProperties": [{
+                "name": "apiKey",
+                "replacedBy": "name",
+                "see": "Security Scheme Object"
+            }, {
+                "name": "authorizationUrl",
+                "replacedBy": "flow.<flow type>.authorizationUrl",
+                "see": "Oauth Flows Object"
+            }, {
+                "name": "tokenUrl",
+                "replacedBy": "flow.<flow type>.tokenUrl",
+                "see": "Oauth Flows Object"
+            }, {
+                "name": "scopes",
+                "replacedBy": "flow.<flow type>.scopes",
+                "see": "Oauth Flows Object"
+            }]
+        },
+        "allowExtension": true,
+        "fields": [{
+            "name": "type",
+            "type": "string",
+            "validity": "Any",
+            "required": true,
+            "changelog": {
+                "isUpdated": true,
+                "details": "`basic` type is replaced by `http`, `openIdConnect` type has been added"
+            },
+            "description": "The type of the security scheme. Valid values are \"apiKey\", \"http\", \"oauth2\", \"openIdConnect\"."
+        }, {
+            "name": "description",
+            "type": "string",
+            "validity": "Any",
+            "description": "A short description for security scheme."
+        }, {
+            "name": "name",
+            "required": true,
+            "type": "string",
+            "validity": "apikey",
+            "description": "The name of the header or query parameter to be used."
+        }, {
+            "name": "in",
+            "required": true,
+            "type": "string",
+            "validity": "apikey",
+            "description": "The location of the API key. Valid values are \"query\" or \"header\"."
+        }, {
+            "name": "scheme",
+            "type": "string",
+            "required": true,
+            "validity": "http",
+            "changelog": {
+                "isNew": true
+            },
+            "description": "The name of the HTTP Authorization scheme to be used in the [Authorization header as defined in RFC 7235](https://tools.ietf.org/html/rfc7235#section-4.2)."
+        }, {
+            "name": "bearerFormat",
+            "type": "string",
+            "validity": "http(\"bearer\")",
+            "changelog": {
+                "isNew": true
+            },
+            "description": "A hint to the client to identify how the bearer token is formatted. Bearer tokens are usually generated by an authorization server, so this information is primarily for documentation purposes."
+        }, {
+            "name": "flow",
+            "type": "OAuth Flows Object",
+            "validity": "oauth2",
+            "required": true,
+            "changelog": {
+                "isModified": true,
+                "details": "`flow` is now a OAuth Flows Object (was a string) and define all Oauth2 properties. The original flow value is replaced by using the matching property in Oauth Flows Object.\n"
+            },
+            "description": "An object containing configuration information for the flow types supported."
+        }, {
+            "name": "openIdConnectUrl",
+            "type": "string",
+            "validity": "openIdConnect",
+            "required": true,
+            "changelog": {
+                "isNew": true
+            },
+            "description": "OpenId Connect URL to discover OAuth2 configuration values. This MUST be in the form of a URL."
+        }]
+    },
+    "Server Object": {
+        "description": "An object representing a Server.",
+        "allowExtension": true,
+        "changelog": {
+            "isNew": true,
+            "details": "Replace `host`, `basePath` and `schemes` properties from root object."
+        },
+        "fields": [{
+            "name": "url",
+            "type": "string",
+            "required": true,
+            "description": "A URL to the target host. This URL supports Server Variables and may be relative, to indicate that the host location is relative to the location where the OpenAPI definition is being served. Variable substitutions will be made when a variable is named in {brackets}."
+        }, {
+            "name": "description",
+            "type": "string",
+            "description": "An optional string describing the host designated by the URL."
+        }, {
+            "name": "variables",
+            "type": "Server Variables Object",
+            "description": "An object holding variables for substitution in the URL template."
+        }]
+    },
+    "Server Variable Object": {
+        "description": "An object representing a Server Variable for server URL template substitution.",
+        "allowExtension": true,
+        "changelog": {
+            "isNew": true
+        },
+        "fields": [{
+            "name": "enum",
+            "type": "[primitive]",
+            "description": "An enumeration of primitive type values to be used if the substitution options are from a limited set."
+        }, {
+            "name": "default",
+            "required": true,
+            "type": "primitive",
+            "description": "Required. The default value to use for substitution if an alternate value is not specified, and will be sent if an alternative value is not supplied. Unlike the Schema Object's default, this value MUST be provided by the consumer."
+        }, {
+            "name": "description",
+            "type": "string",
+            "description": "An optional description for the server variable."
+        }]
+    },
+    "Server Variables Object": {
+        "description": "An object holding variables for substitution in the URL template.",
+        "allowExtension": true,
+        "changelog": {
+            "isNew": true
+        },
+        "fields": [{
+            "name": "{name}",
+            "type": "Server Variable Object",
+            "description": "A single definition, mapping a *name* to the schema it defines.",
+            "patterned": true
+        }]
+    },
+    "Specification Extensions": {
+        "name": "^x-",
+        "type": "Any",
+        "patterned": true,
+        "openapiType": true,
+        "specificationAnchor": "specificationExtensions",
+        "description": "While the OpenAPI Specification tries to accommodate most use cases, additional data can be added to extend the specification at certain points.\n\nThe extensions properties are implemented as patterned fields that are always prefixed by \"x-\".\n\n| Field Pattern\t| Type\t| Description\n|---------------|-------|--------------\n|^x-\t          | Any\t  | Allows extensions to the OpenAPI Schema. The field name MUST begin with x-, for example, x-internal-id. The value can be null, a primitive, an array or an object. Can have any valid JSON format value. The extensions may or may not be supported by the available tooling, but those may be extended as well to add requested support (if tools are internal or open-sourced).\n"
+    },
+    "Tag Object": {
+        "description": "Allows adding meta data to a single tag that is used by the Operation Object. It is not mandatory to have a Tag Object per tag used there.",
+        "allowExtension": true,
+        "fields": [{
+            "name": "name",
+            "type": "string",
+            "description": "The name of the tag.",
+            "required": true
+        }, {
+            "name": "description",
+            "type": "string",
+            "description": "A short description for the tag. CommonMark syntax can be used for rich text representation.",
+            "md": "CommonMark"
+        }, {
+            "name": "externalDocs",
+            "type": "ExternalDocumentation",
+            "description": "Additional external documentation for this tag."
+        }]
+    },
+    "Z Object": {
+        "description": "tmp",
+        "fields": [{
+            "name": "tmp",
+            "type": "string",
+            "description": "tmp"
+        }]
+    }
+}

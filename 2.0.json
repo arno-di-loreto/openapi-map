@@ -476,6 +476,7 @@
             "description": "Fields if *type* value is *string*, *number*, *integer* or *boolean*."
         }, {
             "name": "default",
+            "type": "*",
             "description": "Declares the value of the parameter that the server will use if none is provided.\nFor example a *count* to control the number of results per page might default to 100 if not supplied by the client in the request.\n(Note: *default* has no meaning for required parameters.)\nUnlike JSON Schema this value MUST conform to the defined type for this parameter.\nSee http://json-schema.org/latest/json-schema-validation.html#anchor101.\n"
         }]
     },
@@ -583,13 +584,9 @@
         }]
     },
     "Reference Object": {
-        "description": "A simple object to allow referencing other definitions in the specification.\nIt can be used to reference parameters and responses that are defined at the top level for reuse.\nThe Reference Object is a JSON Reference that uses a JSON Pointer as its value.\nFor this specification, only canonical dereferencing is supported.\n",
-        "fields": [{
-            "name": "$ref",
-            "type": "string",
-            "description": "The reference string.",
-            "required": true
-        }]
+        "name": "$ref",
+        "type": "string",
+        "description": "A simple object to allow referencing other definitions in the specification.\nIt can be used to reference parameters and responses that are defined at the top level for reuse.\nThe Reference Object is a JSON Reference that uses a JSON Pointer as its value.\nFor this specification, only canonical dereferencing is supported.\n"
     },
     "Response Object": {
         "description": "Describes a single response from an API Operation.",
@@ -628,12 +625,10 @@
         "allowExtension": true,
         "fields": [{
             "name": "default",
-            "allowReference": true,
             "type": "Response Object",
             "description": "The documentation of responses other than the ones declared for specific HTTP response codes. It can be used to cover undeclared responses. Reference Object can be used to link to a response that is defined at the Swagger Object's responses section."
         }, {
             "name": "{HTTP status code}",
-            "allowReferene": true,
             "type": "Response Object",
             "description": "Any HTTP status code can be used as the property name (one property per HTTP status code). Describes the expected response for that HTTP status code. Reference Object can be used to link to a response that is defined at the Swagger Object's responses section."
         }]
@@ -670,6 +665,7 @@
         }, {
             "name": "type",
             "description": "Object's type",
+            "type": "string",
             "values": [{
                 "value": "array",
                 "description": "A JSON array."
@@ -708,6 +704,10 @@
         }, {
             "name": "<type is object>",
             "type": "Schema Object Object",
+            "description": "Fields when *type* is *object*"
+        }, {
+            "name": "<OpenAPI properties>",
+            "type": "Schema Object OpenAPI",
             "description": "Fields when *type* is *object*"
         }]
     },
@@ -776,7 +776,7 @@
             "noFollow": true
         }, {
             "name": "required",
-            "type": ["string"],
+            "type": "[string]",
             "description": "The list of required properties."
         }, {
             "name": "maxProperties",
@@ -786,6 +786,31 @@
             "name": "minProperties",
             "type": "integer",
             "description": "An object instance is valid against \"minProperties\" if its number of properties is greater than, or equal to, the value of this keyword."
+        }]
+    },
+    "Schema Object OpenAPI": {
+        "fieldsGroup": true,
+        "description": "Other than the JSON Schema subset fields, the following fields may be used for further schema documentation.",
+        "fields": [{
+            "name": "discriminator",
+            "type": "string",
+            "description": "Adds support for polymorphism.  \nThe discriminator is the schema property name that is used to differentiate between other schema that inherit this schema.  \nThe property name used MUST be defined at this schema and it MUST be in the required property list.  \nWhen used, the value MUST be the name of this schema or any schema that inherits it.\n"
+        }, {
+            "name": "readOnly",
+            "type": "boolean",
+            "description": "Relevant only for Schema \"properties\" definitions. Declares the property as \"read only\". This means that it MAY be sent as part of a response but MUST NOT be sent as part of the request. Properties marked as readOnly being true SHOULD NOT be in the required list of the defined schema. Default value is false.\n"
+        }, {
+            "name": "xml",
+            "type": "XML Object",
+            "description": "This MAY be used only on properties schemas. It has no effect on root schemas.  \nAdds Additional metadata to describe the XML representation format of this property.\n"
+        }, {
+            "name": "externalDocs",
+            "type": "External Documentation Object",
+            "description": "Additional external documentation for this schema."
+        }, {
+            "name": "example",
+            "type": "Any",
+            "description": "A free-form property to include an example of an instance for this schema."
         }]
     },
     "Schema Object String": {
@@ -809,36 +834,13 @@
             "description": "Minimum string's length.  \nSee http://json-schema.org/latest/json-schema-validation.html#anchor29.\n"
         }]
     },
-    "Schema Object Swagger": {
-        "fieldsGroup": true,
-        "description": "The following properties are taken directly from the JSON Schema definition and follow the same specifications.",
-        "fields": [{
-            "name": "discriminator",
-            "type": "string",
-            "description": "Adds support for polymorphism.  \nThe discriminator is the schema property name that is used to differentiate between other schema that inherit this schema.  \nThe property name used MUST be defined at this schema and it MUST be in the required property list.  \nWhen used, the value MUST be the name of this schema or any schema that inherits it.\n"
-        }, {
-            "name": "readOnly",
-            "type": "boolean",
-            "description": "Relevant only for Schema \"properties\" definitions. Declares the property as \"read only\". This means that it MAY be sent as part of a response but MUST NOT be sent as part of the request. Properties marked as readOnly being true SHOULD NOT be in the required list of the defined schema. Default value is false.\n"
-        }, {
-            "name": "xml",
-            "type": "XML Object",
-            "description": "This MAY be used only on properties schemas. It has no effect on root schemas.  \nAdds Additional metadata to describe the XML representation format of this property.\n"
-        }, {
-            "name": "externalDocs",
-            "type": "External Documentation Object",
-            "description": "Additional external documentation for this schema."
-        }, {
-            "name": "example",
-            "type": "Any",
-            "description": "A free-form property to include an example of an instance for this schema."
-        }]
-    },
     "Scopes Object": {
-        "description": null,
+        "description": "Lists the available scopes for an OAuth2 security scheme.",
         "allowExtension": true,
         "fields": [{
-            "name": "{name}",
+            "name": {
+                "name": null
+            },
             "type": "string",
             "description": "Maps between a name of a scope to a short description of it (as the value of the property).",
             "patterned": true
@@ -953,8 +955,8 @@
         "description": "While the OpenAPI Specification tries to accommodate most use cases, additional data can be added to extend the specification at certain points.  \nThe field name MUST begin with *x-*, for example, *x-internal-id.*  \nThe value can be null, a primitive, an array or an object.  \nWhen the value is an object or an array of object, the object's fields names do not need to start with *x-*.  \nThe extensions may or may not be supported by the available tooling, but those may be extended as well to add requested support (if tools are internal or open-sourced).\n"
     },
     "Swagger Object": {
-        "name": "OpenAPI definition",
-        "description": "This is the *root* document object for the API specification.  \nIt combines what previously was the Resource Listing and API Declaration (version 1.2 and earlier) together into one document.\n",
+        "name": "OpenAPI 2.0",
+        "description": "OpenAPI 2.0 top level object. This is the *root* document object for the API specification.  \nIt combines what previously was the Resource Listing and API Declaration (version 1.2 and earlier) together into one document.\n",
         "allowExtension": true,
         "fields": [{
             "name": "swagger",
@@ -981,7 +983,7 @@
             "description": "The base path on which the API is served, which is relative to the host.  \nIf it is not included, the API is served directly under the host.  \nThe value MUST start with a leading slash (/).  \nThe basePath does not support path templating.\n"
         }, {
             "name": "schemes",
-            "type": ["string"],
+            "type": "[string]",
             "description": "The transfer protocol of the API.  \nIf the schemes is not included, the default scheme to be used is the one used to access the OpenAPI definition itself.\n",
             "values": [{
                 "value": "http"
@@ -996,11 +998,11 @@
             }]
         }, {
             "name": "consumes",
-            "type": ["string"],
+            "type": "[string]",
             "description": "A list of MIME types the APIs can consume.  \nThis is global to all APIs but can be overridden on specific API calls.  \nValue MUST be as described under Mime Types.\n"
         }, {
             "name": "produces",
-            "type": ["string"],
+            "type": "[string]",
             "description": "A list of MIME types the APIs can produce.  \nThis is global to all APIs but can be overridden on specific API calls.  \nValue MUST be as described under Mime Types.\n"
         }, {
             "name": "paths",
