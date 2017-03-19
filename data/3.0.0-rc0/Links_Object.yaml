@@ -5,6 +5,8 @@ Links Object:
     As opposed to dynamic links (links provided in the response payload), the OAS linking mechanism does not require that link information be provided in a specific response format at runtime.
 
     For computing links, and providing instructions to execute them, variable substitution is used for accessing values in a response and using them as values while invoking the linked operation.
+  changelog:
+    isNew: true
   fields:
     -
       name: "{name}"

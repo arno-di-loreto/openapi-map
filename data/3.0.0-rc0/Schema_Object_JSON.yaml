@@ -6,7 +6,7 @@ Schema Object JSON:
       name: <Modified JSON properties>
       type: Schema Object Modified JSON
       changelog:
-        status: Modifed
+        isModified: true
       description: The following properties are taken from the JSON Schema definition but their definitions were adjusted to the OpenAPI Specification.
     -
       name: <type is array>

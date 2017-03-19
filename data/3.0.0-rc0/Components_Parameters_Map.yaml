@@ -1,6 +1,8 @@
 Components Parameters Map:
   description: An object to hold reusable Parameters Objects.
   specificationAnchor: componentsObject
+  changelog:
+    isNew: true
   fields:
     -
       name: "{name}"

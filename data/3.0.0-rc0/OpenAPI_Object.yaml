@@ -10,22 +10,31 @@ OpenAPI Object:
     deletedProperties:
       - name: swagger
         replacedBy: openapi
+        specificationAnchor: oasObject
       - name: host
         replacedBy: servers[].url
+        specificationAnchor: serverObject
       - name: basePath
         replacedBy: servers[].url
+        specificationAnchor: serverObject
       - name: schemes
         replacedBy: servers[].url
+        specificationAnchor: serverObject
       - name: definitions
         replacedBy: components.schemas
-      - names: parameters
+        specificationAnchor: componentsObject
+      - name: parameters
         replacedBy: components.parameters and components.requestBodies
+        specificationAnchor: componentsObject
       - name: securityDefinitions
         replacedBy: components.securitySchemas
+        specificationAnchor: componentsObject
       - name: consumes
-        replacedBy: Content Object
+        replacedBy: Content Object.{media type}
+        specificationAnchor: contentObject
       - name: produces
-        replacedBy: Content Object
+        replacedBy: Content Object.{media type}
+        specificationAnchor: contentObject
   fields:
     - 
       name: openapi
@@ -33,7 +42,7 @@ OpenAPI Object:
       required: true
       changelog:
         isNew: true
-        details: Replace the swagger property
+        details: Replace the `swagger` property
       description: |
         Specifies the OpenAPI Specification version being used. It can be used by tooling Specifications and clients to interpret the version. The structure SHALL be `major.minor.patch`, where `patch` versions MUST be compatible with the existing `major.minor` tooling. Typically `patch` versions will be introduced to address errors in the documentation, and tooling SHOULD typically be compatible with the corresponding `major.minor` (3.0.*). Patch versions will correspond to patches of this document.
     - 

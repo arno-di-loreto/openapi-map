@@ -8,10 +8,9 @@ Schema Object:
 
     Additional properties defined by the JSON Schema specification that are not mentioned here are strictly unsupported.
   allowExtension: true
-  allowReference: true
   changelog:
-    status: Modifed
-    description: |
+    isModified: true
+    details: |
       OpenAPI properties:
         - `nullable`, `writeOnly`, `example` and `deprecated` have been added.
         - Inheritance and polymorphism mecanism has been modified (see `discriminator`).
@@ -24,11 +23,11 @@ Schema Object:
       name: <JSON Schema properties>
       type: Schema Object JSON
       changelog:
-        isUpated: true
+        isModified: true
       description: JSON Schema Properties
     -
       name: <OpenAPI properties>
       type: Schema Object OpenAPI
       changelog:
-        isUpated: true
+        isModified: true
       description: Other than the JSON Schema subset fields, the following fields MAY be used for further schema documentation.

@@ -141,6 +141,20 @@ function isArray(type) {
   return type.indexOf('[') >= 0;
 }
 
+function getNewProperties(type) {
+  var result = [];
+  for (var i = 0; i < type.fields.length; i++) {
+    var property = type.fields[i];
+    if (property.changelog && property.changelog.isNew) {
+      result.push({
+        name: property.name,
+        description: getHTMLFromMD(property.description)
+      });
+    }
+  }
+  return result;
+}
+
 function buildNodeFromOpenapiType(openapiDocumentation,
                                   openapiType,
                                   specificationUrl,
@@ -158,13 +172,27 @@ function buildNodeFromOpenapiType(openapiDocumentation,
                             definition.specificationAnchor,
                             specificationUrl),
     typeDescription: getHTMLFromMD(definition.description),
-    changelog: definition.changelog,
     typeChangelog: definition.changelog,
     allowExtension: allowExtension(definition),
     isFieldsGroup: isFieldsGroup(openapiDocumentation, openapiType),
     isOpenapiType: isOpenapiType(openapiDocumentation, openapiType),
     closedChildren: []
   };
+
+  if (node.typeChangelog !== undefined &&
+      node.typeChangelog.details !== undefined) {
+    node.typeChangelog.details = getHTMLFromMD(node.typeChangelog.details);
+  }
+
+  var newProperties = getNewProperties(definition);
+  if (newProperties.length > 0) {
+    if (node.typeChangelog === undefined) {
+      node.typeChangelog = {newProperties: newProperties};
+    }
+    else {
+      node.typeChangelog.newProperties = newProperties;
+    }
+  }
 
   if (withChildren) {
     for (var index = 0; index < definition.fields.length; index++) {
@@ -198,6 +226,10 @@ function buildNodeFromOpenapiType(openapiDocumentation,
 
 function buildNodeFromField(openapiDocumentation, field, specificationUrl, parentNode) {
   var node;
+  if(field.type.localeCompare('Server Object')===0){
+    console.log('url', field);
+    console.log(parentNode);
+  }
   if (!isAtomicField(openapiDocumentation, field)) {
     var withChildren;
     if (field.noFollow === true) {
@@ -221,18 +253,13 @@ function buildNodeFromField(openapiDocumentation, field, specificationUrl, paren
   }
   node.name = field.name;
   node.description = getHTMLFromMD(field.description);
-  // propagate isNew to children
-  if (field.changelog === undefined &&
-      parentNode !== undefined &&
-      parentNode.changelog !== undefined &&
-      parentNode.changelog.isNew) {
-    node.changelog = {
-      isNew: parentNode.changelog.isNew
-    };
+  node.changelog = field.changelog;
+  if (node.changelog !== undefined &&
+      node.changelog.details !== undefined) {
+    node.changelog.details = getHTMLFromMD(node.changelog.details);
   }
-  // simple field changelog
-  else {
-    node.changelog = field.changelog;
+  if (parentNode) {
+    node.parentChangelog = parentNode.changelog;
   }
   node.isArray = isArray(field.type);
   node.allowReference = allowReference(field);

@@ -12,7 +12,7 @@ Schema Object OpenAPI:
       name: discriminator
       type: string
       changelog:
-        status: Modifed
+        isModified: true
         description: Composition and inheritance mecanism has been modified.
       description: |
         Adds support for polymorphism. The discriminator is the schema property name that is used to differentiate between other schema that inherit this schema. The property name used MUST be defined at this schema and it MUST be in the required property list. When used, the value MUST be the name of this schema or any schema that inherits it. See [Composition and Inheritance](https://github.com/OAI/OpenAPI-Specification/blob/3.0.0-rc0/versions/3.0.md#schemaComposition) for more details.
@@ -20,7 +20,7 @@ Schema Object OpenAPI:
       name: readOnly
       type: boolean
       changelog:
-        status: Modifed
+        isModified: true
         description: Light behavior modification concerning a required property (see description and also the new property `writeOnly`)
       description: |
         Relevant only for Schema "properties" definitions. Declares the property as "read only". This means that it MAY be sent as part of a response but SHOULD NOT be sent as part of the request. If property is marked as readOnly being true and is in the required list, the required will take effect on the response only. A property MUST NOT be marked as both readOnly and writeOnly being true. Default value is false.

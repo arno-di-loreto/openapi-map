@@ -3,6 +3,8 @@ Link Parameters Object:
     Using the operationId to reference an operation in the definition has many benefits, including the ability to define media type options, security requirements, response and error payloads. Many operations require parameters to be passed, and these MAY be dynamic depending on the response itself.
 
     To specify parameters required by the operation, we can use a Link Parameters Object. This object contains parameter names along with static or dynamic values
+  changelog:
+    isNew: true
   fields:
     - name: "{name}"
       type: "Any or {expression}"

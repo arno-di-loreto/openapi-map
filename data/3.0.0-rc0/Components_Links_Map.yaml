@@ -1,6 +1,8 @@
 Components Links Map:
   description: An object to hold reusable Link Objects.
   specificationAnchor: componentsObject
+  changelog:
+    isNew: true
   fields:
     -
       name: "{name}"

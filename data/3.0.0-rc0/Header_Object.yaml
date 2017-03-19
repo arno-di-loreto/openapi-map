@@ -9,7 +9,7 @@ Header Object:
     Note: allowEmptyValue shouldn't be used too (only for query parameters)
   allowExtension: true
   changelog:
-    status: Modifed
+    isModfied: true
   fields:
     -
       name: description

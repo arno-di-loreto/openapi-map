@@ -7,7 +7,7 @@ Responses Object:
     The Responses Object MUST contain at least one response code, and it SHOULD be the response for a successful operation call.
   allowExtension: true
   changelog:
-    status: Modifed
+    isModified: true
   fields:
     -
       name: default
@@ -19,6 +19,6 @@ Responses Object:
       allowReferene: true
       type: Response Object
       changelog:
-        status: Modifed
+        isModified: true
         description: Wildcard are now allowed (2XX)
       description: Any HTTP status code can be used as the property name (one property per HTTP status code). Describes the expected response for that HTTP status code. Reference Object can be used to link to a response that is defined at the OpenAPI Object's responses section. This field MUST be quoted for compatibility between JSON and YAML (i.e. "200"), and MAY contain the uppercase character, X to designate a wildcard, such as 2XX to represent all response codes between [200-299].

@@ -1,6 +1,6 @@
 Callbacks Object:
   changelog:
-    isTrue: true
+    isNew: true
   description: An object to hold reusable Callback Objects.
   fields:
     -

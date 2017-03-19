@@ -1,5 +1,7 @@
 Security Scheme Object:
   description: tmp
+  changelog:
+    isNew: true
   fields:
     - name: tmp
       type: string

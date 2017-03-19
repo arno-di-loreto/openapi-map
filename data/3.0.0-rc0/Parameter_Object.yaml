@@ -12,7 +12,7 @@ Parameter Object:
     - cookie - Used to pass a specific cookie value to the API.
   allowExtension: true
   changelog:
-    status: Modifed
+    isModified: true
     description: |
       - Describes query, header path and cookie (new!) parameters.
       - Body parameters are now defined with a Request Body Object.
@@ -33,7 +33,7 @@ Parameter Object:
       required: true
       description: The location of the parameter. Possible values are "query", "header", "path" or "cookie".
       changelog:
-        status: Modifed
+        isModified: true
         description: formData (replaced by ?) and body (replaced by Request Body) have been removed
       values:
         -
