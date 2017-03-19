@@ -1,20 +1,41 @@
 Response Object:
   description: Describes a single response from an API Operation, including design-time, static links to operations based on the response.
+  changelog:
+    isModified: true
+    details: Object's structure modified
+    deletedProperties:
+      - 
+        name: schema
+        replacedBy: content
+        specificationAnchor: contentObject
+      -
+        name: example
+        replacedBy: Content Object.{media type}.schema
+        specificationAnchor: mediaTypeObject
   fields:
     - 
       name: description
       type: string
       isRequired: true
+      md: CommonMark
       description: A short description of the response. CommonMark syntax can be used for rich text representation.
     -
       name: headers
       type: Headers Object
+      changelog:
+        isModified: true
+        details: Headers can now be defined in the root `components`
       description: A list of headers that are sent with the response.
     -
       name: content
       type: Content Object
+      changelog:
+        isNew: true
+        details: Replace `schema` but also `Operation Object.produces` or `Open API Object.produces`
       description: An object containing descriptions of potential response payloads.
     -
       name: links
       type: Links Object
+      changelog:
+        isNew: true
       description: An object representing operations related to the response payload.

@@ -48,9 +48,9 @@ function getHTMLFromMD(md) {
   var html;
   if (md !== undefined && md !== null) {
     html = marked(md);
-    if (pRegEx.test(html)) {
-      html = html.substring(3, html.length - 5);
-    }
+    //if (pRegEx.test(html)) {
+      //html = html.substring(3, html.length - 5);
+    //}
     //if (html.startsWith('<p>')) {
     //  html = html.substring(3, html.length - 5);
     //}
@@ -164,6 +164,49 @@ function getNewProperties(type) {
   return result;
 }
 
+function getModifiedProperties(type) {
+  var result = [];
+  for (var i = 0; i < type.fields.length; i++) {
+    var property = type.fields[i];
+    if (property.changelog && property.changelog.isModified) {
+      result.push({
+        name: property.name,
+        description: getHTMLFromMD(property.changelog.details)
+      });
+    }
+  }
+  return result;
+}
+
+function getDeletedProperties(type, specificationUrl) {
+  var result = [];
+  if (type.changelog !== undefined && type.changelog.deletedProperties) {
+    result = type.changelog.deletedProperties;
+    for (var i = 0; i < result.length; i++) {
+      if (result[i].see !== undefined) {
+        result[i].documentationUrl = getDocumentationUrl(result[i].see, undefined, specificationUrl);
+      }
+    }
+  }
+  return result;
+}
+
+
+var mdUrls = {
+  gfm: 'https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet',
+  commonmark: 'http://commonmark.org/help/'
+};
+function getMd(field) {
+  var md;
+  if (field.md) {
+    md = {
+      syntax: field.md,
+      url: mdUrls[field.md.toLowerCase()]
+    };
+  }
+  return md;
+}
+
 function buildNodeFromOpenapiType(openapiDocumentation,
                                   openapiType,
                                   specificationUrl,
@@ -200,6 +243,26 @@ function buildNodeFromOpenapiType(openapiDocumentation,
     }
     else {
       node.typeChangelog.newProperties = newProperties;
+    }
+  }
+
+  var modifiedProperties = getModifiedProperties(definition);
+  if (modifiedProperties.length > 0) {
+    if (node.typeChangelog === undefined) {
+      node.typeChangelog = {modifiedProperties: modifiedProperties};
+    }
+    else {
+      node.typeChangelog.modifiedProperties = modifiedProperties;
+    }
+  }
+
+  var deletedProperties = getDeletedProperties(definition, specificationUrl);
+  if (deletedProperties.length > 0) {
+    if (node.typeChangelog === undefined) {
+      node.typeChangelog = {deletedProperties: deletedProperties};
+    }
+    else {
+      node.typeChangelog.deletedProperties = deletedProperties;
     }
   }
 
@@ -272,7 +335,12 @@ function buildNodeFromField(openapiDocumentation, field, specificationUrl, paren
   node.isArray = isArray(field.type);
   node.allowReference = allowReference(field);
   node.values = field.values;
-  node.md = field.md;
+
+  var md = getMd(field);
+  if (md) {
+    node.md = md;
+  }
+
   if (field.required) {
     node.required = true;
   }

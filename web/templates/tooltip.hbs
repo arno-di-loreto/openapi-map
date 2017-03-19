@@ -36,7 +36,7 @@
               <p class="list-group-item"><i class="fa fa-cube fa-fw fa-2x"></i>&nbsp;{{additionalType}}</p>
             {{/if}}
             {{#if md}}
-              <p class="list-group-item"><i class="fa fa-file-code-o fa-fw fa-2x"></i>&nbsp;Supports markdown ({{{md}}} syntax)</p>
+              <p class="list-group-item"><img style="width:32px" src="images/markdown.png">&nbsp;&nbsp;Supports markdown (<a href="{{md.url}}" target="mddocumentation">{{{md.syntax}}} syntax</a>)</p>
             {{/if}}
             {{#if allowReference}}
               <p class="list-group-item"><i class="fa fa-code-fork fa-fw fa-2x"></i>&nbsp;Value can be a reference to a {{{type}}}</p>
@@ -78,24 +78,16 @@
     {{/if}}
     <!-- type description -->
     {{#if typeDescription}}
-    <div id="typedescription" class="row">
+    <div class="row row-doc"> <!-- type description -->
       <div class="documentation">
         <h2>{{type}}</h2>
         <div class="list-group">
         <!-- change log -->
         {{#if typeChangelog.isNew}}
-          <div class="list-group-item list-group-item-success"><span class="fa fa-info-circle fa-fw fa-2x"></span><strong>New object! </strong>{{{typeChangelog.details}}}</div>
+          <div class="list-group-item list-group-item-success"><span class="fa fa-info-circle fa-fw fa-2x"></span>&nbsp;<strong>New object!</strong>{{{typeChangelog.details}}}</div>
         {{/if}}
         {{#if typeChangelog.isModified}}
-          <div class="list-group-item list-group-item-warning"><i class="fa fa-exclamation-triangle fa-fw fa-2x"></i>&nbsp;<strong>Modified object! </strong>{{{typeChangelog.details}}}</div>
-        {{/if}}
-        <!-- change log - deleted properties -->
-        {{#if typeChangelog.deletedProperties}}
-          <p class="list-group-item list-group-item-danger"><i class="fa fa-trash fa-fw fa-2x"></i>&nbsp;<a href="#deletedproperties">Deleted properties</a></p>
-        {{/if}}
-        <!-- change log - new properties -->
-        {{#if typeChangelog.newProperties}}
-          <p class="list-group-item list-group-item-success"><i class="fa fa-plus-square fa-fw fa-2x"></i>&nbsp;<a href="#newproperties">New properties</a></p>
+          <div class="list-group-item list-group-item-warning"><span class="fa fa-exclamation-triangle fa-fw fa-2x"></span>&nbsp;<a href="#objectchangelog"><strong>Modified object! </strong></a></div>
         {{/if}}
         <!-- extension -->
         {{#if allowExtension}}
@@ -105,14 +97,43 @@
         {{#if typeDocumentationUrl}}
           <p class="list-group-item"><i class="fa fa-book fa-fw fa-2x"></i>&nbsp;<a href="{{typeDocumentationUrl}}" target="openapidocumentation">OpenAPI Specification</a></p>
         {{/if}}
-        </div>
+        </div> <!-- <div class="list-group"> -->
         <!-- description -->
         {{#if typeDescription}}
         <h3>Description</h3>
         <p>{{{typeDescription}}}</p>
         {{/if}}
-        <!-- new properties -->
+      </div> <!-- <div class="documentation"> -->
+    </div><!-- type description -->
+        
+        {{#if typeChangelog.isModified}}
+    <div class="row row-doc"><!-- type changelog description -->
+      <div class="documentation">
+        <a name="objectchangelog"></a>
+        <h2>{{type}} Change log</h2>
+        <div class="list-group">
+        <!-- change log - new Object-->
+          <div class="list-group-item list-group-item-warning"><i class="fa fa-exclamation-triangle fa-fw fa-2x"></i>&nbsp;<strong>Modified object! </strong></div>
+        <!-- change log - deleted properties -->
+        {{#if typeChangelog.deletedProperties}}
+          <p class="list-group-item list-group-item-danger"><i class="fa fa-trash fa-fw fa-2x"></i>&nbsp;<a href="#deletedproperties">Deleted properties</a></p>
+        {{/if}}
+        <!-- change log - new properties -->
         {{#if typeChangelog.newProperties}}
+          <p class="list-group-item list-group-item-success"><i class="fa fa-plus-square fa-fw fa-2x"></i>&nbsp;<a href="#newproperties">New properties</a></p>
+        {{/if}}
+        <!-- change log - modified properties -->
+        {{#if typeChangelog.modifiedProperties}}
+          <p class="list-group-item list-group-item-warning"><i class="fa fa-pencil-square fa-fw fa-2x"></i>&nbsp;<a href="#modifiedproperties">Modified properties</a></p>
+        {{/if}}
+        </div> <!-- <div class="list-group"> -->
+        <!-- description -->
+        {{#if typeChangelog.details}}
+        <h3>What's new</h3>
+        <p>{{{typeChangelog.details}}}</p>
+        {{/if}}
+        <!-- new properties -->
+          {{#if typeChangelog.newProperties}}
         <a name="newproperties"></a>
         <h3>New properties</h3>
         <table id="table" class="table table-striped table-bordered table-condensed" >
@@ -127,9 +148,26 @@
           </tr>
           {{/typeChangelog.newProperties}}
         </table>
-        {{/if}}
+          {{/if}}
+        <!-- modified properties -->
+          {{#if typeChangelog.modifiedProperties}}
+        <a name="modifiedproperties"></a>
+        <h3>Modified properties</h3>
+        <table id="table" class="table table-striped table-bordered table-condensed" >
+          <tr>
+              <th>Modified Property</th>
+              <th>What's new</th>  
+          </tr>
+          {{#typeChangelog.modifiedProperties}}
+          <tr>
+            <td>{{this.name}}</td>
+            <td>{{{this.description}}}</td>
+          </tr>
+          {{/typeChangelog.modifiedProperties}}
+        </table>
+          {{/if}}
         <!-- deleted properties -->
-        {{#if typeChangelog.deletedProperties}}
+          {{#if typeChangelog.deletedProperties}}
         <a name="deletedproperties"></a>
         <h3>Deleted properties</h3>
         <table id="table" class="table table-striped table-bordered table-condensed" >
@@ -142,13 +180,14 @@
           <tr>
             <td>{{this.name}}</td>
             <td>{{this.replacedBy}}</td>
-            <td><a href="" target="openapidocumentation"><i class="fa fa-book fa-fw fa-2x"></i></a></td>
+            <td><a href="{{this.documentationUrl}}" target="openapidocumentation"><i class="fa fa-book fa-fw fa-2x"></i></a></td>
           </tr>
           {{/typeChangelog.deletedProperties}}
         </table>
+          {{/if}}
+      </div> <!-- <div class="documentation"> -->
+    </div><!-- type changelog -->
         {{/if}}
-      </div>
-    </div><!-- type description -->
     {{/if}}
   {{/if}}
-</div>
+</div> <!-- <div class="entry"> -->

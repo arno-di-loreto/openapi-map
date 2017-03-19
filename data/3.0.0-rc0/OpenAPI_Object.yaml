@@ -10,31 +10,31 @@ OpenAPI Object:
     deletedProperties:
       - name: swagger
         replacedBy: openapi
-        specificationAnchor: oasObject
+        see: OpenAPI Object
       - name: host
         replacedBy: servers[].url
-        specificationAnchor: serverObject
+        see: Server Object
       - name: basePath
         replacedBy: servers[].url
-        specificationAnchor: serverObject
+        see: Server Object
       - name: schemes
         replacedBy: servers[].url
-        specificationAnchor: serverObject
+        see: Server Object
       - name: definitions
         replacedBy: components.schemas
-        specificationAnchor: componentsObject
+        see: Components Object
       - name: parameters
         replacedBy: components.parameters and components.requestBodies
-        specificationAnchor: componentsObject
+        see: Components Object
       - name: securityDefinitions
         replacedBy: components.securitySchemas
-        specificationAnchor: componentsObject
+        see: Components Object
       - name: consumes
         replacedBy: Content Object.{media type}
-        specificationAnchor: contentObject
+        see: Content Object
       - name: produces
         replacedBy: Content Object.{media type}
-        specificationAnchor: contentObject
+        see: Content Object
   fields:
     - 
       name: openapi

@@ -34,7 +34,7 @@ Parameter Object:
       description: The location of the parameter. Possible values are "query", "header", "path" or "cookie".
       changelog:
         isModified: true
-        description: formData (replaced by ?) and body (replaced by Request Body) have been removed
+        details: formData (replaced by ?) and body (replaced by Request Body) have been removed
       values:
         -
           value: query
