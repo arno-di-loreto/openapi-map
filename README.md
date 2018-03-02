@@ -1,8 +1,7 @@
-# OpenAPI Specification Visual Documentation
-This is a tree rendering of the [OpenAPI specification](https://openapis.org/specification) (fka The Swagger Specification) to provide an easy to read visual documentation.<br>
-It has been created by [Arnaud Lauret, the API Handyman](https://github.com/arno-di-loreto).
+# OpenAPI Map
+The OpenAPI Map (fka. OpenAPI Specification Visual Document) aims to help you find your way in the [OpenAPI Specification](https://github.com/OAI/OpenAPI-Specification) (fka. Swagger Specification) documentation. Note that it is not made to render an OpenAPI document.
 
-This tool does NOT a render an API's OpenAPI specification.
+It has been created by [Arnaud Lauret, the API Handyman](https://apihandyman.io).
 
 ## How to use it?
 You can see it on [apihandyman.io](http://openapi-specification-visual-documentation.apihandyman.io/)
@@ -13,12 +12,11 @@ You can see it on [apihandyman.io](http://openapi-specification-visual-documenta
 - Clicking on a node expand or collapse it
 - Moving mouse over a node shows its documentation
 
-
 ## How does it work?
 
 ### Data files
-*data* contains sets of YAML files (one per version of the OpenAPI specification) describing each object provided by the OpenAPI specification.
-The content of these files is based on the OpenAPI specification itself, some precisions have been added when needed.
+*data* contains sets of YAML files (one per version of the OpenAPI Specification) describing each object provided by the OpenAPI Specification.
+The content of these files is based on the OpenAPI Specification itself, some precisions have been added when needed.
 
 ```yaml
 Info Object:
