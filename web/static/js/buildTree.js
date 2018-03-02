@@ -37,7 +37,16 @@ function getDocumentationUrl(openapiType, anchor, specificationUrl) {
   return documentationUrl;
 }
 
-var pRegEx = new RegExp('^<p>.*');
+/**
+ * @description Add target="_blank" to all links in html
+ * @param {String} html
+ * @returns {String} Modified html 
+ */
+function addTargetBlankToURL(html) {
+  var result = html;
+  result = result.replace(/<a href=/g, '<a target="_blank" href=');
+  return result;
+}
 
 /**
  * @description Generate HTML for Markdown
@@ -48,13 +57,7 @@ function getHTMLFromMD(md) {
   var html;
   if (md !== undefined && md !== null) {
     html = marked(md);
-    //if (pRegEx.test(html)) {
-      //html = html.substring(3, html.length - 5);
-    //}
-    //if (html.startsWith('<p>')) {
-    //  html = html.substring(3, html.length - 5);
-    //}
-    
+    html = addTargetBlankToURL(html)    
   }
   else {
     html = md;
