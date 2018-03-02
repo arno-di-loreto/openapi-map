@@ -3,16 +3,16 @@ this["OpenAPISpecificationVisualDocumentation"]["tooltip"] = Handlebars.template
     var stack1, helper;
 
   return "    <i class=\"fa fa-indent fa-2x fa-pull-left\"></i><p>"
-    + ((stack1 = ((helper = (helper = helpers.description || (depth0 != null ? depth0.description : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"description","hash":{},"data":data}) : helper))) != null ? stack1 : "")
+    + ((stack1 = ((helper = (helper = helpers.description || (depth0 != null ? depth0.description : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : (container.nullContext || {}),{"name":"description","hash":{},"data":data}) : helper))) != null ? stack1 : "")
     + "</p>\n  <!-- other -->\n";
 },"3":function(container,depth0,helpers,partials,data) {
-    var stack1, alias1=depth0 != null ? depth0 : {};
+    var stack1, alias1=depth0 != null ? depth0 : (container.nullContext || {});
 
   return ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.parent : depth0),{"name":"if","hash":{},"fn":container.program(4, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + "    <!-- type description -->\n"
     + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.typeDescription : depth0),{"name":"if","hash":{},"fn":container.program(31, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "");
 },"4":function(container,depth0,helpers,partials,data) {
-    var stack1, helper, alias1=depth0 != null ? depth0 : {};
+    var stack1, helper, alias1=depth0 != null ? depth0 : (container.nullContext || {});
 
   return "      <div class=\"row\">\n        <div class=\"documentation\">\n          <!-- property description -->\n          <h2>"
     + container.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
@@ -56,19 +56,19 @@ this["OpenAPISpecificationVisualDocumentation"]["tooltip"] = Handlebars.template
     var helper;
 
   return "              <p class=\"list-group-item\"><i class=\"fa fa-cubes fa-fw fa-2x\"></i>&nbsp;"
-    + container.escapeExpression(((helper = (helper = helpers.type || (depth0 != null ? depth0.type : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"type","hash":{},"data":data}) : helper)))
+    + container.escapeExpression(((helper = (helper = helpers.type || (depth0 != null ? depth0.type : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : (container.nullContext || {}),{"name":"type","hash":{},"data":data}) : helper)))
     + "</p>\n";
 },"17":function(container,depth0,helpers,partials,data) {
     var helper;
 
   return "              <p class=\"list-group-item\"><i class=\"fa fa-cube fa-fw fa-2x\"></i>&nbsp;"
-    + container.escapeExpression(((helper = (helper = helpers.type || (depth0 != null ? depth0.type : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"type","hash":{},"data":data}) : helper)))
+    + container.escapeExpression(((helper = (helper = helpers.type || (depth0 != null ? depth0.type : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : (container.nullContext || {}),{"name":"type","hash":{},"data":data}) : helper)))
     + "</p>\n";
 },"19":function(container,depth0,helpers,partials,data) {
     var helper;
 
   return "              <p class=\"list-group-item\"><i class=\"fa fa-cube fa-fw fa-2x\"></i>&nbsp;"
-    + container.escapeExpression(((helper = (helper = helpers.additionalType || (depth0 != null ? depth0.additionalType : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"additionalType","hash":{},"data":data}) : helper)))
+    + container.escapeExpression(((helper = (helper = helpers.additionalType || (depth0 != null ? depth0.additionalType : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : (container.nullContext || {}),{"name":"additionalType","hash":{},"data":data}) : helper)))
     + "</p>\n";
 },"21":function(container,depth0,helpers,partials,data) {
     var stack1, alias1=container.lambda;
@@ -82,16 +82,16 @@ this["OpenAPISpecificationVisualDocumentation"]["tooltip"] = Handlebars.template
     var stack1, helper;
 
   return "              <p class=\"list-group-item\"><i class=\"fa fa-code-fork fa-fw fa-2x\"></i>&nbsp;Value can be a reference to a "
-    + ((stack1 = ((helper = (helper = helpers.type || (depth0 != null ? depth0.type : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"type","hash":{},"data":data}) : helper))) != null ? stack1 : "")
+    + ((stack1 = ((helper = (helper = helpers.type || (depth0 != null ? depth0.type : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : (container.nullContext || {}),{"name":"type","hash":{},"data":data}) : helper))) != null ? stack1 : "")
     + "</p>\n";
 },"25":function(container,depth0,helpers,partials,data) {
     var helper;
 
   return "              <p class=\"list-group-item\"><i class=\"fa fa-book fa-fw fa-2x\"></i><a href=\""
-    + container.escapeExpression(((helper = (helper = helpers.documentationUrl || (depth0 != null ? depth0.documentationUrl : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"documentationUrl","hash":{},"data":data}) : helper)))
+    + container.escapeExpression(((helper = (helper = helpers.documentationUrl || (depth0 != null ? depth0.documentationUrl : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : (container.nullContext || {}),{"name":"documentationUrl","hash":{},"data":data}) : helper)))
     + "\" target=\"openapidocumentation\">OpenAPI Specification</a></p>\n";
 },"27":function(container,depth0,helpers,partials,data) {
-    var stack1, helper, alias1=depth0 != null ? depth0 : {};
+    var stack1, helper, alias1=depth0 != null ? depth0 : (container.nullContext || {});
 
   return "            <p>"
     + ((stack1 = ((helper = (helper = helpers.description || (depth0 != null ? depth0.description : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(alias1,{"name":"description","hash":{},"data":data}) : helper))) != null ? stack1 : "")
@@ -100,7 +100,7 @@ this["OpenAPISpecificationVisualDocumentation"]["tooltip"] = Handlebars.template
 },"28":function(container,depth0,helpers,partials,data) {
     var stack1, helper, options, buffer = 
   "            <h2>Values</h2>\n            <table id=\"table\" class=\"table table-striped table-bordered table-condensed table-hover\" >\n              <tr>\n                  <th>\n                      Value\n                  </th>\n                  <th>\n                      Default\n                  </th>\n                  <th>\n                      Description\n                  </th>\n              </tr>\n\n";
-  stack1 = ((helper = (helper = helpers.values || (depth0 != null ? depth0.values : depth0)) != null ? helper : helpers.helperMissing),(options={"name":"values","hash":{},"fn":container.program(29, data, 0),"inverse":container.noop,"data":data}),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},options) : helper));
+  stack1 = ((helper = (helper = helpers.values || (depth0 != null ? depth0.values : depth0)) != null ? helper : helpers.helperMissing),(options={"name":"values","hash":{},"fn":container.program(29, data, 0),"inverse":container.noop,"data":data}),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : (container.nullContext || {}),options) : helper));
   if (!helpers.values) { stack1 = helpers.blockHelperMissing.call(depth0,stack1,options)}
   if (stack1 != null) { buffer += stack1; }
   return buffer + "            </table>\n";
@@ -115,7 +115,7 @@ this["OpenAPISpecificationVisualDocumentation"]["tooltip"] = Handlebars.template
     + ((stack1 = alias1((depth0 != null ? depth0.description : depth0), depth0)) != null ? stack1 : "")
     + "</td>\n              </tr>\n";
 },"31":function(container,depth0,helpers,partials,data) {
-    var stack1, helper, alias1=depth0 != null ? depth0 : {};
+    var stack1, helper, alias1=depth0 != null ? depth0 : (container.nullContext || {});
 
   return "    <div class=\"row row-doc\"> <!-- type description -->\n      <div class=\"documentation\">\n        <h2>"
     + container.escapeExpression(((helper = (helper = helpers.type || (depth0 != null ? depth0.type : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(alias1,{"name":"type","hash":{},"data":data}) : helper)))
@@ -144,16 +144,16 @@ this["OpenAPISpecificationVisualDocumentation"]["tooltip"] = Handlebars.template
     var helper;
 
   return "          <p class=\"list-group-item\"><i class=\"fa fa-book fa-fw fa-2x\"></i>&nbsp;<a href=\""
-    + container.escapeExpression(((helper = (helper = helpers.typeDocumentationUrl || (depth0 != null ? depth0.typeDocumentationUrl : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"typeDocumentationUrl","hash":{},"data":data}) : helper)))
+    + container.escapeExpression(((helper = (helper = helpers.typeDocumentationUrl || (depth0 != null ? depth0.typeDocumentationUrl : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : (container.nullContext || {}),{"name":"typeDocumentationUrl","hash":{},"data":data}) : helper)))
     + "\" target=\"openapidocumentation\">OpenAPI Specification</a></p>\n";
 },"40":function(container,depth0,helpers,partials,data) {
     var stack1, helper;
 
   return "        <h3>Description</h3>\n        <p>"
-    + ((stack1 = ((helper = (helper = helpers.typeDescription || (depth0 != null ? depth0.typeDescription : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"typeDescription","hash":{},"data":data}) : helper))) != null ? stack1 : "")
+    + ((stack1 = ((helper = (helper = helpers.typeDescription || (depth0 != null ? depth0.typeDescription : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : (container.nullContext || {}),{"name":"typeDescription","hash":{},"data":data}) : helper))) != null ? stack1 : "")
     + "</p>\n";
 },"42":function(container,depth0,helpers,partials,data) {
-    var stack1, helper, alias1=depth0 != null ? depth0 : {};
+    var stack1, helper, alias1=depth0 != null ? depth0 : (container.nullContext || {});
 
   return "    <div class=\"row row-doc\"><!-- type changelog description -->\n      <div class=\"documentation\">\n        <a name=\"objectchangelog\"></a>\n        <h2>"
     + container.escapeExpression(((helper = (helper = helpers.type || (depth0 != null ? depth0.type : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(alias1,{"name":"type","hash":{},"data":data}) : helper)))
@@ -224,6 +224,6 @@ this["OpenAPISpecificationVisualDocumentation"]["tooltip"] = Handlebars.template
     var stack1;
 
   return "<div class=\"entry\">\n  <!-- fields group -->\n"
-    + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {},(depth0 != null ? depth0.isFieldsGroup : depth0),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.program(3, data, 0),"data":data})) != null ? stack1 : "")
+    + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : (container.nullContext || {}),(depth0 != null ? depth0.isFieldsGroup : depth0),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.program(3, data, 0),"data":data})) != null ? stack1 : "")
     + "</div> <!-- <div class=\"entry\"> -->\n";
 },"useData":true});
