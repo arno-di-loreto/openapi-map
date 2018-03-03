@@ -5,5 +5,5 @@ Example Object:
   fields:
     -
       name: "<Example Object>"
-      type: freeform object, array or primitive value
+      type: freeform object or array or primitive value
       description: Allows sharing examples for operation requests and responses. This object can either be a freeform object, array or primitive value. To represent examples of media types that cannot naturally represented in the OpenAPI definition, a string value can be used to contain the example with escaping where necessary.

@@ -7,6 +7,6 @@ Link Parameters Object:
     isNew: true
   fields:
     - name: "{name}"
-      type: "Any or {expression}"
+      type: "Any or expression"
       specificationAnchor: variableSubstitution
       description: A constant value or [expression](https://github.com/OAI/OpenAPI-Specification/blob/3.0.0-rc0/versions/3.0.md#variableSubstitution) to be evaluated and passed to the linked operation.

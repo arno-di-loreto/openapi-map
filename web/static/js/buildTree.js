@@ -1,9 +1,9 @@
 'use strict';
 
 const MAP_DEFAULT_KEY = 'name';
-const MAP_REGEX = /^\s*\{([a-zA-Z\s]*),?([a-zA-Z\s]*)\}\s*$/;
-const ARRAY_REGEX = /^\s*\[([a-zA-Z\s]*)\]\s*$/;
-const ATOMIC_REGEX = /^[a-zA-Z\s]*$/;
+const MAP_REGEX = /^\s*\{([a-zA-Z\s\*\|]*),?([a-zA-Z\s\*\|]*)\}\s*$/;
+const ARRAY_REGEX = /^\s*\[([a-zA-Z\s\*\|]*)\]\s*$/;
+const ATOMIC_REGEX = /^[a-zA-Z\s\*\|]*$/;
 
 /**
  * @description Returns a processed OpenAPI type name to handle array of objects [OpenAPI Type]
