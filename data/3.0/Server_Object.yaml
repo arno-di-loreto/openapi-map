@@ -1,0 +1,18 @@
+Server Object:
+  description: An object representing a Server.
+  allowExtension: true
+  changelog:
+    isNew: true
+    details: Replace `host`, `basePath` and `schemes` properties from root object.
+  fields:
+    - name: url
+      type: string
+      required: true
+      description: A URL to the target host. This URL supports Server Variables and may be relative, to indicate that the host location is relative to the location where the OpenAPI definition is being served. Variable substitutions will be made when a variable is named in {brackets}.
+    - name: description
+      type: string
+      md: CommonMark
+      description: An optional string describing the host designated by the URL.
+    - name: variables
+      type: "{Variable Name, Server Variable Object}"
+      description: A map between a variable name and its value. The value is used for substitution in the server's URL template.
