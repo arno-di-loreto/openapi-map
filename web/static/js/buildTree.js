@@ -398,7 +398,7 @@ function buildNodeFromMapField(openapiDocumentation, field, specificationUrl, pa
       type: mapType.type,
       description: getHTMLFromMD(field.description),
       changelog: field.changelog,
-      allowReference: allowReference(field),
+      allowReference: false,
       isMap: true,
       isArray: false,
       isOpenapiType: isOpenapiType(openapiDocumentation, mapType.type),
@@ -415,8 +415,9 @@ function buildNodeFromMapField(openapiDocumentation, field, specificationUrl, pa
     var mapItemField = {
       name: '{'+mapType.key+'}',
       type: mapType.type,
-      description: 'A ' + parentNode.type+'.'+field.name + ' map item',
-      isMapItem: true
+      description: getHTMLFromMD("A `" + field.name + "` map item"),
+      isMapItem: true,
+      allowReference: allowReference(field)
     }
 
     node.closedChildren.push(
