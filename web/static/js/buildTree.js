@@ -1,12 +1,73 @@
 'use strict';
 
+const MAP_DEFAULT_KEY = 'name';
+const MAP_REGEX = /^\s*\{([a-zA-Z\s]*),?([a-zA-Z\s]*)\}\s*$/;
+const ARRAY_REGEX = /^\s*\[([a-zA-Z\s]*)\]\s*$/;
+const ATOMIC_REGEX = /^[a-zA-Z\s]*$/;
+
 /**
  * @description Returns a processed OpenAPI type name to handle array of objects [OpenAPI Type]
  * @param {String} openapiType The type
  * @return {String} The true OpenAPI type name
  */
 function getOpenapiTypeName(openapiType) {
-  return openapiType.replace('[', '').replace(']', '');
+  var result = null;
+  // simple type like "string" or "Contact Object"
+  if(openapiType.match(ATOMIC_REGEX)){
+    result = openapiType;
+  }
+  // array [string] or [Contact Object]
+  else {
+    var arrayMatch = openapiType.match(ARRAY_REGEX);
+    if(arrayMatch){
+      result = arrayMatch[1];
+    }
+    else {
+      // map {type} or {key, type}
+      var mapMatch = openapiType.match(MAP_REGEX);
+      if(mapMatch){
+        if(mapMatch[2].length > 0){
+          result = mapMatch[2];
+        }
+        else {
+          result = mapMatch[1];
+        }
+      }
+      else {
+        throw 'Unexpected type format:' + openapiType;
+      }
+    }
+  }
+  return result.trim();
+}
+
+function isArray(type) {
+  return type.indexOf('[') >= 0;
+}
+
+function isMap(type) {
+  return type.indexOf('{') >= 0;
+}
+
+function getMapType(type) {
+  // map {type} or {key, type}
+  var mapMatch = type.match(MAP_REGEX);
+  var mapKey;
+  var mapType;
+  if(mapMatch){
+    if(mapMatch[2].length > 0){
+      mapKey = mapMatch[1];
+      mapType = mapMatch[2];
+    }
+    else {
+      mapKey = MAP_DEFAULT_KEY;
+      mapType = mapMatch[1];
+    }
+  }
+  else {
+    throw 'Unexpected type format:' + type;
+  }
+  return {key: mapKey.trim(), type: mapType.trim()};
 }
 
 /**
@@ -15,7 +76,7 @@ function getOpenapiTypeName(openapiType) {
  * @return {String} The anchor
  */
 function getAnchorForType(openapiType) {
-  var typeName = openapiType.replace(/ /g, '').replace('[', '').replace(']', '');
+  var typeName = getOpenapiTypeName(openapiType).replace(/ /g, '');
   return typeName.charAt(0).toLowerCase() + typeName.slice(1);
 }
 
@@ -147,10 +208,6 @@ function isAtomicField(openapiDocumentation, field) {
     }
   }
   return result;
-}
-
-function isArray(type) {
-  return type.indexOf('[') >= 0;
 }
 
 function getFields(typeDefinition, openapiDocumentation) {
@@ -378,3 +435,10 @@ function buildTree(openapiDocumentation, root, specificationUrl) {
   // openapiDocumentation, 'Paths Object', specificationUrl, null, true);
   return rootNode;
 }
+
+
+exports.getOpenapiTypeName = getOpenapiTypeName;
+exports.getMapType = getMapType;
+exports.isMap = isMap;
+exports.isArray = isArray;
+exports.getAnchorForType = getAnchorForType;
