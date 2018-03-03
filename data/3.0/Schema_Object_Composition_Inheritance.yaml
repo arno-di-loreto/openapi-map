@@ -1,0 +1,40 @@
+Schema Object Composition Inheritance:
+  description: See [Discrimitor Object](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.1.md#discriminatorObject) for complete examples of polymorpism.
+  fieldsGroup: true
+  changelog:
+    isModified: true
+  fields:
+    -
+      name: allOf
+      type: "[Schema Object]"
+      noFollow: true
+      allowReference: true
+      modifiedJSONSchema: true
+      description: Inline or referenced schema MUST be of a [Schema Object](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.1.md#schemaObject) and not a standard JSON Schema.
+    -
+      name: oneOf
+      type: "[Schema Object]"
+      noFollow: true
+      allowReference: true
+      modifiedJSONSchema: true
+      changelog:
+        isNew: true
+      description: Inline or referenced schema MUST be of a [Schema Object](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.1.md#schemaObject) and not a standard JSON Schema.
+    -
+      name: anyOf
+      type: "[Schema Object]"
+      noFollow: true
+      allowReference: true
+      modifiedJSONSchema: true
+      changelog:
+        isNew: true
+      description: Inline or referenced schema MUST be of a [Schema Object](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.1.md#schemaObject) and not a standard JSON Schema.
+    -
+      name: not
+      type: Schema Object
+      noFollow: true
+      allowReference: true
+      modifiedJSONSchema: true
+      changelog:
+        isNew: true
+      description: Inline or referenced schema MUST be of a [Schema Object](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.1.md#schemaObject) and not a standard JSON Schema.
