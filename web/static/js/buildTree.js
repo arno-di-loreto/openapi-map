@@ -395,12 +395,13 @@ function buildNodeFromMapField(openapiDocumentation, field, specificationUrl, pa
     var mapType = getMapType(field.type);
     node = {
       name: field.name,
-      type: field.type + ' Map',
+      type: mapType.type,
       description: getHTMLFromMD(field.description),
       changelog: field.changelog,
       allowReference: allowReference(field),
       isMap: true,
       isArray: false,
+      isOpenapiType: isOpenapiType(openapiDocumentation, mapType.type),
       closedChildren: []
     }
     
