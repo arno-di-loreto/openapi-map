@@ -309,6 +309,10 @@ function buildNodeFromOpenapiType(openapiDocumentation,
     closedChildren: []
   };
 
+  if (!node.name) {
+    node.name = node.type;
+  }
+
   if (node.typeChangelog !== undefined &&
       node.typeChangelog.details !== undefined) {
     node.typeChangelog.details = getHTMLFromMD(node.typeChangelog.details);
@@ -376,6 +380,60 @@ function buildNodeFromOpenapiType(openapiDocumentation,
 
 function buildNodeFromField(openapiDocumentation, field, specificationUrl, parentNode) {
   var node;
+  if(isMap(field.type)){
+    node = buildNodeFromMapField(openapiDocumentation, field, specificationUrl, parentNode);
+  }
+  else {
+    node = buildNodeFromArrayOrObjectField(openapiDocumentation, field, specificationUrl, parentNode);
+  }
+  return node;
+}
+
+function buildNodeFromMapField(openapiDocumentation, field, specificationUrl, parentNode) {
+  var node;
+  if(isMap(field.type)){
+    var mapType = getMapType(field.type);
+    node = {
+      name: field.name,
+      type: field.type + ' Map',
+      description: getHTMLFromMD(field.description),
+      changelog: field.changelog,
+      allowReference: allowReference(field),
+      isMap: true,
+      isArray: false,
+      closedChildren: []
+    }
+    
+    if (field.required) {
+      node.required = true;
+    }
+    else {
+      node.required = false;
+    }
+
+    var mapItemField = {
+      name: '{'+mapType.key+'}',
+      type: mapType.type,
+      description: 'A ' + parentNode.type+'.'+field.name + ' map item',
+      isMapItem: true
+    }
+
+    node.closedChildren.push(
+      buildNodeFromField(
+        openapiDocumentation,
+        mapItemField,
+        specificationUrl,
+        node));
+
+  }
+  else {
+    throw 'field '+ field.name + ' is not a map';
+  }
+  return node;
+}
+
+function buildNodeFromArrayOrObjectField(openapiDocumentation, field, specificationUrl, parentNode) {
+  var node;
   if (!isAtomicField(openapiDocumentation, field)) {
     var withChildren;
     if (field.noFollow === true) {
@@ -435,7 +493,6 @@ function buildTree(openapiDocumentation, root, specificationUrl) {
   // openapiDocumentation, 'Paths Object', specificationUrl, null, true);
   return rootNode;
 }
-
 
 exports.getOpenapiTypeName = getOpenapiTypeName;
 exports.getMapType = getMapType;
