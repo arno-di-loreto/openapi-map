@@ -5,6 +5,15 @@ const MAP_REGEX = /^\s*\{([a-zA-Z\s\*\|]*),?([a-zA-Z\s\*\|]*)\}\s*$/;
 const ARRAY_REGEX = /^\s*\[([a-zA-Z\s\*\|]*)\]\s*$/;
 const ATOMIC_REGEX = /^[a-zA-Z\s\*\|]*$/;
 
+// Dirty trick to be able to test this regular browser js file with mocha
+var markedFunc;
+if (typeof window === 'undefined') {
+  markedFunc = require('marked');
+}
+else {
+  markedFunc = marked;
+}
+
 /**
  * @description Returns a processed OpenAPI type name to handle array of objects [OpenAPI Type]
  * @param {String} openapiType The type
@@ -90,16 +99,34 @@ function getAnchorForType(openapiType) {
 function getDocumentationUrl(openapiType, anchor, specificationUrl) {
   var documentationUrl;
   if (anchor !== undefined) {
-    documentationUrl = specificationUrl + anchor;
+    documentationUrl = specificationUrl + '#' + anchor;
   }
   else if (openapiType !== null) {
-    documentationUrl = specificationUrl + getAnchorForType(openapiType);
+    documentationUrl = specificationUrl + '#' + getAnchorForType(openapiType);
   }
   return documentationUrl;
 }
 
+
 /**
- * @description Add target="_blank" to all links in html
+ * @description Updates OpenAPI Specification anchor links in HTML description
+ * @param {String} html The html
+ * @param {String} specificationUrl Specification's URL
+ * @return {String} The HTML
+ */
+function updateOpenAPIAnchors(html, specificationUrl) {
+  var result;
+  if(specificationUrl){
+    result = html.replace(/<a href="#/g, '<a href="'+specificationUrl+"#");
+  }
+  else {
+    result = html;
+  }
+  return result;
+}
+
+/**
+ * @description Adds target="_blank" to all links in html
  * @param {String} html
  * @returns {String} Modified html 
  */
@@ -110,15 +137,17 @@ function addTargetBlankToURL(html) {
 }
 
 /**
- * @description Generate HTML for Markdown
+ * @description Generates HTML for Markdown, adds target blank on links and updates local anchors with specificationUrl
  * @param {String} md The Mardown
+ * @param {String} specificationUrl Specification's URL
  * @return {String} The HTML
  */
-function getHTMLFromMD(md) {
+function getHTMLFromMD(md, specificationUrl) {
   var html;
   if (md !== undefined && md !== null) {
-    html = marked(md);
-    html = addTargetBlankToURL(html)    
+    html = markedFunc(md);
+    html = updateOpenAPIAnchors(html, specificationUrl);
+    html = addTargetBlankToURL(html);
   }
   else {
     html = md;
@@ -226,7 +255,7 @@ function getFields(typeDefinition, openapiDocumentation) {
   return result;
 }
 
-function getNewProperties(type, openapiDocumentation) {
+function getNewProperties(type, openapiDocumentation, specificationUrl) {
   var result = [];
   var fields = getFields(type, openapiDocumentation);
   for (var i = 0; i < fields.length; i++) {
@@ -234,14 +263,14 @@ function getNewProperties(type, openapiDocumentation) {
     if (property.changelog && property.changelog.isNew) {
       result.push({
         name: property.name,
-        description: getHTMLFromMD(property.description)
+        description: getHTMLFromMD(property.description, specificationUrl)
       });
     }
   }
   return result;
 }
 
-function getModifiedProperties(type, openapiDocumentation) {
+function getModifiedProperties(type, openapiDocumentation, specificationUrl) {
   var result = [];
   var fields = getFields(type, openapiDocumentation);
   for (var i = 0; i < fields.length; i++) {
@@ -249,7 +278,7 @@ function getModifiedProperties(type, openapiDocumentation) {
     if (property.changelog && property.changelog.isModified) {
       result.push({
         name: property.name,
-        description: getHTMLFromMD(property.changelog.details)
+        description: getHTMLFromMD(property.changelog.details, specificationUrl)
       });
     }
   }
@@ -301,7 +330,7 @@ function buildNodeFromOpenapiType(openapiDocumentation,
                             openapiTypeName,
                             definition.specificationAnchor,
                             specificationUrl),
-    typeDescription: getHTMLFromMD(definition.description),
+    typeDescription: getHTMLFromMD(definition.description, specificationUrl),
     typeChangelog: definition.changelog,
     allowExtension: allowExtension(definition),
     isFieldsGroup: isFieldsGroup(openapiDocumentation, openapiType),
@@ -315,10 +344,10 @@ function buildNodeFromOpenapiType(openapiDocumentation,
 
   if (node.typeChangelog !== undefined &&
       node.typeChangelog.details !== undefined) {
-    node.typeChangelog.details = getHTMLFromMD(node.typeChangelog.details);
+    node.typeChangelog.details = getHTMLFromMD(node.typeChangelog.details, specificationUrl);
   }
 
-  var newProperties = getNewProperties(definition, openapiDocumentation);
+  var newProperties = getNewProperties(definition, openapiDocumentation, specificationUrl);
   if (newProperties.length > 0) {
     if (node.typeChangelog === undefined) {
       node.typeChangelog = {newProperties: newProperties};
@@ -328,7 +357,7 @@ function buildNodeFromOpenapiType(openapiDocumentation,
     }
   }
 
-  var modifiedProperties = getModifiedProperties(definition, openapiDocumentation);
+  var modifiedProperties = getModifiedProperties(definition, openapiDocumentation, specificationUrl);
   if (modifiedProperties.length > 0) {
     if (node.typeChangelog === undefined) {
       node.typeChangelog = {modifiedProperties: modifiedProperties};
@@ -396,7 +425,7 @@ function buildNodeFromMapField(openapiDocumentation, field, specificationUrl, pa
     node = {
       name: field.name,
       type: mapType.type,
-      description: getHTMLFromMD(field.description),
+      description: getHTMLFromMD(field.description, specificationUrl),
       changelog: field.changelog,
       allowReference: false,
       isMap: true,
@@ -415,7 +444,7 @@ function buildNodeFromMapField(openapiDocumentation, field, specificationUrl, pa
     var mapItemField = {
       name: '{'+mapType.key+'}',
       type: mapType.type,
-      description: getHTMLFromMD("A `" + field.name + "` map item"),
+      description: getHTMLFromMD("A `" + field.name + "` map item", specificationUrl),
       isMapItem: true,
       allowReference: allowReference(field)
     }
@@ -458,14 +487,14 @@ function buildNodeFromArrayOrObjectField(openapiDocumentation, field, specificat
     };
   }
   node.name = field.name;
-  node.description = getHTMLFromMD(field.description);
+  node.description = getHTMLFromMD(field.description, specificationUrl);
   node.changelog = field.changelog;
   if (field.additionalType !== undefined) {
     node.additionalType = field.additionalType;
   }
   if (node.changelog !== undefined &&
       node.changelog.details !== undefined) {
-    node.changelog.details = getHTMLFromMD(node.changelog.details);
+    node.changelog.details = getHTMLFromMD(node.changelog.details, specificationUrl);
   }
   if (parentNode) {
     node.parentChangelog = parentNode.changelog;
@@ -496,8 +525,16 @@ function buildTree(openapiDocumentation, root, specificationUrl) {
   return rootNode;
 }
 
-exports.getOpenapiTypeName = getOpenapiTypeName;
-exports.getMapType = getMapType;
-exports.isMap = isMap;
-exports.isArray = isArray;
-exports.getAnchorForType = getAnchorForType;
+// Dirty trick to be able to test this regular browser js file with mocha
+if (typeof window === 'undefined') {
+  exports.getOpenapiTypeName = getOpenapiTypeName;
+  exports.getMapType = getMapType;
+  exports.isMap = isMap;
+  exports.isArray = isArray;
+  exports.getAnchorForType = getAnchorForType;
+  exports.getHTMLFromMD = getHTMLFromMD;
+  exports.addTargetBlankToURL = addTargetBlankToURL;
+  exports.updateOpenAPIAnchors = updateOpenAPIAnchors;
+  exports.getDocumentationUrl = getDocumentationUrl;
+  exports.getAnchorForType = getAnchorForType;  
+}

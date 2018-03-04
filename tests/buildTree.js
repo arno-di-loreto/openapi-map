@@ -208,4 +208,80 @@ describe('buildTree', function() {
       expect(buildTree.getAnchorForType('[Server Object]')).to.be.equal('serverObject');
     });
   });
+
+  describe('updateOpenAPIAnchors', function(){
+    
+    var specificationUrl = "http://dummy.org";
+
+    it('should not modify full link', function(){
+      var html = '<p>Some text with a <a href="http://openapis.org">full link</a></p>';
+      var modHtml = buildTree.updateOpenAPIAnchors(html, specificationUrl);
+      expect(modHtml).to.be.equal(html);
+    });
+
+    it('should not modify full link with anchor', function(){
+      var html = '<p>Some text with a <a href="http://openapis.org#anchor">full link</a></p>';
+      var modHtml = buildTree.updateOpenAPIAnchors(html, specificationUrl);
+      expect(modHtml).to.be.equal(html);
+    });
+
+    it('should modify anchor link', function(){
+      var html = '<p>Some text with a <a href="#anchor">anchor link</a></p>';
+      var expectedHtml = '<p>Some text with a <a href="http://dummy.org#anchor">anchor link</a></p>';
+      var modHtml = buildTree.updateOpenAPIAnchors(html, specificationUrl);
+      expect(modHtml).to.be.equal(expectedHtml);
+    });
+
+    it('should modify all anchor links', function(){
+      var html = '<p>Some text with a <a href="#anchor">anchor link</a> and another <a href="#anchorTwo>one</a></p>';
+      var expectedHtml = '<p>Some text with a <a href="http://dummy.org#anchor">anchor link</a> and another <a href="http://dummy.org#anchorTwo>one</a></p>';
+      var modHtml = buildTree.updateOpenAPIAnchors(html, specificationUrl);
+      expect(modHtml).to.be.equal(expectedHtml);
+    });
+
+    it('should not modify all anchor links when specificationURL is not provided', function(){
+      var html = '<p>Some text with a <a href="#anchor">anchor link</a> and another <a href="#anchorTwo>one</a></p>';
+      var modHtml = buildTree.updateOpenAPIAnchors(html);
+      expect(modHtml).to.be.equal(html);
+    });
+  });
+
+  describe('addTargetBlankToURL', function(){
+    it('should add target to all links', function(){
+      var html = '<p>Some text with a <a href="http://dummy.org#anchor">link</a> and another <a href="http://dummy.org>one</a></p>';
+      var expectedHtml = '<p>Some text with a <a target="_blank" href="http://dummy.org#anchor">link</a> and another <a target="_blank" href="http://dummy.org>one</a></p>';
+      var modHtml = buildTree.addTargetBlankToURL(html);
+      expect(modHtml).to.be.equal(expectedHtml);
+    });
+  });
+
+  describe('getHTMLFromMD', function(){
+    it('should update anchor and add target', function(){
+      var md = 'Some full [link](http://openapis.org) and some anchor [link](#anchor)';
+      var expectedHtml = '<p>Some full <a target="_blank" href="http://openapis.org">link</a> and some anchor <a target="_blank" href="http://dummy.org#anchor">link</a></p>';
+      var html = buildTree.getHTMLFromMD(md, "http://dummy.org");
+      expect(html.trim()).to.be.equal(expectedHtml);
+    })
+  });
+
+  describe('getAnchorForType', function() {
+    it('should return serverObject for Server Object', function(){
+      var openapiType = "Server Object";
+      var expectedAnchor = "serverObject";
+      var anchor = buildTree.getAnchorForType(openapiType);
+      expect(anchor).to.be.equal(expectedAnchor);
+    });
+  });
+
+  describe('getDocumentationUrl', function(){
+    it('should return full URL for Server Object type', function(){
+      var url = buildTree.getDocumentationUrl("Server Object", undefined, "http://dummy.org/path");
+      expect(url).to.be.equal("http://dummy.org/path#serverObject");
+    });
+
+    it('should return full URL for serverObject anchor', function(){
+      var url = buildTree.getDocumentationUrl(undefined, "serverObject", "http://dummy.org/path");
+      expect(url).to.be.equal("http://dummy.org/path#serverObject");
+    });
+  });
 });
