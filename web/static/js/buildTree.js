@@ -107,6 +107,23 @@ function getDocumentationUrl(openapiType, anchor, specificationUrl) {
   return documentationUrl;
 }
 
+/**
+ * @description Updates OpenAPI Specification example links (../examples) in HTML description
+ * @param {String} html The html
+ * @param {String} specificationUrl Specification's URL
+ * @return {String} The HTML
+ */
+function updateOpenAPIExampleLinks(html, specificationUrl) {
+  var result;
+  if(specificationUrl){
+    var specificationFolder = specificationUrl.substring(0,specificationUrl.lastIndexOf('/')+1);
+    result = html.replace(/<a href="\.\./g, '<a href="'+specificationFolder+'..');
+  }
+  else {
+    result = html;
+  }
+  return result;
+}
 
 /**
  * @description Updates OpenAPI Specification anchor links in HTML description
@@ -147,6 +164,7 @@ function getHTMLFromMD(md, specificationUrl) {
   if (md !== undefined && md !== null) {
     html = markedFunc(md);
     html = updateOpenAPIAnchors(html, specificationUrl);
+    html = updateOpenAPIExampleLinks(html, specificationUrl);
     html = addTargetBlankToURL(html);
   }
   else {
@@ -537,4 +555,5 @@ if (typeof window === 'undefined') {
   exports.updateOpenAPIAnchors = updateOpenAPIAnchors;
   exports.getDocumentationUrl = getDocumentationUrl;
   exports.getAnchorForType = getAnchorForType;  
+  exports.updateOpenAPIExampleLinks = updateOpenAPIExampleLinks;
 }

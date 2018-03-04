@@ -233,14 +233,14 @@ describe('buildTree', function() {
     });
 
     it('should modify all anchor links', function(){
-      var html = '<p>Some text with a <a href="#anchor">anchor link</a> and another <a href="#anchorTwo>one</a></p>';
-      var expectedHtml = '<p>Some text with a <a href="http://dummy.org#anchor">anchor link</a> and another <a href="http://dummy.org#anchorTwo>one</a></p>';
+      var html = '<p>Some text with a <a href="#anchor">anchor link</a> and another <a href="#anchorTwo">one</a></p>';
+      var expectedHtml = '<p>Some text with a <a href="http://dummy.org#anchor">anchor link</a> and another <a href="http://dummy.org#anchorTwo">one</a></p>';
       var modHtml = buildTree.updateOpenAPIAnchors(html, specificationUrl);
       expect(modHtml).to.be.equal(expectedHtml);
     });
 
     it('should not modify all anchor links when specificationURL is not provided', function(){
-      var html = '<p>Some text with a <a href="#anchor">anchor link</a> and another <a href="#anchorTwo>one</a></p>';
+      var html = '<p>Some text with a <a href="#anchor">anchor link</a> and another <a href="#anchorTwo">one</a></p>';
       var modHtml = buildTree.updateOpenAPIAnchors(html);
       expect(modHtml).to.be.equal(html);
     });
@@ -248,8 +248,8 @@ describe('buildTree', function() {
 
   describe('addTargetBlankToURL', function(){
     it('should add target to all links', function(){
-      var html = '<p>Some text with a <a href="http://dummy.org#anchor">link</a> and another <a href="http://dummy.org>one</a></p>';
-      var expectedHtml = '<p>Some text with a <a target="_blank" href="http://dummy.org#anchor">link</a> and another <a target="_blank" href="http://dummy.org>one</a></p>';
+      var html = '<p>Some text with a <a href="http://dummy.org#anchor">link</a> and another <a href="http://dummy.org">one</a></p>';
+      var expectedHtml = '<p>Some text with a <a target="_blank" href="http://dummy.org#anchor">link</a> and another <a target="_blank" href="http://dummy.org">one</a></p>';
       var modHtml = buildTree.addTargetBlankToURL(html);
       expect(modHtml).to.be.equal(expectedHtml);
     });
@@ -283,5 +283,14 @@ describe('buildTree', function() {
       var url = buildTree.getDocumentationUrl(undefined, "serverObject", "http://dummy.org/path");
       expect(url).to.be.equal("http://dummy.org/path#serverObject");
     });
+  });
+
+  describe('updateOpenAPIExampleLinks', function(){
+    it('should update all example links', function(){
+      var html = '<p>Some text with a <a href="../examples/test.yaml">link</a> and another <a href="../examples/test.yaml">one</a></p>';
+      var expectedHtml = '<p>Some text with a <a href="http://dummy.org/../examples/test.yaml">link</a> and another <a href="http://dummy.org/../examples/test.yaml">one</a></p>';
+      var result = buildTree.updateOpenAPIExampleLinks(html, "http://dummy.org/version.md");
+      expect(result).to.be.equal(expectedHtml);
+    })
   });
 });
