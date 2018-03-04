@@ -1,0 +1,105 @@
+Header Object:
+  description: |
+    The Header Object follows the structure of the [Parameter Object](#parameterObject) with the following changes:
+
+    1. `name` MUST NOT be specified, it is given in the corresponding `headers` map.
+    1. `in` MUST NOT be specified, it is implicitly in `header`.
+    1. All traits that are affected by the location MUST be applicable to a location of `header` (for example, [`style`](#parameterStyle)).
+
+    Note: allowEmptyValue shouldn't be used too (only for query parameters)
+  allowExtension: true
+  changelog:
+    isModified: true
+    details: Response headers are defined almost like parameters and can now be defined in `OpenAPI Object.components.headers` and reused with a `$ref`. 
+    deletedProperties:
+      - 
+        name: default
+        replacedBy: schema.default or content.{media type}.schema.default
+        see: Schema Object
+      -
+        name: items
+        replacedBy: schema.items or content.{media type}.schema.items
+        see: Schema Object
+      -
+        name: collectionFormat
+        replacedBy: schema.collectionFormat or content.{media type}.schema.collectionFormat
+        see: Schema Object
+      -
+        name: maxItems
+        replacedBy: schema.maxItems or content.{media type}.schema.maxItems
+        see: Schema Object
+      -
+        name: minItems
+        replacedBy: schema.minItems or content.{media type}.schema.minItems
+        see: Schema Object
+      -
+        name: uniqueItems
+        replacedBy: schema.uniqueItems or content.{media type}.schema.uniqueItems
+        see: Schema Object
+      -
+        name: format
+        replacedBy: schema.format or content.{media type}.schema.format
+        see: Schema Object
+      -
+        name: enum
+        replacedBy: schema.enum or content.{media type}.schema.enum
+        see: Schema Object
+      -
+        name: pattern
+        replacedBy: schema.pattern or content.{media type}.schema.pattern
+        see: Schema Object
+      -
+        name: maxLength
+        replacedBy: schema.maxLength or content.{media type}.schema.maxLength
+        see: Schema Object
+      -
+        name: minLength
+        replacedBy: schema.minLength or content.{media type}.schema.minLength
+        see: Schema Object
+      -
+        name: maximum
+        replacedBy: schema.maximum or content.{media type}.schema.maximum
+        see: Schema Object
+      -
+        name: exclusiveMaximum
+        replacedBy: schema.exclusiveMaximum or content.{media type}.schema.exclusiveMaximum
+        see: Schema Object
+      -
+        name: minimum
+        replacedBy: schema.minimum or content.{media type}.schema.minimum
+        see: Schema Object
+      -
+        name: exclusiveMinimum
+        replacedBy: schema.exclusiveMinimum or content.{media type}.schema.exclusiveMinimum
+        see: Schema Object
+      -
+        name: multipleOf
+        replacedBy: schema.multipleOf or content.{media type}.schema.multipleOf
+        see: Schema Object
+
+  fields:
+    -
+      name: description
+      type: string
+      md: CommonMark
+      description: |
+        A brief description of the header. This could contain examples of use. CommonMark syntax can be used for rich text representation.    
+    -
+      name: required
+      type: boolean
+      description: |
+        Determines whether this header is mandatory (always returnd). Its default value is false.
+    -
+      name: deprecated
+      type: boolean
+      description: Specifies that a header is deprecated and SHOULD be transitioned out of usage.
+      changelog:
+        isNew: true
+    -
+      name: <using style and schema>
+      type: Header Object Style Schema
+      description: The rules for serialization of the header are specified in one of two ways. For simpler scenarios, a [`style`](#parameterSchema) and [`schema`](#parameterStyle) can be used to describe the structure and syntax of the parameter.
+    -
+      name: <using content>
+      type: Header Object Content
+      description: For more complex scenarios, the [`content`](#parameterContent) property can define the media type and schema of the header. A header MUST contain either a `schema` property, or a `content` property, but not both. When example or examples are provided in conjunction with the `schema` object, the example MUST follow the prescribed serialization strategy for the header.

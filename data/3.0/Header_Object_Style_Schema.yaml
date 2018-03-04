@@ -1,0 +1,50 @@
+Header Object Style Schema:
+  description: |
+    _Reminder: The Header Object follows the structure of the [Parameter Object](#parameterObject) with some adaptations. See [Header Object](#headerObject)._
+
+    The rules for serialization of the header are specified in one of two ways. For simpler scenarios, a [`style`](#parameterSchema) and [`schema`](#parameterStyle) can be used to describe the structure and syntax of the parameter.
+  fieldsGroup: true
+  changelog:
+    isNew: true
+  fields:
+    -
+      name: style
+      type: string
+      changelog:
+        isNew: true
+      description: |
+        Describes how the header value will be serialized depending on the type of the parameter value. Default value is `simple` (because it's a Header Object).
+    - 
+      name: explode
+      type: boolean
+      changelog:
+        isNew: true
+      description: When this is true, headers values of type `array` or `object` generate separate parameters for each value of the array or key-value pair of the map.  For other types of headers this property has no effect. When [`style`](#parameterStyle) is `form`, the default value is `true`. For all other styles, the default value is `false`.
+    # Need to check if allowReserved make sense for a header
+    -
+      name: allowReserved
+      type: boolean
+      changelog:
+        isNew: true
+      description: Determines whether the parameter value SHOULD allow reserved characters, as defined by [RFC3986](https://tools.ietf.org/html/rfc3986#section-2.2) `:/?#[]@!$&'()*+,;=` to be included without percent-encoding. This property only applies to parameters with an `in` value of `query`. The default value is `false`.
+    -
+      name: schema
+      type: Schema Object
+      allowReference: true
+      changelog:
+        isNew: true
+      description: The schema defining the type used for the header.
+    -
+      name: example
+      type: Any
+      allowReference: true
+      changelog:
+        isNew: true
+      description: Example of the media type.  The example SHOULD match the specified schema and encoding properties if present.  The `example` field is mutually exclusive of the `examples` field.  Furthermore, if referencing a `schema` which contains an example, the `example` value SHALL _override_ the example provided by the schema. To represent examples of media types that cannot naturally be represented in JSON or YAML, a string value can contain the example with escaping where necessary.
+    -
+      name: examples
+      type: "{Example Object}"
+      allowReference: true
+      changelog:
+        isNew: true
+      description: Examples of the media type.  Each example SHOULD contain a value in the correct format as specified in the parameter encoding.  The `examples` field is mutually exclusive of the `example` field.  Furthermore, if referencing a `schema` which contains an example, the `examples` value SHALL _override_ the example provided by the schema.
