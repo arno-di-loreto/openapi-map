@@ -1,0 +1,12 @@
+Parameter Object Content:
+  description: For more complex scenarios, the [`content`](#parameterContent) property can define the media type and schema of the parameter. A parameter MUST contain either a `schema` property, or a `content` property, but not both. When example or examples are provided in conjunction with the `schema` object, the example MUST follow the prescribed serialization strategy for the parameter.
+  fieldsGroup: true
+  changelog:
+    isNew: true
+  fields:
+    - name: content
+      type: "{Media Type Object}"
+      changelog:
+        isNew: true
+        details: Replace operation's `consumes`.
+      description: A map containing the representations for the parameter. The key is the media type and the value describes it. The map MUST only contain one entry.

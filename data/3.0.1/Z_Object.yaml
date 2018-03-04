@@ -1,0 +1,9 @@
+Z Object:
+  name: Test
+  description: |
+    Test description with a [link](http://apihandyman.io) and another [one](#openapi/).
+  fields:
+    - name: test
+      type: string
+      description: |
+        Test properties with a [link](http://apihandyman.io) and another [one](#openapi/)

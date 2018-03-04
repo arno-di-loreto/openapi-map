@@ -25,7 +25,10 @@
               <p class="list-group-item"><i class="fa fa-asterisk fa-fw fa-2x"></i>&nbsp;Required</p>
             {{/if}}
             {{#if isArray}}
-              <p class="list-group-item"><i class="fa fa-list-ul fa-fw fa-2x"></i>&nbsp;Array</p>
+              <p class="list-group-item"><i class="fa fa-bars fa-fw fa-2x"></i>&nbsp;Array</p>
+            {{/if}}
+            {{#if isMap}}
+              <p class="list-group-item"><i class="fa fa-list fa-fw fa-2x"></i>&nbsp;Map</p>
             {{/if}}
             {{#if isOpenapiType}}
               <p class="list-group-item"><i class="fa fa-cubes fa-fw fa-2x"></i>&nbsp;{{type}}</p>
@@ -39,7 +42,7 @@
               <p class="list-group-item"><img style="width:32px" src="images/markdown.png">&nbsp;&nbsp;Supports markdown (<a href="{{md.url}}" target="mddocumentation">{{{md.syntax}}} syntax</a>)</p>
             {{/if}}
             {{#if allowReference}}
-              <p class="list-group-item"><i class="fa fa-code-fork fa-fw fa-2x"></i>&nbsp;Value can be a reference to a {{{type}}}</p>
+              <p class="list-group-item"><i class="fa fa-code-branch fa-fw fa-2x"></i>&nbsp;Value can be a reference to a {{{type}}}</p>
             {{/if}}
             {{#if documentationUrl}}
               <p class="list-group-item"><i class="fa fa-book fa-fw fa-2x"></i><a href="{{documentationUrl}}" target="openapidocumentation">OpenAPI Specification</a></p>
@@ -91,7 +94,7 @@
         {{/if}}
         <!-- extension -->
         {{#if allowExtension}}
-          <p class="list-group-item"><i class="fa fa-code-fork fa-fw fa-2x"></i>&nbsp;Allows extension with x- properties</p>
+          <p class="list-group-item"><i class="fa fa-code-branch fa-fw fa-2x"></i>&nbsp;Allows extension with x- properties</p>
         {{/if}}
         <!-- documentation -->
         {{#if typeDocumentationUrl}}
@@ -114,15 +117,15 @@
         <div class="list-group">
         <!-- change log - deleted properties -->
         {{#if typeChangelog.deletedProperties}}
-          <p class="list-group-item list-group-item-danger"><i class="fa fa-trash fa-fw fa-2x"></i>&nbsp;<a href="#deletedproperties">Deleted properties</a></p>
+          <p class="list-group-item list-group-item-danger"><i class="fa fa-trash-alt fa-fw fa-2x"></i>&nbsp;<a href="#deletedproperties">Deleted properties</a></p>
         {{/if}}
         <!-- change log - new properties -->
         {{#if typeChangelog.newProperties}}
-          <p class="list-group-item list-group-item-success"><i class="fa fa-plus-square fa-fw fa-2x"></i>&nbsp;<a href="#newproperties">New properties</a></p>
+          <p class="list-group-item list-group-item-success"><i class="far fa-plus-square fa-fw fa-2x"></i>&nbsp;<a href="#newproperties">New properties</a></p>
         {{/if}}
         <!-- change log - modified properties -->
         {{#if typeChangelog.modifiedProperties}}
-          <p class="list-group-item list-group-item-warning"><i class="fa fa-pencil-square fa-fw fa-2x"></i>&nbsp;<a href="#modifiedproperties">Modified properties</a></p>
+          <p class="list-group-item list-group-item-warning"><i class="fas fa-pen-square fa-fw fa-2x"></i>&nbsp;<a href="#modifiedproperties">Modified properties</a></p>
         {{/if}}
         </div> <!-- <div class="list-group"> -->
         <!-- description -->

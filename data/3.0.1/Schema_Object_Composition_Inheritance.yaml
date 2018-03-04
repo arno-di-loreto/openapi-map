@@ -1,0 +1,40 @@
+Schema Object Composition Inheritance:
+  description: See [Discrimitor Object](#discriminatorObject) for complete examples of polymorpism.
+  fieldsGroup: true
+  changelog:
+    isModified: true
+  fields:
+    -
+      name: allOf
+      type: "[Schema Object]"
+      noFollow: true
+      allowReference: true
+      modifiedJSONSchema: true
+      description: Inline or referenced schema MUST be of a [Schema Object](#schemaObject) and not a standard JSON Schema.
+    -
+      name: oneOf
+      type: "[Schema Object]"
+      noFollow: true
+      allowReference: true
+      modifiedJSONSchema: true
+      changelog:
+        isNew: true
+      description: Inline or referenced schema MUST be of a [Schema Object](#schemaObject) and not a standard JSON Schema.
+    -
+      name: anyOf
+      type: "[Schema Object]"
+      noFollow: true
+      allowReference: true
+      modifiedJSONSchema: true
+      changelog:
+        isNew: true
+      description: Inline or referenced schema MUST be of a [Schema Object](#schemaObject) and not a standard JSON Schema.
+    -
+      name: not
+      type: Schema Object
+      noFollow: true
+      allowReference: true
+      modifiedJSONSchema: true
+      changelog:
+        isNew: true
+      description: Inline or referenced schema MUST be of a [Schema Object](#schemaObject) and not a standard JSON Schema.

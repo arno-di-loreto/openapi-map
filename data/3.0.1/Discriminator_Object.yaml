@@ -1,0 +1,27 @@
+Discriminator Object:
+  description: |
+    When request bodies or response payloads may be one of a number of different schemas, a `discriminator` object can be used to aid in serialization, deserialization, and validation.  The discriminator is a specific object in a schema which is used to inform the consumer of the specification of an alternative schema based on the value associated with it.
+
+    When using the discriminator, _inline_ schemas will not be considered.
+
+    The discriminator attribute is legal only when using one of the composite keywords `oneOf`, `anyOf`, `allOf`.
+
+    See [Discrimitor Object](#discriminatorObject) for complete examples.
+  allowExtension: true
+  changelog:
+    isNew: true
+  fields:
+    -
+      name: propertyName
+      type: string
+      required: true
+      description: The name of the property in the payload that will hold the discriminator value.
+    -
+      name: mapping
+      type: "{propertyName value, string}"
+      description: |
+        An object to hold mappings between payload values and schema names or references. 
+
+        In scenarios where the value of the discriminator field does not match the schema name or implicit mapping is not possible, an optional `mapping` definition MAY be used.
+
+        See [Discrimitor Object](#discriminatorObject) for complete examples.

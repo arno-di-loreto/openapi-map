@@ -1,0 +1,15 @@
+Reference Object:
+  name: $ref
+  type: string
+  description: |
+    A simple object to allow referencing other definitions in the specification. It can be used to reference parameters and responses that are defined at the top level for reuse.
+
+    The Reference Object is a JSON Reference that uses a JSON Pointer as its value. For this specification, only canonical dereferencing is supported.
+
+    A simple object to allow referencing other components in the specification, internally and externally.
+
+    The Reference Object is defined by [JSON Reference](https://tools.ietf.org/html/draft-pbryan-zyp-json-ref-03) and follows the same structure, behavior and rules. 
+
+    For this specification, reference resolution is accomplished as defined by the JSON Reference specification and not by the JSON Schema specification.
+
+    This object cannot be extended with additional properties and any properties added SHALL be ignored.

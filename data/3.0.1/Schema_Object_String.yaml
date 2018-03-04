@@ -1,0 +1,26 @@
+Schema Object String:
+  description: type value is string
+  fieldsGroup: true
+  fields:
+    -
+      name: pattern
+      type: string
+      origin: JSON Schema
+      description: |
+        This string SHOULD be a valid regular expression, according to the [ECMA 262 regular expression dialect](https://www.ecma-international.org/ecma-262/5.1/#sec-7.8.5).  
+        See http://json-schema.org/latest/json-schema-validation.html#rfc.section.6.3.3.
+        See also [Regex 101](https://regex101.com/) to debug regex.
+    -
+      name: maxLength
+      origin: JSON Schema
+      type: integer
+      description: |
+        Maximum string's length.  
+        See http://json-schema.org/latest/json-schema-validation.html#rfc.section.6.3.1
+    -
+      name: minLength
+      origin: JSON Schema
+      type: integer
+      description: |
+        Minimum string's length.  
+        See http://json-schema.org/latest/json-schema-validation.html#rfc.section.6.3.2

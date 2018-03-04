@@ -1,0 +1,18 @@
+Tag Object:
+  description: Adds metadata to a single tag that is used by the Operation Object. It is not mandatory to have a Tag Object per tag defined in the Operation Object instances.
+  allowExtension: true
+  fields:
+    -
+      name: name
+      type: string
+      description: The name of the tag.
+      required: true
+    -
+      name: description
+      type: string
+      description: A short description for the tag.
+      md: CommonMark
+    -
+      name: externalDocs
+      type: External Documentation Object
+      description: Additional external documentation for this tag.

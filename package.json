@@ -1,26 +1,31 @@
 {
-  "name": "openapi-specification-visual-documentation",
+  "name": "openapi-map",
   "version": "1.0.0",
-  "description": "Visualize the OpenAPI specification in a D3JS tree",
+  "description": "Find your way in the OpenAPI Specification",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha",
+    "serve": "gulp serve",
+    "build": "gulp"
   },
   "author": "Arnaud Lauret",
-  "license": "ISC",
+  "license": "Apache 2.0",
   "devDependencies": {
-    "del": "^2.2.2",
+    "chai": "^4.1.2",
+    "del": "^3.0.0",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.1",
     "gulp-declare": "^0.3.0",
     "gulp-filelist": "^1.0.0",
-    "gulp-handlebars": "^4.0.0",
-    "gulp-jsbeautifier": "^2.1.0",
-    "gulp-sequence": "^0.4.6",
+    "gulp-handlebars": "^5.0.2",
+    "gulp-jsbeautifier": "^2.1.2",
+    "gulp-sequence": "^1.0.0",
     "gulp-webserver": "^0.9.1",
     "gulp-wrap": "^0.13.0",
     "gulp-yaml": "^1.0.1",
-    "handlebars": "^4.0.6",
-    "merge-stream": "^1.0.1"
+    "handlebars": "^4.0.11",
+    "marked": "^0.3.17",
+    "merge-stream": "^1.0.1",
+    "mocha": "^5.0.1"
   }
 }

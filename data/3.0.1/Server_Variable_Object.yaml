@@ -1,0 +1,17 @@
+Server Variable Object:
+  description: An object representing a Server Variable for server URL template substitution.
+  allowExtension: true
+  changelog:
+    isNew: true
+  fields:
+    - name: enum
+      type: "[primitive]"
+      description: An enumeration of primitive type values to be used if the substitution options are from a limited set.
+    - name: default
+      required: true
+      type: primitive
+      description: Required. The default value to use for substitution if an alternate value is not specified, and will be sent if an alternative value is not supplied. Unlike the Schema Object's default, this value MUST be provided by the consumer.
+    - name: description
+      type: string
+      md: CommonMark
+      description: An optional description for the server variable.

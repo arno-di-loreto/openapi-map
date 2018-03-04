@@ -1,0 +1,89 @@
+OpenAPI Object:
+  name: OpenAPI 3.0
+  specificationAnchor: oasObject
+  description: |
+    OpenAPI 3.0 top level object.
+    This is the root document object for the OpenAPI Specification document.
+  allowExtension: true
+  changelog:
+    isModified: true
+    details: |
+      The new OpenAPI Specification version 3.0 offers many welcomed improvements and new features (see OpenAPI [blog post series about this](https://www.openapis.org/news/blogs/2016/10/tdc-structural-improvements-explaining-30-spec-part-2)).
+      
+      Here are the noticeable changes on top level (*navigate through the tree to see what happened on other levels*): 
+      - Bye bye `swagger` and hello `openapi`.
+      - Reusable definitions are centralized in `components` making the document more consistent (the previous version mixed reusable and global definitions on the same level).
+
+    deletedProperties:
+      - name: swagger
+        replacedBy: openapi
+        see: OpenAPI Object
+      - name: host
+        replacedBy: servers[].url
+        see: Server Object
+      - name: basePath
+        replacedBy: servers[].url
+        see: Server Object
+      - name: schemes
+        replacedBy: servers[].url
+        see: Server Object
+      - name: definitions
+        replacedBy: components.schemas
+        see: Components Object
+      - name: parameters
+        replacedBy: components.parameters and components.requestBodies
+        see: Components Object
+      - name: securityDefinitions
+        replacedBy: components.securitySchemas
+        see: Components Object
+      - name: consumes
+        replacedBy: Content Object.{media type}
+        see: Content Object
+      - name: produces
+        replacedBy: Content Object.{media type}
+        see: Content Object
+  fields:
+    - 
+      name: openapi
+      type: string
+      required: true
+      changelog:
+        isNew: true
+        details: Replace the `swagger` property
+      description: |
+        This string MUST be the [semantic version number](https://semver.org/spec/v2.0.0.html) of the [OpenAPI Specification version](#versions) that the OpenAPI document uses. The `openapi` field SHOULD be used by tooling specifications and clients to interpret the OpenAPI document. This is *not* related to the API [`info.version`](#infoVersion) string.
+    - 
+      name: info
+      type: Info Object
+      required: true
+      description: Provides metadata about the API. The metadata MAY be used by tooling as required.
+    - 
+      name: servers
+      type: "[Server Object]"
+      description: An array of Server Objects, which provide connectivity information to a target server. If the `servers` property is not provided, or is an empty array, the default value would be a `Server Object` with a `url` value of `/`.
+      changelog:
+        isNew: true
+    - 
+      name: paths
+      type: Paths Object
+      required: true
+      description: The available paths and operations for the API.
+    -
+      name: components
+      type: Components Object
+      description: An element to hold various schemas for the specification.
+      changelog:
+        isNew: true
+        details: Replace `definitions`, `parameters` and `securityDefinitions`
+    -
+      name: security
+      type: "[Security Requirement Object]"
+      description: A declaration of which security mechanisms can be used across the API. The list of values includes alternative security requirement objects that can be used. Only one of the security requirement objects need to be satisfied to authorize a request. Individual operations can override this definition.
+    -
+      name: tags
+      type: "[Tag Object]"
+      description: A list of tags used by the specification with additional metadata. The order of the tags can be used to reflect on their order by the parsing tools. Not all tags that are used by the Operation Object must be declared. The tags that are not declared MAY be organized randomly or based on the tools' logic. Each tag name in the list MUST be unique.
+    -
+      name: externalDocs
+      type: External Documentation Object
+      description: Additional external documentation.

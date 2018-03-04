@@ -1,0 +1,25 @@
+Info Object:
+  description: Provides metadata about the API. The metadata can be used by the clients if needed.
+  allowExtension: true
+  fields:
+    - name: title
+      type: string
+      required: true
+      description: The title of the application.
+    - name: description
+      type: string
+      md: CommonMark
+      description: A short description of the application.
+    - name: termsOfService
+      type: string
+      description: A URL to the Terms of Service for the API. MUST be in the format of a URL.
+    - name: contact
+      type: Contact Object
+      description: The contact information for the exposed API.
+    - name: licence
+      type: Licence Object
+      description: The license information for the exposed API.
+    - name: version
+      type: string
+      required: true
+      description: The version of the API definition (which is distinct from the OpenAPI specification version or the API implementation version).
