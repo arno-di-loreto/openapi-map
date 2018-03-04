@@ -1,5 +1,5 @@
 Parameter Object Content:
-  description: For more complex scenarios, the [`content`](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.1.md#parameterContent) property can define the media type and schema of the parameter. A parameter MUST contain either a `schema` property, or a `content` property, but not both. When example or examples are provided in conjunction with the `schema` object, the example MUST follow the prescribed serialization strategy for the parameter.
+  description: For more complex scenarios, the [`content`](#parameterContent) property can define the media type and schema of the parameter. A parameter MUST contain either a `schema` property, or a `content` property, but not both. When example or examples are provided in conjunction with the `schema` object, the example MUST follow the prescribed serialization strategy for the parameter.
   fieldsGroup: true
   changelog:
     isNew: true

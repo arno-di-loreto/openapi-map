@@ -1,5 +1,5 @@
 Parameter Object Style Schema:
-  description: The rules for serialization of the parameter are specified in one of two ways. For simpler scenarios, a [`style`](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.1.md#parameterSchema) and [`schema`](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.1.md#parameterStyle) can be used to describe the structure and syntax of the parameter.
+  description: The rules for serialization of the parameter are specified in one of two ways. For simpler scenarios, a [`style`](#parameterSchema) and [`schema`](#parameterStyle) can be used to describe the structure and syntax of the parameter.
   fieldsGroup: true
   fields:
     -
@@ -14,7 +14,7 @@ Parameter Object Style Schema:
       type: boolean
       changelog:
         isNew: true
-      description: When this is true, parameter values of type `array` or `object` generate separate parameters for each value of the array or key-value pair of the map.  For other types of parameters this property has no effect. When [`style`](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.1.md#parameterStyle) is `form`, the default value is `true`. For all other styles, the default value is `false`.
+      description: When this is true, parameter values of type `array` or `object` generate separate parameters for each value of the array or key-value pair of the map.  For other types of parameters this property has no effect. When [`style`](#parameterStyle) is `form`, the default value is `true`. For all other styles, the default value is `false`.
     -
       name: allowReserved
       type: boolean

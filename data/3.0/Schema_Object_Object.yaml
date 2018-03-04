@@ -21,7 +21,7 @@ Schema Object Object:
       modOrigin: true
       allowReference: true
       noFollow: true
-      description: Property definitions MUST be a [Schema Object](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.1.md#schemaObject) and not a standard JSON Schema (inline or referenced).
+      description: Property definitions MUST be a [Schema Object](#schemaObject) and not a standard JSON Schema (inline or referenced).
     -
       name: additionalProperties
       type: Schema Object
@@ -29,7 +29,7 @@ Schema Object Object:
       modOrigin: true
       allowReference: true
       noFollow: true
-      description: Value can be boolean or object. Inline or referenced schema MUST be of a [Schema Object](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.1.md#schemaObject) and not a standard JSON Schema.       
+      description: Value can be boolean or object. Inline or referenced schema MUST be of a [Schema Object](#schemaObject) and not a standard JSON Schema.       
     - 
       name: maxProperties
       type: integer

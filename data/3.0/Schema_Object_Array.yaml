@@ -9,7 +9,7 @@ Schema Object Array:
       modOrigin: true
       allowReference: true
       noFollow: true
-      description: Value MUST be an object and not an array. Inline or referenced schema MUST be of a [Schema Object](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.1.md#schemaObject) and not a standard JSON Schema. `items` MUST be present if the `type` is `array`.
+      description: Value MUST be an object and not an array. Inline or referenced schema MUST be of a [Schema Object](#schemaObject) and not a standard JSON Schema. `items` MUST be present if the `type` is `array`.
     -
       name: maxItems
       type: number

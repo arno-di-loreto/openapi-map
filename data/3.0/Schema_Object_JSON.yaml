@@ -50,7 +50,7 @@ Schema Object JSON:
       origin: JSON Schema
       originMod: true
       description: |
-        See [Data Type Formats](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.1.md#dataTypeFormat) for further details. While relying on JSON Schema's defined formats, the OAS offers a few additional predefined formats.
+        See [Data Type Formats](#dataTypeFormat) for further details. While relying on JSON Schema's defined formats, the OAS offers a few additional predefined formats.
 
         The formats defined by the OAS are:
 
@@ -74,7 +74,7 @@ Schema Object JSON:
       type: string
       origin: JSON Schema
       originMod: true
-      description: Value MUST be a string. Multiple types via an array are not supported. Note `null`JSON schema type is not supported see [`nullable`](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.1.md#schemaNullable) property.
+      description: Value MUST be a string. Multiple types via an array are not supported. Note `null`JSON schema type is not supported see [`nullable`](#schemaNullable) property.
       values:
         -
           value: array

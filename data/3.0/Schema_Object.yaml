@@ -4,7 +4,7 @@ Schema Object:
 
     For more information about the properties, see [JSON Schema Core](https://tools.ietf.org/html/draft-wright-json-schema-00) and [JSON Schema Validation](https://tools.ietf.org/html/draft-wright-json-schema-validation-00). Unless stated otherwise, the property definitions follow the JSON Schema.
 
-    Alternatively, any time a Schema Object can be used, a [Reference Object](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.1.md#referenceObject) can be used in its place. This allows referencing definitions instead of defining them inline.
+    Alternatively, any time a Schema Object can be used, a [Reference Object](#referenceObject) can be used in its place. This allows referencing definitions instead of defining them inline.
 
     Additional properties defined by the JSON Schema specification that are not mentioned here are strictly unsupported.
 
@@ -13,18 +13,18 @@ Schema Object:
     isModified: true
     details: |
       - Enhanced consistency and easier design with extensive use of Schema Object for all definitions (parameters, bodies, responses, headers)
-      - [Inheritance and polymorphism](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.1.md#schemaComposition) mecanism has been enhanced (`oneOf`, `anyOf` and `not` have been added) and clarified (see new `discriminator` behaviour).
+      - [Inheritance and polymorphism](#schemaComposition) mecanism has been enhanced (`oneOf`, `anyOf` and `not` have been added) and clarified (see new `discriminator` behaviour).
       - Creating read/write models is easier with `readOnly` (behaviour modified) and `writeOnly` (new).
       - Enhance versioning thanks to `deprecated`.
   fields:
     -
-      name: <JSON Schema properties>
+      name: <JSON Schema>
       type: Schema Object JSON
       changelog:
         isModified: true
       description: JSON Schema Properties
     -
-      name: <OpenAPI properties>
+      name: <OpenAPI>
       type: Schema Object OpenAPI
       changelog:
         isModified: true

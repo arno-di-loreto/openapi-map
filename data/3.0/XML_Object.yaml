@@ -18,7 +18,7 @@ XML Object:
     - 
       name: prefix
       type: string
-      description: The prefix to be used for the [name](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.1.md#xmlName).
+      description: The prefix to be used for the [name](#xmlName).
     - 
       name: attribute
       type: boolean

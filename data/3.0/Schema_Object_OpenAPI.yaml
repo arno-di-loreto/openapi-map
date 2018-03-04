@@ -15,7 +15,7 @@ Schema Object OpenAPI:
         isModified: true
         details: Composition and inheritance mecanism has been clarified.
       description: |
-        Adds support for polymorphism. The discriminator is an object name that is used to differentiate between other schemas which may satisfy the payload description. See [Composition and Inheritance](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.1.md#schemaComposition) for more details.
+        Adds support for polymorphism. The discriminator is an object name that is used to differentiate between other schemas which may satisfy the payload description. See [Composition and Inheritance](#schemaComposition) for more details.
     -
       name: readOnly
       type: boolean
