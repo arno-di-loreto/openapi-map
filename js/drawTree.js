@@ -1,6 +1,19 @@
 'use strict';
 var template = OpenAPISpecificationVisualDocumentation.tooltip;
 
+function getNodeTextClass(node) {
+    console.log('getNodeTextClass')
+    var result;
+    if(node.required) {
+        result = 'nodeRequired';
+    }
+    else {
+        result = 'nodeText';
+    }
+    console.log(node.name + ',' + node.required +':'+result);
+    return result;
+}
+
 function getStrokeColor(node) {
   var color;
   if (node.isTechnical) {
@@ -372,7 +385,7 @@ function drawTree(treeData){
                 return d.children || d.closedChildren ? -10 : 10;
             })
             .attr('dy', '.35em')
-            .attr('class', 'nodeText')
+            .attr('class', function(d){return getNodeTextClass(d);})
             .attr('text-anchor', function(d) {
                 return d.children || d.closedChildren ? 'end' : 'start';
             })

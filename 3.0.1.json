@@ -1450,9 +1450,14 @@
         "name": "Test",
         "description": "Test description with a [link](http://apihandyman.io) and another [one](#openapi/).\n",
         "fields": [{
-            "name": "test",
+            "name": "required",
             "type": "string",
+            "required": true,
             "description": "Test properties with a [link](http://apihandyman.io) and another [one](#openapi/)\n"
+        }, {
+            "name": "notRequired",
+            "type": "string",
+            "description": "Non required property"
         }]
     }
 }
