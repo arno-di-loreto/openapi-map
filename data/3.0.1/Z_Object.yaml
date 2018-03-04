@@ -3,7 +3,11 @@ Z Object:
   description: |
     Test description with a [link](http://apihandyman.io) and another [one](#openapi/).
   fields:
-    - name: test
+    - name: required
       type: string
+      required: true
       description: |
         Test properties with a [link](http://apihandyman.io) and another [one](#openapi/)
+    - name: notRequired
+      type: string
+      description: Non required property
