@@ -70,11 +70,11 @@ OpenAPI Object:
       description: The available paths and operations for the API.
     -
       name: components
-      #type: Components Object
-      type: Z Object
+      type: Components Object
       description: An element to hold various schemas for the specification.
       changelog:
         isNew: true
+        details: Replace `definitions`, `parameters` and `securityDefinitions`
     -
       name: security
       type: "[Security Requirement Object]"

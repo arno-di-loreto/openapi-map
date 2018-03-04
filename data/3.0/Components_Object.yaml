@@ -1,0 +1,59 @@
+Components Object:
+  description: Holds a set of reusable objects for different aspects of the OAS. All objects defined within the components object will have no effect on the API unless they are explicitly referenced from properties outside the components object.
+  allowExtension: true
+  changelog:
+    isNew: true
+    details: Contains former root `responses`, `parameters` (split into `parameters` and `requestBodies`) and `definitions` (as `schemas`).
+  fields:
+    - 
+      name: schemas
+      type: "{Schema Object}"
+      changelog:
+        isInfo: true
+        details: Replace root `definitions`
+      description: An object to hold reusable [Schema Objects](#schemaObject).
+    -
+      name: responses
+      type: "{Response Object}"
+      changelog:
+        isInfo: true
+        details: Replace root `responses`
+      description: An object to hold reusable [Response Objects](#responseObject).
+    -
+      name: parameters
+      type: "{Parameter Object}"
+      changelog:
+        isInfo: true
+        details: Replace root `parameters` (Only non body parameters, body ones are in `requestBodies`).
+      description: An object to hold reusable [Parameter Objects](#parameterObject).
+    -
+      name: examples
+      type: "{Example Object}"
+      description: An object to hold reusable [Example Objects](#exampleObject).
+    -
+      name: requestBodies
+      type: "{Request Body Object}"
+      changelog:
+        isInfo: true
+        details: Partially replace root `parameters` (Body parameters only, others are in `parameters`).
+      description: An object to hold reusable [Request Body Objects](#requestBodyObject).
+    -
+      name: headers
+      type: "{Header Object}"
+      description: An object to hold reusable [Header Objects](#headerObject).
+    -
+      name: securitySchemes
+      type: "{Security Scheme Object}"
+      changelog:
+        isInfo: true
+        details: Replace root `securityDefinitions`.
+      description: An object to hold reusable [Security Scheme Objects](#securitySchemeObject).
+    -
+      name: links
+      type: "{Link Object}"
+      description: An object to hold reusable [Link Objects](#linkObject).
+    -
+      name: callbacks
+      type: "{Callback Object}"
+      description: An object to hold reusable [Callback Objects](#callbackObject).
+    
