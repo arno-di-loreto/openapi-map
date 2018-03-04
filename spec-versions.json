@@ -1,15 +1,14 @@
 [
   {
-    "name": "3.0.0-RC0",
-    "url": "3.0.0-rc0.json",
+    "name": "3.0",
+    "url": "3.0.1.json",
     "root": "OpenAPI Object",
-    "specificationurl": "https://github.com/OAI/OpenAPI-Specification/blob/3.0.0-rc0/versions/3.0.md#"
+    "specificationurl": "https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.1.md"
   },
   {
     "name": "2.0",
     "url": "2.0.json",
     "root": "Swagger Object",
-    "specificationurl": "https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#"
+    "specificationurl": "https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md"
   }
-  
 ]
