@@ -73,3 +73,7 @@ div.tooltip {
     margin-bottom: 20px;
     padding-left: 0px;
 }
+
+.node .nodeRequired {
+  fill:red;
+}
