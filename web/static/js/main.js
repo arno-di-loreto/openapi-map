@@ -22,7 +22,7 @@ function populateVersionList(callback) {
         url + '\',\'' +
         root + '\',\'' +
         specificationurl + '\',\'' +
-        '\');">Version ' +
+        '\');">' +
         name +
         '</a></li>');
     }
