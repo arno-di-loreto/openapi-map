@@ -2,7 +2,6 @@
 var template = OpenAPISpecificationVisualDocumentation.tooltip;
 
 function getNodeTextClass(node) {
-    console.log('getNodeTextClass')
     var result;
     if(node.required) {
         result = 'nodeRequired';
@@ -10,7 +9,6 @@ function getNodeTextClass(node) {
     else {
         result = 'nodeText';
     }
-    console.log(node.name + ',' + node.required +':'+result);
     return result;
 }
 
