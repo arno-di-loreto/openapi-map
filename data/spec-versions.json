@@ -1,12 +1,14 @@
 [
   {
     "name": "Version 3.0",
+    "id": "3.0",
     "url": "3.0.1.json",
     "root": "OpenAPI Object",
     "specificationurl": "https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.1.md"
   },
   {
     "name": "Version 2.0",
+    "id": "2.0",
     "url": "2.0.json",
     "root": "Swagger Object",
     "specificationurl": "https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md"
