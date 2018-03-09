@@ -16,7 +16,8 @@ env:
 
 before_script:
   - npm install -g gulp-cli
-script: gulp
+  - npm install -g mocha
+script: npm run build
 
 deploy:
   provider: script

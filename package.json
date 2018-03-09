@@ -4,7 +4,6 @@
   "description": "Find your way in the OpenAPI Specification",
   "main": "index.js",
   "scripts": {
-    "test": "mocha",
     "serve": "gulp serve",
     "build": "gulp"
   },
@@ -19,7 +18,9 @@
     "gulp-filelist": "^1.0.0",
     "gulp-handlebars": "^5.0.2",
     "gulp-jsbeautifier": "^2.1.2",
+    "gulp-mocha": "^5.0.0",
     "gulp-sequence": "^1.0.0",
+    "gulp-util": "^3.0.8",
     "gulp-webserver": "^0.9.1",
     "gulp-wrap": "^0.13.0",
     "gulp-yaml": "^1.0.1",
