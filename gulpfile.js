@@ -15,6 +15,9 @@ const merge = require('merge-stream');
 const gulpSequence = require('gulp-sequence');
 //
 const filelist = require('gulp-filelist');
+//test
+var mocha = require('gulp-mocha');
+var gutil = require('gulp-util');
 
 /**
  * @description List directories in a directory
@@ -85,9 +88,9 @@ gulp.task('build', function(callback) {
 // Deletes dist
 gulp.task('clean', del.bind(null, ['dist']));
 
-// Watch for modifications on web and data files, relaunch build if files are modified
-gulp.task('watch', ['build'], function() {
-  return gulp.watch(['data/**/*', 'web/**/*'], ['build']);
+// Watch for modifications on web and data files, relaunch tests and build if files are modified
+gulp.task('watch', ['default'], function() {
+  return gulp.watch(['data/**/*', 'web/**/*'], ['default']);
 });
 
 // Launch web server on dist directory with live-reload
@@ -107,5 +110,14 @@ gulp.task('serve', function(callback) {
   gulpSequence('watch', 'webserver')(callback);
 });
 
-// Build by default
-gulp.task('default', ['build']);
+// Test with mocha (prerequisites: npm install -g mocha)
+gulp.task('test', function() {
+  return gulp.src(['test/*.js'], { read: false })
+      .pipe(mocha())
+      .on('error', gutil.log);
+});
+
+// Default task: test then build
+gulp.task('default', function(callback){
+  gulpSequence('test', 'build')(callback);
+});
