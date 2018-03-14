@@ -780,7 +780,7 @@
         },
         "fields": [{
             "name": "content",
-            "type": "{Media Type Object}",
+            "type": "{media type,Media Type Object}",
             "changelog": {
                 "isNew": true,
                 "details": "Replace operation's `consumes`."
@@ -939,7 +939,7 @@
             "description": "A brief description of the request body. This could contain examples of use."
         }, {
             "name": "content",
-            "type": "Content Object",
+            "type": "{media type,Media Type Object}",
             "required": true,
             "description": "The content of the request body. The key is a media type or [media type range](https://tools.ietf.org/html/rfc7231#appendix-D) and the value describes it.  For requests that match multiple keys, only the most specific key is applicable. e.g. text/plain overrides text/*"
         }, {
