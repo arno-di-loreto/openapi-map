@@ -5,7 +5,7 @@ Parameter Object Content:
     isNew: true
   fields:
     - name: content
-      type: "{Media Type Object}"
+      type: "{media type,Media Type Object}"
       changelog:
         isNew: true
         details: Replace operation's `consumes`.
