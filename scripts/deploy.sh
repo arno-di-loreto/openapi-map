@@ -84,10 +84,8 @@ function prepare {
 function publish {
   echo "publishing"
   cd $DEPLOY_TARGET
-  TO_COMMIT=`git status --porcelain | wc -l`
-  if [ "$TO_COMMIT" -eq "0" ]; then
-    echo "Nothing to commit on $DEPLOY_BRANCH in repo $DEPLOY_REPO";
-  else
+  if [ `git status -s | wc -l` -gt 0 ]
+  then
     if [ ${GH_USER+x} ]
     then
       echo "setting git user.name with GH_USER env variable" 
@@ -98,9 +96,11 @@ function publish {
       echo "setting git user.email with GH_EMAIL env variable"
       git config --global user.email "$GH_EMAIL"
     fi
-    git add --all
+    git add .
     git commit -m "$PUBLISH_MESSAGE"
     git push $DEPLOY_REPO_CREDENTIALS
+  else
+    echo "WARN: no change to add to commit"
   fi
 }
 
