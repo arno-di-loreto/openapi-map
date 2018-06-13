@@ -6,7 +6,7 @@ Link Object:
     isNew: true
   fields:
     - 
-      name: href
+      name: operationRef
       type: string
       description: a relative or absolute URL to a linked resource. This field is mutually exclusive with the operationId field.
     -
