@@ -22,6 +22,6 @@ Response Object:
       type: Headers Object
       description: A list of headers that are sent with the response.
     -
-      name: example
-      type: Example Object
-      description: An example of the response message.
+      name: examples
+      type: Examples Object
+      description: A dictionary of examples keyed by mime types
